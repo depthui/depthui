@@ -1,0 +1,154 @@
+/* Keyframes used by GridFloor and Marquee3D.
+   They only animate `transform`, so they stay on the compositor. */
+
+@keyframes depth-grid-scroll {
+  to {
+    transform: translateY(var(--depth-cell, 48px));
+  }
+}
+
+@keyframes depth-marquee {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+.depth-grid-scroll {
+  animation: depth-grid-scroll 1.4s linear infinite;
+}
+
+.depth-marquee-up {
+  animation: depth-marquee var(--depth-marquee-duration, 30s) linear infinite;
+}
+
+.depth-marquee-down {
+  animation: depth-marquee var(--depth-marquee-duration, 30s) linear infinite reverse;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .depth-grid-scroll,
+  .depth-marquee-up,
+  .depth-marquee-down {
+    animation: none;
+  }
+}
+
+/* Orbit3D: spin a ring, and counter-spin each item so it keeps facing the viewer. */
+@keyframes depth-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.depth-spin {
+  animation: depth-spin var(--depth-orbit-duration, 24s) linear infinite;
+}
+
+.depth-spin-rev {
+  animation: depth-spin var(--depth-orbit-duration, 24s) linear infinite reverse;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .depth-spin,
+  .depth-spin-rev {
+    animation: none;
+  }
+}
+
+/* ---- Blocks ---- */
+
+/* Marquee (flat, horizontal): each half of the track is one full loop, so
+   translating by -50% repeats seamlessly. transform only. */
+@keyframes depth-marquee-x {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.depth-marquee-x {
+  animation: depth-marquee-x var(--depth-marquee-duration, 30s) linear infinite;
+}
+
+.depth-marquee-x-rev {
+  animation: depth-marquee-x var(--depth-marquee-duration, 30s) linear infinite reverse;
+}
+
+/* Gentle bobbing for floating decorations. */
+@keyframes depth-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.depth-float {
+  animation: depth-float 5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .depth-marquee-x,
+  .depth-marquee-x-rev,
+  .depth-float {
+    animation: none;
+  }
+}
+
+/* ---- Buttons ---- */
+
+/* ShimmerButton: a light bar (a third of the button wide) sweeps across, then rests. */
+@keyframes depth-shimmer {
+  0% {
+    transform: translateX(-110%) skewX(-14deg);
+  }
+  55%,
+  100% {
+    transform: translateX(340%) skewX(-14deg);
+  }
+}
+
+.depth-shimmer {
+  animation: depth-shimmer 2.8s ease-in-out infinite;
+}
+
+/* GradientButton: the gradient is 200% wide with a repeating pattern, so
+   moving it by exactly half its width loops seamlessly. */
+@keyframes depth-gradient-x {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.depth-gradient-x {
+  animation: depth-gradient-x var(--depth-gradient-duration, 5s) linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .depth-shimmer,
+  .depth-gradient-x {
+    animation: none;
+  }
+}
+
+/* ---- UI elements ---- */
+@keyframes depth-toast-progress { from { transform: scaleX(1);} to { transform: scaleX(0);} }
+@keyframes depth-rot-x { to { transform: rotateX(360deg);} }
+@keyframes depth-rot-y { to { transform: rotateY(360deg);} }
+@keyframes depth-rot-z { to { transform: rotateZ(360deg);} }
+@keyframes depth-loader-cube { from { transform: rotateX(-24deg) rotateY(0deg);} to { transform: rotateX(-24deg) rotateY(360deg);} }
+@keyframes depth-dot-bounce { 0%,100% { transform: translateY(0) scale(1);} 50% { transform: translateY(-60%) scale(1.15);} }
+@keyframes depth-drift { 0%,100% { transform: translate3d(0,0,0) scale(1);} 50% { transform: translate3d(var(--dx,10%),var(--dy,10%),0) scale(var(--ds,1.15));} }
+.depth-loader-cube { animation: depth-loader-cube 2.4s linear infinite; }
+.depth-rot-x { animation: depth-rot-x 2.2s linear infinite; }
+.depth-rot-y { animation: depth-rot-y 2.8s linear infinite; }
+.depth-rot-z { animation: depth-rot-z 3.4s linear infinite; }
+.depth-dot-bounce { animation: depth-dot-bounce 0.9s ease-in-out infinite; }
+.depth-drift { animation: depth-drift 18s ease-in-out infinite; will-change: transform; }
+@media (prefers-reduced-motion: reduce) {
+  .depth-loader-cube, .depth-rot-x, .depth-rot-y, .depth-rot-z, .depth-dot-bounce, .depth-drift { animation: none; }
+}
