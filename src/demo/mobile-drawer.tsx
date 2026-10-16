@@ -127,11 +127,11 @@ export function MobileDrawer({
 
             <div className="flex shrink-0 items-center gap-2 border-t border-depth-border px-4 py-3">
               <Link
-                to="/demo"
+                to="/"
                 onClick={onClose}
                 className="rounded-full border border-depth-border px-3.5 py-2 text-sm outline-none hover:border-depth-accent focus-visible:ring-2 focus-visible:ring-depth-accent"
               >
-                Live demo
+                Landing page
               </Link>
               <GitHubStarButton repo={REPO} />
               <span className="ml-auto" />

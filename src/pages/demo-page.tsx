@@ -127,7 +127,7 @@ export default function DemoPage() {
         <AnimatedNavbar
           className="pointer-events-auto"
           logo={
-            <Link to="/demo" className="flex items-center gap-2 font-semibold tracking-tight">
+            <Link to="/" className="flex items-center gap-2 font-semibold tracking-tight">
               <span
                 aria-hidden
                 className="inline-block h-6 w-6 rounded-md bg-gradient-to-br from-depth-accent to-depth-accent-2"

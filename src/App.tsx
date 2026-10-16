@@ -24,10 +24,10 @@ export default function App() {
     <>
       <ScrollManager />
       <Routes>
-        <Route path="/" element={<Navigate to="/components" replace />} />
+        <Route path="/" element={<DemoPage />} />
         <Route path="/components" element={<ComponentsPage />} />
-        <Route path="/demo" element={<DemoPage />} />
-        <Route path="*" element={<Navigate to="/components" replace />} />
+        <Route path="/demo" element={<Navigate to="/" replace />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </>
   );

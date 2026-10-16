@@ -196,10 +196,10 @@ export default function ComponentsPage() {
           </div>
           <div className="flex items-center gap-3">
             <Link
-              to="/demo"
+              to="/"
               className="hidden rounded-full border border-depth-border bg-depth-surface px-3.5 py-2 text-sm outline-none transition-colors hover:border-depth-accent focus-visible:ring-2 focus-visible:ring-depth-accent md:inline-flex"
             >
-              Live demo
+              Landing page
             </Link>
             <GitHubStarButton repo={REPO} className="hidden sm:inline-flex" />
             <a
@@ -244,10 +244,10 @@ export default function ComponentsPage() {
               light and dark themes, and source you copy and own.
             </p>
             <Link
-              to="/demo"
+              to="/"
               className="mt-6 inline-flex items-center gap-2 rounded-full bg-depth-accent px-5 py-2.5 text-sm font-medium text-white outline-none transition-opacity hover:opacity-90 focus-visible:ring-2 focus-visible:ring-depth-accent focus-visible:ring-offset-2 focus-visible:ring-offset-depth-bg"
             >
-              See the live demo →
+              See the landing page →
             </Link>
           </div>
 

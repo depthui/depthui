@@ -9,7 +9,7 @@ motion values, so it stays light.
 | Path | What |
 | --- | --- |
 | `/components` | Docs: every component with Preview / Usage / Source |
-| `/demo` | A full landing page built from the library |
+| `/` | The landing page, built entirely from the library (`src/pages/demo-page.tsx`) |
 
 The app uses `react-router-dom`. When you deploy the static build, configure a fallback so unknown paths
 serve `index.html` (Netlify `_redirects`: `/* /index.html 200`; Vercel: a rewrite to `/`).
@@ -70,7 +70,7 @@ Whole-section components in `src/components/depth/blocks/`, themed for light and
 | `Footer` | `footer.tsx` | Link columns, socials, newsletter form, faded wordmark |
 
 `src/pages/demo-page.tsx` assembles the whole library (buttons, cards, scenes, UI elements and blocks) into a
-complete landing page, served at `/demo`. Copy it as a starting point for your own site.
+complete landing page, served at `/`. Copy it as a starting point for your own site.
 All names, quotes and prices in `src/demo/block-data.tsx` are fictional placeholders.
 
 Shared engine: `src/hooks/use-tilt.ts`. Keyframes for GridFloor, Marquee3D and Orbit3D: `src/styles/depth-motion.css`. Scroll-driven components (`ScrollReveal3D`, `TextReveal`, `TimelineSteps`) use `src/hooks/use-scroll-progress.ts`, which re-measures every frame so they work anywhere on a page.
