@@ -32,7 +32,7 @@ jobs:
           # Pages serves 404.html for unknown paths, so deep links reach the SPA router.
           cp dist/index.html dist/404.html
           touch dist/.nojekyll
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: dist
   deploy:
