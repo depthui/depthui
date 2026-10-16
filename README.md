@@ -2,7 +2,7 @@
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset=".github/assets/banner-dark.svg">
-  <img alt="Depth UI: copy-paste 3D React components" src=".github/assets/banner-light.svg" width="100%">
+  <img alt="Depth UI: copy-paste 3D React components" src=".github/assets/banner-dark.svg" width="100%">
 </picture>
 
 <br />
@@ -16,7 +16,7 @@
 ![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178c6?logo=typescript&logoColor=white)
 [![GitHub stars](https://img.shields.io/github/stars/depthui/depthui?style=flat&logo=github&color=ec4899)](https://github.com/depthui/depthui/stargazers)
 
-**[Live demo](https://depthui.github.io/depthui/)** · **[Component docs](https://depthui.github.io/depthui/components)** · **[Report a bug](https://github.com/depthui/depthui/issues/new?template=bug_report.yml)** · **[Request a component](https://github.com/depthui/depthui/issues/new?template=component_request.yml)**
+**[Live demo](https://depthui.vercel.app)** · **[Component docs](https://depthui.vercel.app/components)** · **[Report a bug](https://github.com/depthui/depthui/issues/new?template=bug_report.yml)** · **[Request a component](https://github.com/depthui/depthui/issues/new?template=component_request.yml)**
 
 </div>
 
@@ -28,7 +28,7 @@ fast, small and themeable. You copy the source into your project (the shadcn way
 
 <div align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset=".github/assets/landing-dark.png">
+    <source media="(prefers-color-scheme: dark)" srcset=".github/assets/landing-light.png">
     <img alt="The Depth UI landing page, built entirely from the library" src=".github/assets/landing-light.png" width="92%">
   </picture>
 </div>
