@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="360" viewBox="0 0 1280 360" fill="none">
+<defs>
+<pattern id="g" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" stroke="#e4e1f2" stroke-width="1"/></pattern>
+<radialGradient id="glow" cx="50%" cy="0%" r="80%"><stop stop-color="#8b5cf6" stop-opacity=".28"/><stop offset="1" stop-color="#8b5cf6" stop-opacity="0"/></radialGradient>
+<linearGradient id="t" x1="0" y1="0" x2="52" y2="28" gradientUnits="userSpaceOnUse"><stop stop-color="#a78bfa"/><stop offset="1" stop-color="#6366f1"/></linearGradient>
+<linearGradient id="m" x1="0" y1="0" x2="52" y2="28" gradientUnits="userSpaceOnUse"><stop stop-color="#f472b6"/><stop offset="1" stop-color="#ec4899"/></linearGradient>
+<linearGradient id="b" x1="0" y1="0" x2="52" y2="28" gradientUnits="userSpaceOnUse"><stop stop-color="#22d3ee"/><stop offset="1" stop-color="#38bdf8"/></linearGradient>
+<linearGradient id="w" x1="662" y1="0" x2="872" y2="0" gradientUnits="userSpaceOnUse"><stop stop-color="#8b5cf6"/><stop offset=".55" stop-color="#ec4899"/><stop offset="1" stop-color="#22d3ee"/></linearGradient>
+</defs>
+<rect width="1280" height="360" rx="28" fill="#f7f6fc"/>
+<rect width="1280" height="360" rx="28" fill="url(#g)"/>
+<rect width="1280" height="360" rx="28" fill="url(#glow)"/>
+<g transform="translate(470 78) scale(2.6)">
+<path d="M32 28 58 42 32 56 6 42Z" fill="url(#b)" opacity=".9"/>
+<path d="M32 17 58 31 32 45 6 31Z" fill="url(#m)" opacity=".92"/>
+<path d="M32 6 58 20 32 34 6 20Z" fill="url(#t)"/>
+<path d="M6 20 32 34 58 20" stroke="#fff" stroke-opacity=".35" stroke-width="1.2"/>
+</g>
+<text x="660" y="168" font-family="Inter, 'Segoe UI', -apple-system, Helvetica, Arial, sans-serif" font-size="84" font-weight="800" letter-spacing="-3" fill="#14121f">Depth UI</text>
+<rect x="662" y="186" width="210" height="5" rx="2.5" fill="url(#w)"/>
+<text x="640" y="262" text-anchor="middle" font-family="Inter, 'Segoe UI', -apple-system, Helvetica, Arial, sans-serif" font-size="26" font-weight="500" fill="#5d5a73">Copy-paste 3D React components. CSS transforms, no WebGL.</text>
+<text x="640" y="302" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="17" letter-spacing="3" fill="#5d5a73">REACT  ·  TAILWIND V4  ·  FRAMER MOTION</text>
+</svg>

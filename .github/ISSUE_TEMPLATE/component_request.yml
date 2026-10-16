@@ -1,0 +1,20 @@
+name: Component request
+description: Suggest a new component or block
+labels: [enhancement, component]
+body:
+  - type: input
+    id: name
+    attributes: { label: Name, placeholder: "e.g. Parallax gallery" }
+    validations: { required: true }
+  - type: textarea
+    id: idea
+    attributes:
+      label: What should it do?
+      description: Describe the effect. Links to references are welcome.
+    validations: { required: true }
+  - type: checkboxes
+    id: help
+    attributes:
+      label: Contribution
+      options:
+        - label: I would like to build this myself

@@ -1,0 +1,22 @@
+name: Bug report
+description: Something is broken or looks wrong
+labels: [bug]
+body:
+  - type: input
+    id: component
+    attributes: { label: Component, placeholder: "e.g. Modal3D" }
+    validations: { required: true }
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: Steps to reproduce, what you expected, and a screenshot if it is visual.
+    validations: { required: true }
+  - type: dropdown
+    id: theme
+    attributes:
+      label: Theme
+      options: [Light, Dark, Both]
+  - type: input
+    id: env
+    attributes: { label: Browser and OS, placeholder: "e.g. Safari 18, iOS 18" }
