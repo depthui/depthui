@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
+import { Analytics } from "@vercel/analytics/react";
 import ComponentsPage from "@/pages/components-page";
 import DemoPage from "@/pages/demo-page";
 
@@ -29,6 +30,7 @@ export default function App() {
         <Route path="/demo" element={<Navigate to="/" replace />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
+      <Analytics />
     </>
   );
 }
