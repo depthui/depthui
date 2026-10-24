@@ -84,6 +84,17 @@ import {
   Tile,
   articles,
 } from "@/demo/demo-parts";
+import {
+  DemoBookTurn,
+  DemoClock,
+  DemoCoin,
+  DemoCounter,
+  DemoCylinder,
+  DemoGlobe,
+  DemoNotifs,
+  DemoPanels,
+  DemoWall,
+} from "@/demo/showpiece-demos";
 
 const nav: NavbarItem[] = [
   {
@@ -92,6 +103,7 @@ const nav: NavbarItem[] = [
       { label: "Buttons", description: "12 styles, one family", href: "#buttons" },
       { label: "Cards", description: "Profile, product, metric…", href: "#cards" },
       { label: "3D scenes", description: "Cubes, orbits, carousels", href: "#scenes" },
+      { label: "Showpieces", description: "Globe, flip clock, page turn", href: "#showpieces" },
       { label: "UI elements", description: "Modal, toast, inputs", href: "#ui" },
     ],
   },
@@ -278,7 +290,7 @@ export default function DemoPage() {
         {/* ---------------- Scenes ---------------- */}
         <section id="scenes" className={sec}>
           <SectionHeading eyebrow="3D scenes" title="Move things in space" description="Interactive scenes built with transforms only. Drag, hover, tilt." />
-          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
             <Tile label="Tilt card"><DemoTilt /></Tile>
             <Tile label="Spotlight card"><DemoSpotlight /></Tile>
             <Tile label="Holo card"><DemoHolo /></Tile>
@@ -296,6 +308,21 @@ export default function DemoPage() {
             <Tile label="3D marquee" className="md:col-span-2 lg:col-span-3 min-h-[420px]"><DemoMarquee3D /></Tile>
             <Tile label="Grid floor" className="md:col-span-2 lg:col-span-2"><DemoFloor /></Tile>
             <Tile label="3D text" className="md:col-span-2 lg:col-span-1"><DemoText3D /></Tile>
+          </div>
+        </section>
+
+        {/* ---------------- Showpieces ---------------- */}
+        <section id="showpieces" className={sec}>
+          <SectionHeading eyebrow="Showpieces" title="The ones people screenshot" description="Eight signature pieces: a wireframe globe, split-flap clock, page-turning book and more." />
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+            <Tile label="Globe (drag it)"><DemoGlobe /></Tile>
+            <Tile label="Coin (click it)"><DemoCoin /></Tile>
+            <Tile label="Text cylinder"><DemoCylinder /></Tile>
+            <Tile label="Flip clock" className="md:col-span-2"><div className="flex flex-col items-center gap-8"><DemoClock /><DemoCounter /></div></Tile>
+            <Tile label="Notification stack" className="items-stretch"><DemoNotifs /></Tile>
+            <Tile label="Page turn" className="md:col-span-2 min-h-[440px]"><DemoBookTurn /></Tile>
+            <Tile label="Expanding panels" className="md:col-span-2 lg:col-span-1 min-h-[400px]"><DemoPanels /></Tile>
+            <Tile label="Gallery wall" className="md:col-span-2 lg:col-span-3 !p-0"><DemoWall /></Tile>
           </div>
         </section>
 

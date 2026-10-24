@@ -92,6 +92,19 @@ export const NAV: NavGroup[] = [
     ],
   },
   {
+    title: "Showpieces",
+    items: [
+      { id: "globe-3d", label: "Globe" },
+      { id: "flip-clock-3d", label: "Flip Clock" },
+      { id: "text-cylinder-3d", label: "Text Cylinder" },
+      { id: "coin-3d", label: "Coin" },
+      { id: "gallery-wall-3d", label: "Gallery Wall" },
+      { id: "page-turn", label: "Page Turn" },
+      { id: "notification-stack-3d", label: "Notification Stack" },
+      { id: "expanding-panels-3d", label: "Expanding Panels" },
+    ],
+  },
+  {
     title: "Blocks",
     items: [
       { id: "animated-navbar", label: "Animated Navbar" },

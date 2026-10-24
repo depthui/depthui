@@ -39,7 +39,7 @@ fast, small and themeable. You copy the source into your project (the shadcn way
 - **Copy, don't install.** Each component is a file or two. No runtime dependency on this repo, nothing to upgrade.
 - **Light and dark, built in.** One set of CSS variables re-themes everything. A toggle and a no-flash script are included.
 - **Accessible.** Keyboard support, ARIA roles, focus management in the modal and drawer, and `prefers-reduced-motion` respected everywhere.
-- **60+ pieces.** 3D cards and scenes, 13 button styles, UI elements, and full page blocks (navbar, hero, pricing, footer and more).
+- **70+ pieces.** 3D cards and scenes, 13 button styles, UI elements, and full page blocks (navbar, hero, pricing, footer and more).
 - **Docs that cannot go stale.** Every component has Preview, Usage and Source tabs, and the Source tab reads the real files.
 
 ## Quick start
@@ -102,6 +102,24 @@ export function Hero() {
 | `Text3D` | `text-3d.tsx` | Extruded headline from stacked layers |
 | `GitHubStarButton` | `github-star-button.tsx` | "Star on GitHub" pill with a live count; set the repo in `src/lib/site.ts` |
 | `ThemeProvider` / `ThemeToggle` / `useTheme` | `theme.tsx` | Light/dark switching |
+
+</details>
+
+<details>
+<summary><b>Showpieces</b></summary>
+
+In `src/components/depth/showpieces/`. Each is a single file (plus `lib/utils.ts`; `Coin3D` also needs `hooks/use-tilt.ts`).
+
+| Component | Effect |
+| --- | --- |
+| `Globe3D` | Wireframe globe from CSS circles, markers that hide when they turn away, drag to spin |
+| `FlipClock3D` | Split-flap digits that fold over; shows the time or any value |
+| `TextCylinder3D` | Words around a vertical cylinder like a slot reel |
+| `Coin3D` | Coin with a real rim, tilts with the pointer, flips on click |
+| `GalleryWall3D` | Grid on a tilted plane that drifts with the pointer; tiles lift on hover |
+| `PageTurn` | Open book whose pages turn like paper (click, buttons or arrow keys) |
+| `NotificationStack3D` | Notifications piled in depth that fan out on hover, dismissible |
+| `ExpandingPanels3D` | One panel opens wide while neighbours lean away in 3D |
 
 </details>
 

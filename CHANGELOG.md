@@ -2,6 +2,10 @@
 
 All notable changes are listed here. The project follows [Semantic Versioning](https://semver.org).
 
+## 0.8.0
+- Eight new showpieces: `Globe3D`, `FlipClock3D`, `TextCylinder3D`, `Coin3D`, `GalleryWall3D`, `PageTurn`,
+  `NotificationStack3D`, `ExpandingPanels3D`. Docs section and a showpieces section on the landing page.
+
 ## 0.7.1
 - Vercel deploy config (`vercel.json`) and Vercel Web Analytics.
 - Dependency updates: react and react-dom 19.3.1, react-router-dom 7, framer-motion 14 (typecheck, build and a browser smoke test pass).

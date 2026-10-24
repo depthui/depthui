@@ -32,6 +32,7 @@ import { CodeBlock } from "@/demo/code-block";
 import { ButtonsSection } from "@/demo/buttons-section";
 import { CardsDemoSection } from "@/demo/cards-section-demo";
 import { UISection } from "@/demo/ui-section";
+import { ShowpiecesSection } from "@/demo/showpieces-section";
 import { BlocksSection } from "@/demo/blocks-section";
 import { MobileDrawer } from "@/demo/mobile-drawer";
 import { NavList } from "@/demo/nav-list";
@@ -708,6 +709,7 @@ export default function ComponentsPage() {
           <ButtonsSection />
           <CardsDemoSection />
           <UISection />
+          <ShowpiecesSection />
 
           {/* ---------------- Page blocks ---------------- */}
           <BlocksSection />
