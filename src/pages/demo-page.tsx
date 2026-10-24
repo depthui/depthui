@@ -85,12 +85,22 @@ import {
   articles,
 } from "@/demo/demo-parts";
 import {
+  DemoBars,
   DemoBookTurn,
   DemoClock,
   DemoCoin,
   DemoCounter,
   DemoCylinder,
+  DemoEnvelope,
+  DemoExtrude,
+  DemoFolder,
   DemoGlobe,
+  DemoKnobs,
+  DemoLaptop,
+  DemoPhone,
+  DemoRadial,
+  DemoWheel,
+  DemoTagCloud,
   DemoNotifs,
   DemoPanels,
   DemoWall,
@@ -313,7 +323,7 @@ export default function DemoPage() {
 
         {/* ---------------- Showpieces ---------------- */}
         <section id="showpieces" className={sec}>
-          <SectionHeading eyebrow="Showpieces" title="The ones people screenshot" description="Eight signature pieces: a wireframe globe, split-flap clock, page-turning book and more." />
+          <SectionHeading eyebrow="Showpieces" title="The ones people screenshot" description="Eighteen signature pieces: a wireframe globe, split-flap clock, page-turning book, 3D charts and more." />
           <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
             <Tile label="Globe (drag it)"><DemoGlobe /></Tile>
             <Tile label="Coin (click it)"><DemoCoin /></Tile>
@@ -322,6 +332,16 @@ export default function DemoPage() {
             <Tile label="Notification stack" className="items-stretch"><DemoNotifs /></Tile>
             <Tile label="Page turn" className="md:col-span-2 min-h-[440px]"><DemoBookTurn /></Tile>
             <Tile label="Expanding panels" className="md:col-span-2 lg:col-span-1 min-h-[400px]"><DemoPanels /></Tile>
+            <Tile label="3D bar chart" className="md:col-span-2"><DemoBars /></Tile>
+            <Tile label="Wheel picker"><DemoWheel /></Tile>
+            <Tile label="Radial menu (click +)"><DemoRadial /></Tile>
+            <Tile label="Extrude (drag it)" className="md:col-span-2"><DemoExtrude /></Tile>
+            <Tile label="Knobs (drag up or down)"><DemoKnobs /></Tile>
+            <Tile label="Laptop (opens as you scroll)" className="md:col-span-2 lg:col-span-3 min-h-[460px]"><DemoLaptop /></Tile>
+            <Tile label="Tag cloud (drag it)" className="md:col-span-2 lg:col-span-1 min-h-[420px]"><DemoTagCloud /></Tile>
+            <Tile label="Phone"><DemoPhone /></Tile>
+            <Tile label="Folder"><DemoFolder /></Tile>
+            <Tile label="Envelope (click it)" className="md:col-span-2 lg:col-span-3"><DemoEnvelope /></Tile>
             <Tile label="Gallery wall" className="md:col-span-2 lg:col-span-3 !p-0"><DemoWall /></Tile>
           </div>
         </section>

@@ -2,6 +2,10 @@
 
 All notable changes are listed here. The project follows [Semantic Versioning](https://semver.org).
 
+## 0.9.0
+- Ten more showpieces: `BarChart3D`, `WheelPicker3D`, `RadialMenu3D`, `Extrude3D`, `Knob3D`, `TagCloud3D`, `Laptop3D`, `Folder3D`, `Envelope3D`, `Phone3D`.
+- `TextCylinder3D` rebuilt: the word facing you is large and sharp, and the rest fade and shrink as they turn away.
+
 ## 0.8.0
 - Eight new showpieces: `Globe3D`, `FlipClock3D`, `TextCylinder3D`, `Coin3D`, `GalleryWall3D`, `PageTurn`,
   `NotificationStack3D`, `ExpandingPanels3D`. Docs section and a showpieces section on the landing page.

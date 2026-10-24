@@ -39,7 +39,7 @@ fast, small and themeable. You copy the source into your project (the shadcn way
 - **Copy, don't install.** Each component is a file or two. No runtime dependency on this repo, nothing to upgrade.
 - **Light and dark, built in.** One set of CSS variables re-themes everything. A toggle and a no-flash script are included.
 - **Accessible.** Keyboard support, ARIA roles, focus management in the modal and drawer, and `prefers-reduced-motion` respected everywhere.
-- **70+ pieces.** 3D cards and scenes, 13 button styles, UI elements, and full page blocks (navbar, hero, pricing, footer and more).
+- **80+ pieces.** 3D cards and scenes, 13 button styles, UI elements, and full page blocks (navbar, hero, pricing, footer and more).
 - **Docs that cannot go stale.** Every component has Preview, Usage and Source tabs, and the Source tab reads the real files.
 
 ## Quick start
@@ -108,7 +108,7 @@ export function Hero() {
 <details>
 <summary><b>Showpieces</b></summary>
 
-In `src/components/depth/showpieces/`. Each is a single file (plus `lib/utils.ts`; `Coin3D` also needs `hooks/use-tilt.ts`).
+In `src/components/depth/showpieces/`. Each is a single file (plus `lib/utils.ts`; `Coin3D` and `Phone3D` also need `hooks/use-tilt.ts`, `Laptop3D` needs `hooks/use-scroll-progress.ts`).
 
 | Component | Effect |
 | --- | --- |
@@ -120,6 +120,16 @@ In `src/components/depth/showpieces/`. Each is a single file (plus `lib/utils.ts
 | `PageTurn` | Open book whose pages turn like paper (click, buttons or arrow keys) |
 | `NotificationStack3D` | Notifications piled in depth that fan out on hover, dismissible |
 | `ExpandingPanels3D` | One panel opens wide while neighbours lean away in 3D |
+| `TagCloud3D` | Tags on a turning sphere, drag to spin, tags can be links |
+| `Laptop3D` | Laptop whose lid opens as you scroll it into view |
+| `Folder3D` | Folder that tips open and fans out its papers |
+| `Envelope3D` | Envelope with a 3D flap and a letter that rises out |
+| `Phone3D` | Phone with real thickness, tilts with the pointer, floating chips |
+| `BarChart3D` | Extruded bars that grow from the floor on scroll, value on hover |
+| `WheelPicker3D` | iOS-style cylinder picker (drag, wheel, keys), controlled or not |
+| `RadialMenu3D` | Round button that fans actions along a 3D arc |
+| `Extrude3D` | Gives flat text or an icon real thickness; sways, drag to look around |
+| `Knob3D` | Rotary dial with lit ticks; a real slider for keyboard and screen readers |
 
 </details>
 

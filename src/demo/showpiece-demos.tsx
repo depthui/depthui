@@ -1,6 +1,16 @@
 import { useState } from "react";
 import {
+  BarChart3D,
   Coin3D,
+  Envelope3D,
+  Folder3D,
+  Laptop3D,
+  Phone3D,
+  TagCloud3D,
+  Extrude3D,
+  Knob3D,
+  RadialMenu3D,
+  WheelPicker3D,
   ExpandingPanels3D,
   FlipClock3D,
   GalleryWall3D,
@@ -140,5 +150,171 @@ export function DemoPanels() {
         { title: "Globe", subtitle: "Wireframe, no WebGL", background: `bg-gradient-to-br ${tones[4]}` },
       ]}
     />
+  );
+}
+
+export function DemoBars() {
+  return (
+    <div className="w-full max-w-md">
+      <BarChart3D
+        data={[
+          { label: "Mon", value: 42 },
+          { label: "Tue", value: 68 },
+          { label: "Wed", value: 55 },
+          { label: "Thu", value: 91 },
+          { label: "Fri", value: 74 },
+          { label: "Sat", value: 38 },
+        ]}
+        format={(v) => `${v}k visits`}
+      />
+    </div>
+  );
+}
+
+const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+const DAYS = Array.from({ length: 31 }, (_, i) => String(i + 1));
+
+export function DemoWheel() {
+  const [month, setMonth] = useState("Oct");
+  const [day, setDay] = useState("24");
+  return (
+    <div className="flex flex-col items-center gap-4">
+      <div className="flex gap-3">
+        <WheelPicker3D label="Month" options={MONTHS} value={month} onChange={setMonth} className="w-28" />
+        <WheelPicker3D label="Day" options={DAYS} value={day} onChange={setDay} className="w-20" />
+      </div>
+      <p className="font-mono text-sm text-depth-muted" aria-live="polite">
+        Selected: <span className="text-depth-accent">{month} {day}</span>
+      </p>
+    </div>
+  );
+}
+
+const ic = (d: string) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+    <path d={d} />
+  </svg>
+);
+
+export function DemoRadial() {
+  const [last, setLast] = useState("nothing yet");
+  const pick = (n: string) => () => setLast(n);
+  return (
+    <div className="flex flex-col items-center gap-2">
+      <RadialMenu3D
+        radius={112}
+        items={[
+          { label: "Home", icon: ic("M3 11l9-8 9 8M5 10v10h5v-6h4v6h5V10"), onSelect: pick("Home") },
+          { label: "Search", icon: ic("M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM21 21l-5-5"), onSelect: pick("Search") },
+          { label: "Mail", icon: ic("M3 6h18v12H3zM3 7l9 7 9-7"), onSelect: pick("Mail") },
+          { label: "Photos", icon: ic("M4 5h16v14H4zM4 16l5-5 4 4 3-3 4 4M9 9h.01"), onSelect: pick("Photos") },
+          { label: "Settings", icon: ic("M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM19 12l2-1-2-4-2 1-2-1-1-2H9L8 8 6 9 4 8 2 12l2 1v2l-2 1 2 4 2-1 2 1 1 2h4l1-2 2-1 2 1 2-4-2-1z"), onSelect: pick("Settings") },
+        ]}
+      />
+      <p className="font-mono text-xs text-depth-muted" aria-live="polite">picked: {last}</p>
+    </div>
+  );
+}
+
+export function DemoExtrude() {
+  return (
+    <Extrude3D depth={30} layers={16}>
+      <span className="block px-2 text-7xl font-black leading-none tracking-tighter sm:text-8xl">DEPTH</span>
+    </Extrude3D>
+  );
+}
+
+export function DemoKnobs() {
+  const [vol, setVol] = useState(64);
+  return (
+    <div className="flex flex-wrap items-start justify-center gap-10">
+      <Knob3D label="Volume" value={vol} onChange={setVol} />
+      <Knob3D label="Bass" defaultValue={25} size={112} />
+    </div>
+  );
+}
+
+/** Fit a fixed-size piece to narrow screens (computed once on mount). */
+const fit = (max: number) => () =>
+  Math.max(240, Math.min(max, (typeof window === "undefined" ? max : window.innerWidth) - 76));
+
+export function DemoTagCloud() {
+  const [size] = useState(fit(340));
+  return (
+    <TagCloud3D
+      size={size}
+      tags={[
+        "React", "Tailwind", "Motion", "TypeScript", "Vite", "CSS 3D", "Accessible", "Dark mode",
+        "Copy-paste", "No WebGL", "GPU", "Open source", "Spring", "Perspective", "Themes", "Cards",
+        "Buttons", "Modal", "Toast", "Globe", "Parallax", "Tilt", "Orbit", "Cube",
+      ]}
+    />
+  );
+}
+
+export function DemoLaptop() {
+  const [w] = useState(fit(560));
+  return (
+    <Laptop3D width={w}>
+      <div className="flex h-full flex-col bg-depth-bg">
+        <div className="flex items-center gap-1.5 border-b border-depth-border px-3 py-2">
+          <span className="h-2 w-2 rounded-full bg-depth-accent-3" />
+          <span className="h-2 w-2 rounded-full bg-amber-400" />
+          <span className="h-2 w-2 rounded-full bg-emerald-400" />
+          <span className="ml-3 h-2 w-24 rounded bg-depth-border" />
+        </div>
+        <div className="grid flex-1 grid-cols-3 gap-2 p-3">
+          {["Revenue", "Users", "Uptime"].map((t, i) => (
+            <div key={t} className="rounded-md border border-depth-border bg-depth-surface p-2">
+              <p className="font-mono text-[8px] uppercase text-depth-muted">{t}</p>
+              <p className="text-sm font-semibold sm:text-lg">{["$48k", "12.4k", "99.9%"][i]}</p>
+            </div>
+          ))}
+          <div className="col-span-3 rounded-md bg-gradient-to-r from-depth-accent/40 via-depth-accent-3/30 to-depth-accent-2/40" />
+        </div>
+      </div>
+    </Laptop3D>
+  );
+}
+
+export function DemoFolder() {
+  return <Folder3D label="Project files" papers={[{ title: "Brief" }, { title: "Designs" }, { title: "Notes" }]} />;
+}
+
+export function DemoEnvelope() {
+  return (
+    <Envelope3D width={280}>
+      <span className="block text-sm font-semibold">You are invited</span>
+      <span className="mt-2 block text-xs text-depth-muted">Join the Depth UI community and star the repo.</span>
+      <span className="mt-3 block h-1.5 w-3/4 rounded bg-depth-border" />
+    </Envelope3D>
+  );
+}
+
+export function DemoPhone() {
+  const chip = (t: string, c: string) => (
+    <span className={`whitespace-nowrap rounded-full border border-depth-border bg-depth-surface px-3 py-1.5 text-xs font-medium shadow-lg ${c}`}>{t}</span>
+  );
+  return (
+    <Phone3D
+      width={200}
+      chips={[
+        { node: chip("+24% this week", "text-emerald-600"), x: -38, y: 14, z: 70 },
+        { node: chip("Deployed ✓", ""), x: 64, y: 62, z: 90 },
+      ]}
+    >
+      <div className="flex h-full flex-col gap-2 px-3 pb-3">
+        <div className="h-24 rounded-2xl bg-gradient-to-br from-depth-accent to-depth-accent-2" />
+        {[0, 1, 2, 3].map((i) => (
+          <div key={i} className="flex items-center gap-2 rounded-xl border border-depth-border bg-depth-surface p-2">
+            <span className="h-7 w-7 rounded-lg bg-depth-elevated" />
+            <span className="flex flex-1 flex-col gap-1">
+              <span className="h-1.5 w-3/4 rounded bg-depth-border" />
+              <span className="h-1.5 w-1/2 rounded bg-depth-border" />
+            </span>
+          </div>
+        ))}
+      </div>
+    </Phone3D>
   );
 }

@@ -1,10 +1,20 @@
 import { Showcase, type CodeFile } from "./showcase";
 import {
+  DemoBars,
+  DemoExtrude,
+  DemoKnobs,
+  DemoRadial,
+  DemoWheel,
   DemoBookTurn,
   DemoClock,
   DemoCoin,
   DemoCounter,
   DemoCylinder,
+  DemoEnvelope,
+  DemoFolder,
+  DemoLaptop,
+  DemoPhone,
+  DemoTagCloud,
   DemoGlobe,
   DemoNotifs,
   DemoPanels,
@@ -19,6 +29,17 @@ import wallSrc from "@/components/depth/showpieces/gallery-wall-3d.tsx?raw";
 import pageSrc from "@/components/depth/showpieces/page-turn.tsx?raw";
 import notifSrc from "@/components/depth/showpieces/notification-stack-3d.tsx?raw";
 import panelsSrc from "@/components/depth/showpieces/expanding-panels-3d.tsx?raw";
+import barsSrc from "@/components/depth/showpieces/bar-chart-3d.tsx?raw";
+import wheelSrc from "@/components/depth/showpieces/wheel-picker-3d.tsx?raw";
+import radialSrc from "@/components/depth/showpieces/radial-menu-3d.tsx?raw";
+import extrudeSrc from "@/components/depth/showpieces/extrude-3d.tsx?raw";
+import knobSrc from "@/components/depth/showpieces/knob-3d.tsx?raw";
+import tagSrc from "@/components/depth/showpieces/tag-cloud-3d.tsx?raw";
+import laptopSrc from "@/components/depth/showpieces/laptop-3d.tsx?raw";
+import folderSrc from "@/components/depth/showpieces/folder-3d.tsx?raw";
+import envelopeSrc from "@/components/depth/showpieces/envelope-3d.tsx?raw";
+import phoneSrc from "@/components/depth/showpieces/phone-3d.tsx?raw";
+import progressHookSrc from "@/hooks/use-scroll-progress.ts?raw";
 import tiltHookSrc from "@/hooks/use-tilt.ts?raw";
 import utilsSrc from "@/lib/utils.ts?raw";
 
@@ -150,6 +171,156 @@ export function ShowpiecesSection() {
         previewClassName="min-h-[380px]"
       >
         <DemoPanels />
+      </Showcase>
+      <Showcase
+        id="bar-chart-3d"
+        title="Bar Chart"
+        blurb="Extruded bars with a lit front, shaded side and bright top. They grow from the floor when scrolled into view. Hover or tap a bar for its value."
+        usage={`import { BarChart3D } from "@/components/depth";
+
+<BarChart3D
+  height={240}
+  depth={22}
+  data={[{ label: "Mon", value: 42 }, { label: "Tue", value: 68, color: "var(--depth-accent-2)" }]}
+  format={(v) => v + "k visits"}
+/>`}
+        files={[f("bar-chart-3d", barsSrc), utils]}
+        previewClassName="min-h-[400px]"
+      >
+        <DemoBars />
+      </Showcase>
+      <Showcase
+        id="wheel-picker-3d"
+        title="Wheel Picker"
+        blurb="An iOS-style picker on a cylinder. Drag, scroll, click an option or use the arrow keys. It snaps to the nearest value."
+        usage={`import { WheelPicker3D } from "@/components/depth";
+
+const [month, setMonth] = useState("Oct");
+
+<WheelPicker3D label="Month" options={["Jan", "Feb", "Mar"]} value={month} onChange={setMonth} />`}
+        files={[f("wheel-picker-3d", wheelSrc), utils]}
+        previewClassName="min-h-[360px]"
+      >
+        <DemoWheel />
+      </Showcase>
+
+      <Showcase
+        id="radial-menu-3d"
+        title="Radial Menu"
+        blurb="A round button that fans its actions out along an arc, each popping forward in 3D. Esc closes, arrow keys move between actions."
+        usage={`import { RadialMenu3D } from "@/components/depth";
+
+<RadialMenu3D
+  radius={112}
+  items={[{ label: "Home", icon: <HomeIcon />, onSelect: goHome }, { label: "Mail", icon: <MailIcon /> }]}
+/>`}
+        files={[f("radial-menu-3d", radialSrc), utils]}
+        previewClassName="min-h-[340px]"
+      >
+        <DemoRadial />
+      </Showcase>
+
+      <Showcase
+        id="extrude-3d"
+        title="Extrude"
+        blurb="Gives flat text or an icon real thickness by stacking copies along Z. It sways on its own; drag to look around."
+        usage={`import { Extrude3D } from "@/components/depth";
+
+<Extrude3D depth={30} layers={16} color="var(--depth-accent)">
+  <span className="text-8xl font-black">DEPTH</span>
+</Extrude3D>`}
+        files={[f("extrude-3d", extrudeSrc), utils]}
+        previewClassName="min-h-[340px]"
+      >
+        <DemoExtrude />
+      </Showcase>
+
+      <Showcase
+        id="knob-3d"
+        title="Knob"
+        blurb="A rotary dial with a bevelled cap and ticks that light up to the value. Drag up or down, or use the keyboard."
+        usage={`import { Knob3D } from "@/components/depth";
+
+<Knob3D label="Volume" value={volume} onChange={setVolume} min={0} max={100} />
+<Knob3D label="Bass" defaultValue={25} size={112} />`}
+        files={[f("knob-3d", knobSrc), utils]}
+        previewClassName="min-h-[320px]"
+      >
+        <DemoKnobs />
+      </Showcase>
+
+      <Showcase
+        id="tag-cloud-3d"
+        title="Tag Cloud"
+        blurb="Tags spread over a turning sphere. Drag to spin it, hover to slow it. Tags can be links."
+        usage={`import { TagCloud3D } from "@/components/depth";
+
+<TagCloud3D size={340} tags={["React", "Tailwind", { label: "Docs", href: "/components" }]} />`}
+        files={[f("tag-cloud-3d", tagSrc), utils]}
+        previewClassName="min-h-[420px]"
+      >
+        <DemoTagCloud />
+      </Showcase>
+
+      <Showcase
+        id="laptop-3d"
+        title="Laptop"
+        blurb="A laptop whose lid opens as you scroll it into view. Put anything on the screen."
+        usage={`import { Laptop3D } from "@/components/depth";
+
+<Laptop3D width={560}>
+  <YourDashboard />
+</Laptop3D>
+
+// or control it
+<Laptop3D open={isOpen}>...</Laptop3D>`}
+        files={[f("laptop-3d", laptopSrc), { name: "hooks/use-scroll-progress.ts", code: progressHookSrc }, utils]}
+        previewClassName="min-h-[460px]"
+      >
+        <DemoLaptop />
+      </Showcase>
+
+      <Showcase
+        id="folder-3d"
+        title="Folder"
+        blurb="A folder that tips open and fans out its papers on hover, focus or tap."
+        usage={`import { Folder3D } from "@/components/depth";
+
+<Folder3D label="Project files" papers={[{ title: "Brief" }, { title: "Designs" }, { title: "Notes" }]} />`}
+        files={[f("folder-3d", folderSrc), utils]}
+        previewClassName="min-h-[380px]"
+      >
+        <DemoFolder />
+      </Showcase>
+
+      <Showcase
+        id="envelope-3d"
+        title="Envelope"
+        blurb="The flap swings open in 3D and the letter rises out. Click, tap, Enter or Space."
+        usage={`import { Envelope3D } from "@/components/depth";
+
+<Envelope3D width={300}>
+  <p>You are invited</p>
+</Envelope3D>`}
+        files={[f("envelope-3d", envelopeSrc), utils]}
+        previewClassName="min-h-[400px]"
+      >
+        <DemoEnvelope />
+      </Showcase>
+
+      <Showcase
+        id="phone-3d"
+        title="Phone"
+        blurb="A phone with real thickness that tilts with your pointer, with chips floating in front of it."
+        usage={`import { Phone3D } from "@/components/depth";
+
+<Phone3D width={200} chips={[{ node: <Chip>+24%</Chip>, x: -38, y: 14, z: 70 }]}>
+  <YourAppScreen />
+</Phone3D>`}
+        files={[f("phone-3d", phoneSrc), tilt, utils]}
+        previewClassName="min-h-[520px]"
+      >
+        <DemoPhone />
       </Showcase>
     </>
   );
