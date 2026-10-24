@@ -215,15 +215,20 @@ public/                 favicon, logo, social image
 
 ## Deploying
 
-The site is a static Vite build, deployed to **GitHub Pages** by `.github/workflows/deploy.yml` on every push to `main`.
+The site is a static Vite build. Two ready-made targets are included.
 
+**Vercel** (live at [depthui.vercel.app](https://depthui.vercel.app)): import the repo, and Vercel detects Vite.
+`vercel.json` rewrites every path to `index.html`, so deep links like `/components` work. Vercel Web Analytics is
+wired in through `@vercel/analytics`; it does nothing on other hosts.
+
+**GitHub Pages**: `.github/workflows/deploy.yml` builds on every push to `main`.
 1. In the repo, open **Settings, Pages** and set **Source** to **GitHub Actions**.
-2. Push to `main`. The workflow builds the site and publishes it.
+2. Push to `main`. The workflow publishes the site.
 
-The workflow picks the right base path automatically: `/` for a `<owner>.github.io` repo, `/<repo>/` otherwise.
-It also copies `index.html` to `404.html`, so deep links like `/components` work on Pages.
-To build for another host, set `VITE_BASE` (for example `VITE_BASE=/my-sub-path/ npm run build`) and make your host
-fall back to `index.html` for unknown paths (Netlify `_redirects`: `/* /index.html 200`; Vercel: a rewrite to `/`).
+The workflow picks the base path automatically (`/` for a `<owner>.github.io` repo, `/<repo>/` otherwise) and copies
+`index.html` to `404.html` so deep links work on Pages. For any other host, set `VITE_BASE` (for example
+`VITE_BASE=/my-sub-path/ npm run build`) and make the host fall back to `index.html` for unknown paths
+(Netlify `_redirects`: `/* /index.html 200`).
 
 ## Contributing
 

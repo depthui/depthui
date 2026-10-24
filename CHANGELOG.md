@@ -2,6 +2,10 @@
 
 All notable changes are listed here. The project follows [Semantic Versioning](https://semver.org).
 
+## 0.7.1
+- Vercel deploy config (`vercel.json`) and Vercel Web Analytics.
+- Dependency updates: react and react-dom 19.3.1, react-router-dom 7, framer-motion 14 (typecheck, build and a browser smoke test pass).
+
 ## 0.7.0
 - Landing page at `/`, docs at `/components`, with real routes (`react-router-dom`).
 - GitHub Pages deploy workflow, CI, issue and PR templates, license, logo and social image.
