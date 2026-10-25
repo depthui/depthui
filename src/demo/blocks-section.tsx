@@ -14,7 +14,7 @@ import {
   ThemeToggle,
   TimelineSteps,
 } from "@/components/depth";
-import { Showcase, type CodeFile } from "./showcase";
+import { Showcase, type CodeFile, pick } from "./showcase";
 import { usage } from "./usage";
 import {
   HeroMock,
@@ -67,8 +67,8 @@ const signIn = (
 );
 
 /** Docs entries for every page block, in the same order as the sidebar. */
-export function BlocksSection() {
-  return (
+export function BlocksSection({ only }: { only?: string } = {}) {
+  return pick(
     <>
       <Showcase
         id="animated-navbar"
@@ -269,6 +269,7 @@ export function BlocksSection() {
           bottom={<span>© 2026 Depth UI. Sample footer.</span>}
         />
       </Showcase>
-    </>
+    </>,
+    only,
   );
 }

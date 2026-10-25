@@ -11,7 +11,7 @@ import {
   RevealCard,
   type CardsSectionItem,
 } from "@/components/depth";
-import { Showcase, type CodeFile } from "./showcase";
+import { Showcase, type CodeFile, pick } from "./showcase";
 
 import profileSrc from "@/components/depth/cards/profile-card.tsx?raw";
 import productSrc from "@/components/depth/cards/product-card.tsx?raw";
@@ -67,8 +67,8 @@ function ProductDemo() {
   );
 }
 
-export function CardsDemoSection() {
-  return (
+export function CardsDemoSection({ only }: { only?: string } = {}) {
+  return pick(
     <>
       <Showcase
         id="profile-card"
@@ -238,6 +238,7 @@ export function CardsDemoSection() {
       >
         <CardsSection items={articles} />
       </Showcase>
-    </>
+    </>,
+    only,
   );
 }

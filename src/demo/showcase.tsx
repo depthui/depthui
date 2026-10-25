@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from "react";
+import { Children, isValidElement, useState, type ReactElement, type ReactNode } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { CodeBlock } from "./code-block";
@@ -107,5 +107,17 @@ export function Showcase({
         )}
       </div>
     </section>
+  );
+}
+
+/**
+ * Render only the child whose `id` matches `only` out of a section's fragment.
+ * With no `only`, the whole section is returned. The doc routes use this so a
+ * page shows one component instead of the whole group.
+ */
+export function pick(tree: ReactElement, only?: string): ReactNode {
+  if (!only) return tree;
+  return Children.toArray((tree.props as { children?: ReactNode }).children).filter(
+    (c) => isValidElement(c) && (c.props as { id?: string }).id === only,
   );
 }

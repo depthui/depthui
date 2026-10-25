@@ -28,6 +28,7 @@ import {
   type CardsSectionItem,
 } from "@/components/depth";
 import { cn } from "@/lib/utils";
+import { LazyMount } from "./lazy-mount";
 import { Ico } from "./block-data";
 
 /** A labelled frame that holds one component in the demo's showcase grids. */
@@ -51,7 +52,9 @@ export function Tile({
     >
       <p className="font-mono text-[11px] uppercase tracking-widest text-depth-muted">{label}</p>
       <div className={cn("flex flex-1 items-center justify-center py-4", !center && "items-stretch")}>
-        {children}
+        <LazyMount className={cn("flex w-full items-center justify-center", !center && "items-stretch")}>
+          {children}
+        </LazyMount>
       </div>
     </div>
   );

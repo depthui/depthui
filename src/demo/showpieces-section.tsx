@@ -1,4 +1,4 @@
-import { Showcase, type CodeFile } from "./showcase";
+import { Showcase, type CodeFile, pick } from "./showcase";
 import {
   DemoBars,
   DemoExtrude,
@@ -107,8 +107,8 @@ const utils: CodeFile = { name: "lib/utils.ts", code: utilsSrc };
 const tilt: CodeFile = { name: "hooks/use-tilt.ts", code: tiltHookSrc };
 const f = (n: string, code: string): CodeFile => ({ name: `components/depth/showpieces/${n}.tsx`, code });
 
-export function ShowpiecesSection() {
-  return (
+export function ShowpiecesSection({ only }: { only?: string } = {}) {
+  return pick(
     <>
       <Showcase
         id="globe-3d"
@@ -784,6 +784,7 @@ const [month, setMonth] = useState("Oct");
       >
         <DemoAccordion />
       </Showcase>
-    </>
+    </>,
+    only,
   );
 }

@@ -14,7 +14,7 @@ import {
   Tooltip3D,
   useToast,
 } from "@/components/depth";
-import { Showcase, type CodeFile } from "./showcase";
+import { Showcase, type CodeFile, pick } from "./showcase";
 
 import modalSrc from "@/components/depth/ui/modal-3d.tsx?raw";
 import toastSrc from "@/components/depth/ui/toast.tsx?raw";
@@ -92,8 +92,8 @@ function SwitchDemo() {
 
 const people = ["Aria Chen", "Dev Rao", "Mira Sol", "Leo Park", "Ana Costa", "Sam Ito", "Zoe Lin"].map((name) => ({ name }));
 
-export function UISection() {
-  return (
+export function UISection({ only }: { only?: string } = {}) {
+  return pick(
     <>
       <Showcase
         id="modal-3d"
@@ -297,6 +297,7 @@ toast({ title: "Saved", description: "Changes are live.", tone: "success" });`}
           <h3 className="text-2xl font-semibold tracking-tight">Move your pointer</h3>
         </DotGlow>
       </Showcase>
-    </>
+    </>,
+    only,
   );
 }

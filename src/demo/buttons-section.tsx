@@ -13,7 +13,7 @@ import {
   RollButton,
   ShimmerButton,
 } from "@/components/depth";
-import { Showcase, type CodeFile } from "./showcase";
+import { Showcase, type CodeFile, pick } from "./showcase";
 
 import magneticSrc from "@/components/depth/buttons/magnetic-button.tsx?raw";
 import shimmerSrc from "@/components/depth/buttons/shimmer-button.tsx?raw";
@@ -207,8 +207,8 @@ const ENTRIES: Entry[] = [
 
 export const BUTTON_NAV = ENTRIES.map((e) => ({ id: e.id, label: e.title }));
 
-export function ButtonsSection() {
-  return (
+export function ButtonsSection({ only }: { only?: string } = {}) {
+  return pick(
     <>
       {ENTRIES.map((e) => (
         <Showcase
@@ -223,6 +223,7 @@ export function ButtonsSection() {
           {e.demo}
         </Showcase>
       ))}
-    </>
+    </>,
+    only,
   );
 }

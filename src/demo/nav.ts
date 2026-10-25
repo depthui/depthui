@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-import { BUTTON_NAV } from "./buttons-section";
 
 export interface NavItem {
   id: string;
@@ -11,7 +9,7 @@ export interface NavGroup {
 }
 
 /** Single source of truth for the sidebar (desktop) and the drawer (mobile).
- *  Page sections in App.tsx follow this same order. */
+ *  Docs pages are routes: /components/<slug>. */
 export const NAV: NavGroup[] = [
   {
     title: "Start",
@@ -55,7 +53,23 @@ export const NAV: NavGroup[] = [
       { id: "github-star", label: "GitHub Star" },
     ],
   },
-  { title: "Buttons", items: BUTTON_NAV },
+  {
+    title: "Buttons",
+    items: [
+      { id: "magnetic-button", label: "Magnetic Button" },
+      { id: "shimmer-button", label: "Shimmer Button" },
+      { id: "beam-button", label: "Beam Button" },
+      { id: "ripple-button", label: "Ripple Button" },
+      { id: "glass-button", label: "Glass Button" },
+      { id: "neon-button", label: "Neon Button" },
+      { id: "roll-button", label: "Roll Button" },
+      { id: "fill-button", label: "Fill Button" },
+      { id: "loading-button", label: "Loading Button" },
+      { id: "gradient-button", label: "Gradient Button" },
+      { id: "brutal-button", label: "Brutal Button" },
+      { id: "arrow-button", label: "Arrow Button" },
+    ],
+  },
   {
     title: "More cards",
     items: [
@@ -164,27 +178,3 @@ export const NAV: NavGroup[] = [
 ];
 
 export const NAV_IDS = NAV.flatMap((g) => g.items.map((i) => i.id));
-
-/** Tracks which section is crossing a band near the top of the viewport. */
-export function useActiveSection(ids: string[]) {
-  const [active, setActive] = useState(ids[0]);
-
-  useEffect(() => {
-    const obs = new IntersectionObserver(
-      (entries) => {
-        const hit = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
-        if (hit) setActive(hit.target.id);
-      },
-      { rootMargin: "-25% 0px -65% 0px" },
-    );
-    ids.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) obs.observe(el);
-    });
-    return () => obs.disconnect();
-  }, [ids]);
-
-  return active;
-}

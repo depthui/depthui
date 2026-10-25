@@ -51,7 +51,7 @@ npm install
 npm run dev
 ```
 
-Open the landing page at `/` and the docs at `/components`.
+Open the landing page at `/` and the docs at `/components`. Every component has its own page, for example `/components/globe`.
 
 ### Use a component in your own project
 
