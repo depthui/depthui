@@ -2,6 +2,9 @@
 
 All notable changes are listed here. The project follows [Semantic Versioning](https://semver.org).
 
+## 0.13.0
+- Five more showpieces: `Helix3D`, `Vault3D`, `FoldPanels3D`, `EightBall3D`, `Compass3D`.
+
 ## 0.12.0
 - Five more showpieces: `RubiksCube3D`, `Hourglass3D`, `Gyroscope3D`, `Badge3D`, `Pyramid3D`.
 

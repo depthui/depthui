@@ -21,6 +21,11 @@ import {
   Gyroscope3D,
   Badge3D,
   Pyramid3D,
+  Helix3D,
+  Vault3D,
+  FoldPanels3D,
+  EightBall3D,
+  Compass3D,
   TagCloud3D,
   Extrude3D,
   Knob3D,
@@ -513,4 +518,49 @@ export function DemoBadge() {
 
 export function DemoPyramid() {
   return <Pyramid3D />;
+}
+
+export function DemoHelix() {
+  return <Helix3D />;
+}
+
+export function DemoVault() {
+  const [size] = useState(() => Math.max(250, Math.min(300, (typeof window === "undefined" ? 600 : window.innerWidth) - 76)));
+  return (
+    <div className="flex flex-col items-center gap-2">
+      <Vault3D size={size} code={[12, 47, 83]}>
+        <p className="text-xs uppercase tracking-widest text-depth-muted">Inside</p>
+        <p className="mt-1 text-xl font-bold">Depth UI v1</p>
+        <p className="mt-1 text-xs text-depth-muted">You cracked it.</p>
+      </Vault3D>
+      <p className="text-xs text-depth-muted">Hint: 12, then 47, then 83. Drag the dial, let go to lock each one in.</p>
+    </div>
+  );
+}
+
+export function DemoFold() {
+  const [pw] = useState(() => Math.max(52, Math.min(96, Math.floor(((typeof window === "undefined" ? 600 : window.innerWidth) - 90) / 5))));
+  return (
+    <FoldPanels3D panels={5} panelWidth={pw} height={Math.round(pw * 2.8)}>
+      <div
+        className="h-full w-full"
+        style={{ background: "linear-gradient(120deg,#7c3aed 0%,#ec4899 35%,#f59e0b 65%,#22d3ee 100%)" }}
+      >
+        <div className="flex h-full w-full flex-col justify-between p-5 text-white">
+          <span className="font-mono text-xs uppercase tracking-widest">Folding screen</span>
+          <span className="text-5xl font-black leading-none tracking-tight">Fold<br />it in<br />depth</span>
+        </div>
+      </div>
+    </FoldPanels3D>
+  );
+}
+
+export function DemoEightBall() {
+  const [size] = useState(() => Math.min(220, (typeof window === "undefined" ? 600 : window.innerWidth) - 110));
+  return <EightBall3D size={size} />;
+}
+
+export function DemoCompass() {
+  const [size] = useState(() => Math.min(260, (typeof window === "undefined" ? 600 : window.innerWidth) - 110));
+  return <Compass3D size={size} />;
 }

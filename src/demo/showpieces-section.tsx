@@ -29,6 +29,11 @@ import {
   DemoGyro,
   DemoBadge,
   DemoPyramid,
+  DemoHelix,
+  DemoVault,
+  DemoFold,
+  DemoEightBall,
+  DemoCompass,
   DemoTagCloud,
   DemoGlobe,
   DemoNotifs,
@@ -69,6 +74,11 @@ import hourglassSrc from "@/components/depth/showpieces/hourglass-3d.tsx?raw";
 import gyroSrc from "@/components/depth/showpieces/gyroscope-3d.tsx?raw";
 import badgeSrc from "@/components/depth/showpieces/badge-3d.tsx?raw";
 import pyramidSrc from "@/components/depth/showpieces/pyramid-3d.tsx?raw";
+import helixSrc from "@/components/depth/showpieces/helix-3d.tsx?raw";
+import vaultSrc from "@/components/depth/showpieces/vault-3d.tsx?raw";
+import foldSrc from "@/components/depth/showpieces/fold-panels-3d.tsx?raw";
+import eightSrc from "@/components/depth/showpieces/eight-ball-3d.tsx?raw";
+import compassSrc from "@/components/depth/showpieces/compass-3d.tsx?raw";
 import progressHookSrc from "@/hooks/use-scroll-progress.ts?raw";
 import tiltHookSrc from "@/hooks/use-tilt.ts?raw";
 import utilsSrc from "@/lib/utils.ts?raw";
@@ -552,6 +562,75 @@ const [month, setMonth] = useState("Oct");
         previewClassName="min-h-[400px]"
       >
         <DemoPyramid />
+      </Showcase>
+
+      <Showcase
+        id="helix-3d"
+        title="Helix"
+        blurb="A double helix turning in space. The near side is bigger and brighter than the far side, so it reads as real depth."
+        usage={`import { Helix3D } from "@/components/depth";
+
+<Helix3D pairs={16} height={320} seconds={9} />`}
+        files={[f("helix-3d", helixSrc), utils]}
+        previewClassName="min-h-[420px]"
+      >
+        <DemoHelix />
+      </Showcase>
+
+      <Showcase
+        id="vault-3d"
+        title="Vault"
+        blurb="A safe with a real combination dial. Turn it to each number, let go to lock it in, and the heavy door swings open."
+        usage={`import { Vault3D } from "@/components/depth";
+
+<Vault3D code={[12, 47, 83]} onOpen={() => console.log("open")}>
+  <p>What is inside</p>
+</Vault3D>`}
+        files={[f("vault-3d", vaultSrc), utils]}
+        previewClassName="min-h-[480px]"
+      >
+        <DemoVault />
+      </Showcase>
+
+      <Showcase
+        id="fold-panels-3d"
+        title="Folding screen"
+        blurb="One picture cut across hinged panels that zig-zag shut and unfold flat. Each panel hangs on the one before it."
+        usage={`import { FoldPanels3D } from "@/components/depth";
+
+<FoldPanels3D panels={5} panelWidth={90} height={260}>
+  <YourPicture />
+</FoldPanels3D>`}
+        files={[f("fold-panels-3d", foldSrc), utils]}
+        previewClassName="min-h-[440px]"
+      >
+        <DemoFold />
+      </Showcase>
+
+      <Showcase
+        id="eight-ball-3d"
+        title="Magic 8 Ball"
+        blurb="Think of a question, then shake the ball. It rattles around and an answer floats up in the window."
+        usage={`import { EightBall3D } from "@/components/depth";
+
+<EightBall3D onAnswer={(a) => console.log(a)} />`}
+        files={[f("eight-ball-3d", eightSrc), utils]}
+        previewClassName="min-h-[420px]"
+      >
+        <DemoEightBall />
+      </Showcase>
+
+      <Showcase
+        id="compass-3d"
+        title="Compass"
+        blurb="The needle points at your pointer wherever it is on the page, and swings past before it settles."
+        usage={`import { Compass3D } from "@/components/depth";
+
+<Compass3D size={240} />`}
+        files={[f("compass-3d", compassSrc), utils]}
+        previewClassName="min-h-[360px]"
+      >
+        <DemoCompass />
       </Showcase>
     </>
   );

@@ -140,6 +140,11 @@ In `src/components/depth/showpieces/`. Each is a single file (plus `lib/utils.ts
 | `Gyroscope3D` | Three nested rings on different axes, pure CSS |
 | `Badge3D` | ID badge on a lanyard, drag to swing, settles on a spring |
 | `Pyramid3D` | Four-sided pyramid with labelled faces, drag to spin |
+| `Helix3D` | Double helix turning in space with real depth cues |
+| `Vault3D` | Safe with a working combination dial and a swinging door |
+| `FoldPanels3D` | Folding screen of hinged panels that zig-zag shut |
+| `EightBall3D` | Magic 8 Ball, shake it and an answer floats up |
+| `Compass3D` | Compass whose needle follows your pointer and overshoots |
 | `BarChart3D` | Extruded bars that grow from the floor on scroll, value on hover |
 | `WheelPicker3D` | iOS-style cylinder picker (drag, wheel, keys), controlled or not |
 | `RadialMenu3D` | Round button that fans actions along a 3D arc |

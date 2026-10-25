@@ -113,6 +113,11 @@ import {
   DemoGyro,
   DemoBadge,
   DemoPyramid,
+  DemoHelix,
+  DemoVault,
+  DemoFold,
+  DemoEightBall,
+  DemoCompass,
   DemoRadial,
   DemoWheel,
   DemoTagCloud,
@@ -338,7 +343,7 @@ export default function DemoPage() {
 
         {/* ---------------- Showpieces ---------------- */}
         <section id="showpieces" className={sec}>
-          <SectionHeading eyebrow="Showpieces" title="The ones people screenshot" description="Thirty-eight signature pieces: a wireframe globe, split-flap clock, page-turning book, 3D charts and more." />
+          <SectionHeading eyebrow="Showpieces" title="The ones people screenshot" description="Forty-three signature pieces: a wireframe globe, split-flap clock, page-turning book, 3D charts and more." />
           <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
             <Tile label="Globe (drag it)"><DemoGlobe /></Tile>
             <Tile label="Coin (click it)"><DemoCoin /></Tile>
@@ -372,6 +377,11 @@ export default function DemoPage() {
             <Tile label="Gyroscope"><DemoGyro /></Tile>
             <Tile label="Badge (drag to swing)" className="md:col-span-2 lg:col-span-1 min-h-[480px]"><DemoBadge /></Tile>
             <Tile label="Pyramid (drag it)"><DemoPyramid /></Tile>
+            <Tile label="Helix"><DemoHelix /></Tile>
+            <Tile label="Vault (crack the code)" className="md:col-span-2 min-h-[460px]"><DemoVault /></Tile>
+            <Tile label="Folding screen" className="md:col-span-2 lg:col-span-2"><DemoFold /></Tile>
+            <Tile label="Magic 8 Ball (click)"><DemoEightBall /></Tile>
+            <Tile label="Compass (move your mouse)" className="md:col-span-2 lg:col-span-3"><DemoCompass /></Tile>
             <Tile label="Gallery wall" className="md:col-span-2 lg:col-span-3 !p-0"><DemoWall /></Tile>
           </div>
         </section>
