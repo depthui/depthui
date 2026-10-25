@@ -135,6 +135,11 @@ In `src/components/depth/showpieces/`. Each is a single file (plus `lib/utils.ts
 | `Bookshelf3D` | Books on a shelf that slide out and turn to show the cover |
 | `Prism3D` | Rotating prism used as tabs, 3 to 8 faces |
 | `Doors3D` | Double doors on hinges that open on a lit room |
+| `RubiksCube3D` | 3x3 puzzle cube of 27 cubies, scramble and solve, drag to look around |
+| `Hourglass3D` | Sand runs between bulbs, click to flip even mid-run |
+| `Gyroscope3D` | Three nested rings on different axes, pure CSS |
+| `Badge3D` | ID badge on a lanyard, drag to swing, settles on a spring |
+| `Pyramid3D` | Four-sided pyramid with labelled faces, drag to spin |
 | `BarChart3D` | Extruded bars that grow from the floor on scroll, value on hover |
 | `WheelPicker3D` | iOS-style cylinder picker (drag, wheel, keys), controlled or not |
 | `RadialMenu3D` | Round button that fans actions along a 3D arc |

@@ -24,6 +24,11 @@ import {
   DemoShelf,
   DemoPrism,
   DemoDoors,
+  DemoRubik,
+  DemoHourglass,
+  DemoGyro,
+  DemoBadge,
+  DemoPyramid,
   DemoTagCloud,
   DemoGlobe,
   DemoNotifs,
@@ -59,6 +64,11 @@ import cradleSrc from "@/components/depth/showpieces/newtons-cradle-3d.tsx?raw";
 import shelfSrc from "@/components/depth/showpieces/bookshelf-3d.tsx?raw";
 import prismSrc from "@/components/depth/showpieces/prism-3d.tsx?raw";
 import doorsSrc from "@/components/depth/showpieces/doors-3d.tsx?raw";
+import rubikSrc from "@/components/depth/showpieces/rubiks-cube-3d.tsx?raw";
+import hourglassSrc from "@/components/depth/showpieces/hourglass-3d.tsx?raw";
+import gyroSrc from "@/components/depth/showpieces/gyroscope-3d.tsx?raw";
+import badgeSrc from "@/components/depth/showpieces/badge-3d.tsx?raw";
+import pyramidSrc from "@/components/depth/showpieces/pyramid-3d.tsx?raw";
 import progressHookSrc from "@/hooks/use-scroll-progress.ts?raw";
 import tiltHookSrc from "@/hooks/use-tilt.ts?raw";
 import utilsSrc from "@/lib/utils.ts?raw";
@@ -475,6 +485,73 @@ const [month, setMonth] = useState("Oct");
         previewClassName="min-h-[420px]"
       >
         <DemoDoors />
+      </Showcase>
+
+      <Showcase
+        id="rubiks-cube-3d"
+        title="Puzzle cube"
+        blurb="A 3x3 cube made of 27 real cubies. Scramble it and layers turn one by one. Solve plays the same moves backwards. Drag to look around."
+        usage={`import { RubiksCube3D } from "@/components/depth";
+
+<RubiksCube3D size={210} turnSeconds={0.32} />`}
+        files={[f("rubiks-cube-3d", rubikSrc), utils]}
+        previewClassName="min-h-[460px]"
+      >
+        <DemoRubik />
+      </Showcase>
+
+      <Showcase
+        id="hourglass-3d"
+        title="Hourglass"
+        blurb="Sand runs from one bulb to the other. Click to flip it, even halfway through, and it carries on from where the sand is."
+        usage={`import { Hourglass3D } from "@/components/depth";
+
+<Hourglass3D seconds={20} onFinish={() => console.log("done")} />`}
+        files={[f("hourglass-3d", hourglassSrc), utils]}
+        previewClassName="min-h-[440px]"
+      >
+        <DemoHourglass />
+      </Showcase>
+
+      <Showcase
+        id="gyroscope-3d"
+        title="Gyroscope"
+        blurb="Three nested rings turning on different axes around a glowing core. Pure CSS, so no JavaScript runs per frame."
+        usage={`import { Gyroscope3D } from "@/components/depth";
+
+<Gyroscope3D size={220} seconds={9} />`}
+        files={[f("gyroscope-3d", gyroSrc), utils]}
+        previewClassName="min-h-[360px]"
+      >
+        <DemoGyro />
+      </Showcase>
+
+      <Showcase
+        id="badge-3d"
+        title="Badge"
+        blurb="An ID badge on a lanyard. Grab it and swing it. When you let go it settles back on a loose spring."
+        usage={`import { Badge3D } from "@/components/depth";
+
+<Badge3D>
+  <YourBadgeContent />
+</Badge3D>`}
+        files={[f("badge-3d", badgeSrc), utils]}
+        previewClassName="min-h-[520px]"
+      >
+        <DemoBadge />
+      </Showcase>
+
+      <Showcase
+        id="pyramid-3d"
+        title="Pyramid"
+        blurb="A four-sided pyramid with a label on every face. It turns on its own. Drag to spin it and it keeps the swing."
+        usage={`import { Pyramid3D } from "@/components/depth";
+
+<Pyramid3D labels={["Depth", "Light", "Space", "Form"]} />`}
+        files={[f("pyramid-3d", pyramidSrc), utils]}
+        previewClassName="min-h-[400px]"
+      >
+        <DemoPyramid />
       </Showcase>
     </>
   );

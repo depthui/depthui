@@ -16,6 +16,11 @@ import {
   Bookshelf3D,
   Prism3D,
   Doors3D,
+  RubiksCube3D,
+  Hourglass3D,
+  Gyroscope3D,
+  Badge3D,
+  Pyramid3D,
   TagCloud3D,
   Extrude3D,
   Knob3D,
@@ -469,4 +474,43 @@ export function DemoDoors() {
       </span>
     </Doors3D>
   );
+}
+
+export function DemoRubik() {
+  const [size] = useState(() => Math.max(150, Math.min(210, (typeof window === "undefined" ? 600 : window.innerWidth) - 150)));
+  return <RubiksCube3D size={size} />;
+}
+
+export function DemoHourglass() {
+  const [flips, setFlips] = useState(0);
+  return (
+    <div className="flex flex-col items-center gap-3">
+      <Hourglass3D seconds={12} onFinish={() => setFlips((n) => n + 1)} />
+      <p className="text-xs text-depth-muted">
+        {flips ? `Ran out ${flips}×. Click to flip it.` : "Click the hourglass to flip it."}
+      </p>
+    </div>
+  );
+}
+
+export function DemoGyro() {
+  const [size] = useState(() => Math.min(230, (typeof window === "undefined" ? 600 : window.innerWidth) - 100));
+  return <Gyroscope3D size={size} />;
+}
+
+export function DemoBadge() {
+  return (
+    <Badge3D>
+      <div className="flex h-full flex-col items-center px-4 text-center">
+        <div className="mb-3 h-20 w-20 rounded-full bg-gradient-to-br from-depth-accent to-depth-accent-2" />
+        <p className="text-lg font-bold">Akram</p>
+        <p className="text-xs text-depth-muted">Creator, Depth UI</p>
+        <p className="mt-auto pb-4 font-mono text-[10px] uppercase tracking-widest text-depth-muted">Drag me</p>
+      </div>
+    </Badge3D>
+  );
+}
+
+export function DemoPyramid() {
+  return <Pyramid3D />;
 }

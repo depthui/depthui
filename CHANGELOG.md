@@ -2,6 +2,9 @@
 
 All notable changes are listed here. The project follows [Semantic Versioning](https://semver.org).
 
+## 0.12.0
+- Five more showpieces: `RubiksCube3D`, `Hourglass3D`, `Gyroscope3D`, `Badge3D`, `Pyramid3D`.
+
 ## 0.11.0
 - Five more showpieces: `SlotMachine3D`, `NewtonsCradle3D`, `Bookshelf3D`, `Prism3D`, `Doors3D`.
 
