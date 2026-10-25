@@ -14,6 +14,11 @@ import {
   DemoFolder,
   DemoLaptop,
   DemoPhone,
+  DemoIsland,
+  DemoReorder,
+  DemoExpand,
+  DemoTabs,
+  DemoAccordion,
   DemoDice,
   DemoTicket,
   DemoFan,
@@ -89,6 +94,11 @@ import pinSrc from "@/components/depth/showpieces/pin-art-3d.tsx?raw";
 import tileSrc from "@/components/depth/showpieces/tile-flip-3d.tsx?raw";
 import trailSrc from "@/components/depth/showpieces/image-trail-3d.tsx?raw";
 import stackSrc from "@/components/depth/showpieces/stack-scroll-3d.tsx?raw";
+import islandSrc from "@/components/depth/showpieces/dynamic-island-3d.tsx?raw";
+import reorderSrc from "@/components/depth/showpieces/reorder-list-3d.tsx?raw";
+import expandSrc from "@/components/depth/showpieces/expand-cards-3d.tsx?raw";
+import tabsSrc from "@/components/depth/showpieces/tabs-3d.tsx?raw";
+import accordionSrc from "@/components/depth/showpieces/accordion-3d.tsx?raw";
 import progressHookSrc from "@/hooks/use-scroll-progress.ts?raw";
 import tiltHookSrc from "@/hooks/use-tilt.ts?raw";
 import utilsSrc from "@/lib/utils.ts?raw";
@@ -708,6 +718,71 @@ const [month, setMonth] = useState("Oct");
         previewClassName="min-h-[460px]"
       >
         <DemoScrollStack />
+      </Showcase>
+
+      <Showcase
+        id="dynamic-island-3d"
+        title="Dynamic island"
+        blurb="A pill that morphs between states on one spring. Size and corner radius move together, and the content blurs and scales between them."
+        usage={`import { DynamicIsland3D } from "@/components/depth";
+
+<DynamicIsland3D mode="music" onModeChange={(m) => console.log(m)} />`}
+        files={[f("dynamic-island-3d", islandSrc), tilt, utils]}
+        previewClassName="min-h-[300px]"
+      >
+        <DemoIsland />
+      </Showcase>
+
+      <Showcase
+        id="reorder-list-3d"
+        title="Reorder list"
+        blurb="Drag a row and it lifts toward you and tips back while the others slide away. Up and down buttons keep it keyboard friendly."
+        usage={`import { ReorderList3D } from "@/components/depth";
+
+<ReorderList3D items={[{ id: "a", title: "First" }, { id: "b", title: "Second" }]} onChange={setItems} />`}
+        files={[f("reorder-list-3d", reorderSrc), utils]}
+        previewClassName="min-h-[420px]"
+      >
+        <DemoReorder />
+      </Showcase>
+
+      <Showcase
+        id="expand-cards-3d"
+        title="Expanding cards"
+        blurb="Cards that grow into a full sheet when clicked, the way App Store cards do. The card itself stretches open, then folds back on Escape."
+        usage={`import { ExpandCards3D } from "@/components/depth";
+
+<ExpandCards3D items={[{ id: "a", title: "Depth", background: "linear-gradient(135deg,#7c3aed,#ec4899)", body: <p>More…</p> }]} />`}
+        files={[f("expand-cards-3d", expandSrc), utils]}
+        previewClassName="min-h-[420px]"
+      >
+        <DemoExpand />
+      </Showcase>
+
+      <Showcase
+        id="tabs-3d"
+        title="3D tabs"
+        blurb="A raised key glides under the active tab, and panels swing in around a hinge in the direction you are moving. Arrow keys, Home and End work."
+        usage={`import { Tabs3D } from "@/components/depth";
+
+<Tabs3D tabs={[{ id: "a", label: "Design", content: "…" }, { id: "b", label: "Build", content: "…" }]} />`}
+        files={[f("tabs-3d", tabsSrc), utils]}
+        previewClassName="min-h-[340px]"
+      >
+        <DemoTabs />
+      </Showcase>
+
+      <Showcase
+        id="accordion-3d"
+        title="3D accordion"
+        blurb="Panels unfold downward on a hinge while the rows below slide away on the same spring. One open at a time, or set multiple."
+        usage={`import { Accordion3D } from "@/components/depth";
+
+<Accordion3D items={[{ id: "a", title: "Question", content: "Answer" }]} defaultOpen={["a"]} />`}
+        files={[f("accordion-3d", accordionSrc), utils]}
+        previewClassName="min-h-[360px]"
+      >
+        <DemoAccordion />
       </Showcase>
     </>
   );

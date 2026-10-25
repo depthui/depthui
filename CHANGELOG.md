@@ -2,6 +2,9 @@
 
 All notable changes are listed here. The project follows [Semantic Versioning](https://semver.org).
 
+## 0.15.0
+- Five more showpieces: `DynamicIsland3D`, `ReorderList3D`, `ExpandCards3D`, `Tabs3D`, `Accordion3D`.
+
 ## 0.14.0
 - Five more showpieces: `Tunnel3D`, `PinArt3D`, `TileFlip3D`, `ImageTrail3D`, `StackScroll3D`.
 

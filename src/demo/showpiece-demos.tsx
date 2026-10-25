@@ -6,6 +6,11 @@ import {
   Folder3D,
   Laptop3D,
   Phone3D,
+  DynamicIsland3D,
+  ReorderList3D,
+  ExpandCards3D,
+  Tabs3D,
+  Accordion3D,
   Dice3D,
   Ticket3D,
   CardFan3D,
@@ -645,6 +650,62 @@ export function DemoScrollStack() {
           <span className="text-4xl font-black tracking-tight">{t}</span>
         </div>
       ))}
+    />
+  );
+}
+
+export function DemoIsland() {
+  return <DynamicIsland3D defaultMode="music" />;
+}
+
+export function DemoReorder() {
+  return (
+    <ReorderList3D
+      items={[
+        { id: "a", title: "Design the hero", subtitle: "Tilt, glare, depth" },
+        { id: "b", title: "Wire up the docs", subtitle: "Preview, usage, source" },
+        { id: "c", title: "Test on mobile", subtitle: "390px, no overflow" },
+        { id: "d", title: "Ship it", subtitle: "Push to main" },
+      ]}
+    />
+  );
+}
+
+export function DemoExpand() {
+  const p = (t: string) => <p className="mb-3">{t}</p>;
+  return (
+    <ExpandCards3D
+      items={[
+        { id: "depth", title: "Depth", subtitle: "Featured", background: "linear-gradient(135deg,#7c3aed,#ec4899)", body: <>{p("Everything here is built from CSS 3D transforms and framer-motion springs. No WebGL, no canvas.")}{p("Click outside, press Escape, or use the close button to fold it back.")}</> },
+        { id: "motion", title: "Motion", subtitle: "Smooth", background: "linear-gradient(135deg,#0ea5e9,#6366f1)", body: <>{p("The card and the sheet share one layout id, so the card itself stretches open. That is what makes it feel continuous.")}</> },
+        { id: "light", title: "Light", subtitle: "Themes", background: "linear-gradient(135deg,#f59e0b,#ef4444)", body: <>{p("Every colour comes from a theme token, so these work in light and dark without changes.")}</> },
+        { id: "space", title: "Space", subtitle: "Copy-paste", background: "linear-gradient(135deg,#10b981,#06b6d4)", body: <>{p("Each piece is one file. Copy it, paste it, and it is yours.")}</> },
+      ]}
+    />
+  );
+}
+
+export function DemoTabs() {
+  return (
+    <Tabs3D
+      tabs={[
+        { id: "design", label: "Design", content: "Start from a theme, then tilt, glare and depth do the rest. Every surface is built from layers in real 3D space." },
+        { id: "build", label: "Build", content: "Copy the file, paste it, import it. There is no package to install and no runtime to learn." },
+        { id: "ship", label: "Ship", content: "Transforms and opacity only, so it stays smooth on phones. Reduced-motion users get a calm version." },
+      ]}
+    />
+  );
+}
+
+export function DemoAccordion() {
+  return (
+    <Accordion3D
+      defaultOpen={["a"]}
+      items={[
+        { id: "a", title: "Does it need WebGL?", content: "No. It is CSS 3D transforms driven by framer-motion, which runs everywhere a modern browser does." },
+        { id: "b", title: "Can I use it without Tailwind?", content: "The files use Tailwind classes. If you prefer plain CSS, the classes are easy to swap for your own." },
+        { id: "c", title: "Is it accessible?", content: "Buttons, aria-expanded, keyboard support and reduced-motion handling are built in." },
+      ]}
     />
   );
 }
