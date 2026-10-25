@@ -26,6 +26,11 @@ import {
   FoldPanels3D,
   EightBall3D,
   Compass3D,
+  Tunnel3D,
+  PinArt3D,
+  TileFlip3D,
+  ImageTrail3D,
+  StackScroll3D,
   TagCloud3D,
   Extrude3D,
   Knob3D,
@@ -563,4 +568,83 @@ export function DemoEightBall() {
 export function DemoCompass() {
   const [size] = useState(() => Math.min(260, (typeof window === "undefined" ? 600 : window.innerWidth) - 110));
   return <Compass3D size={size} />;
+}
+
+export function DemoTunnel() {
+  return (
+    <Tunnel3D className="h-[340px] w-full">
+      <div>
+        <p className="font-mono text-xs uppercase tracking-widest opacity-70">Hover to speed up</p>
+        <p className="mt-1 text-3xl font-black tracking-tight">Into the depth</p>
+      </div>
+    </Tunnel3D>
+  );
+}
+
+export function DemoPinArt() {
+  const [cols] = useState(() => ((typeof window === "undefined" ? 800 : window.innerWidth) < 520 ? 10 : 18));
+  return <PinArt3D cols={cols} rows={12} />;
+}
+
+export function DemoTileFlip() {
+  const [w] = useState(() => Math.min(360, (typeof window === "undefined" ? 600 : window.innerWidth) - 90));
+  const h = Math.round(w * 0.68);
+  const scene = (g: string, label: string) => (
+    <div className="flex h-full w-full items-end p-4 text-white" style={{ background: g }}>
+      <span className="text-3xl font-black tracking-tight">{label}</span>
+    </div>
+  );
+  return (
+    <TileFlip3D
+      width={w}
+      height={h}
+      cols={6}
+      rows={4}
+      front={scene("linear-gradient(135deg,#7c3aed,#ec4899 55%,#f59e0b)", "Before")}
+      back={scene("linear-gradient(135deg,#0ea5e9,#22d3ee 50%,#34d399)", "After")}
+    />
+  );
+}
+
+export function DemoTrail() {
+  const palette = [
+    "linear-gradient(135deg,#7c3aed,#ec4899)",
+    "linear-gradient(135deg,#0ea5e9,#22d3ee)",
+    "linear-gradient(135deg,#f59e0b,#ef4444)",
+    "linear-gradient(135deg,#10b981,#84cc16)",
+    "linear-gradient(135deg,#6366f1,#a78bfa)",
+    "linear-gradient(135deg,#f43f5e,#fb923c)",
+  ];
+  return (
+    <ImageTrail3D
+      className="h-[380px] w-full bg-depth-elevated/40"
+      items={palette.map((g, i) => (
+        <div key={i} className="flex h-full w-full items-end p-2 text-white" style={{ background: g }}>
+          <span className="text-2xl font-black">{String(i + 1).padStart(2, "0")}</span>
+        </div>
+      ))}
+    />
+  );
+}
+
+export function DemoScrollStack() {
+  const cards = [
+    ["Sketch", "from-violet-500 to-fuchsia-500"],
+    ["Prototype", "from-sky-500 to-indigo-500"],
+    ["Build", "from-emerald-500 to-teal-500"],
+    ["Polish", "from-amber-500 to-orange-500"],
+    ["Ship", "from-rose-500 to-pink-500"],
+  ];
+  return (
+    <StackScroll3D
+      className="w-full max-w-md bg-depth-elevated/40"
+      height={400}
+      cards={cards.map(([t, g], i) => (
+        <div className={`flex h-full w-full flex-col justify-between bg-gradient-to-br ${g} p-6 text-white`}>
+          <span className="font-mono text-xs uppercase tracking-widest opacity-80">Step {i + 1}</span>
+          <span className="text-4xl font-black tracking-tight">{t}</span>
+        </div>
+      ))}
+    />
+  );
 }

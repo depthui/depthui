@@ -34,6 +34,11 @@ import {
   DemoFold,
   DemoEightBall,
   DemoCompass,
+  DemoTunnel,
+  DemoPinArt,
+  DemoTileFlip,
+  DemoTrail,
+  DemoScrollStack,
   DemoTagCloud,
   DemoGlobe,
   DemoNotifs,
@@ -79,6 +84,11 @@ import vaultSrc from "@/components/depth/showpieces/vault-3d.tsx?raw";
 import foldSrc from "@/components/depth/showpieces/fold-panels-3d.tsx?raw";
 import eightSrc from "@/components/depth/showpieces/eight-ball-3d.tsx?raw";
 import compassSrc from "@/components/depth/showpieces/compass-3d.tsx?raw";
+import tunnelSrc from "@/components/depth/showpieces/tunnel-3d.tsx?raw";
+import pinSrc from "@/components/depth/showpieces/pin-art-3d.tsx?raw";
+import tileSrc from "@/components/depth/showpieces/tile-flip-3d.tsx?raw";
+import trailSrc from "@/components/depth/showpieces/image-trail-3d.tsx?raw";
+import stackSrc from "@/components/depth/showpieces/stack-scroll-3d.tsx?raw";
 import progressHookSrc from "@/hooks/use-scroll-progress.ts?raw";
 import tiltHookSrc from "@/hooks/use-tilt.ts?raw";
 import utilsSrc from "@/lib/utils.ts?raw";
@@ -631,6 +641,73 @@ const [month, setMonth] = useState("Oct");
         previewClassName="min-h-[360px]"
       >
         <DemoCompass />
+      </Showcase>
+
+      <Showcase
+        id="tunnel-3d"
+        title="Tunnel"
+        blurb="Glowing frames rushing toward you down an endless tunnel. The tunnel bends toward your pointer, and hovering speeds it up."
+        usage={`import { Tunnel3D } from "@/components/depth";
+
+<Tunnel3D className="h-[340px] w-full" speed={260} twist={5}>
+  <h2>Into the depth</h2>
+</Tunnel3D>`}
+        files={[f("tunnel-3d", tunnelSrc), utils]}
+        previewClassName="min-h-[380px] !p-0"
+      >
+        <DemoTunnel />
+      </Showcase>
+
+      <Showcase
+        id="pin-art-3d"
+        title="Pin art"
+        blurb="The pin-impression toy. Pins rise to meet your pointer and ease back down. Press and hold to push harder."
+        usage={`import { PinArt3D } from "@/components/depth";
+
+<PinArt3D cols={18} rows={12} lift={70} />`}
+        files={[f("pin-art-3d", pinSrc), utils]}
+        previewClassName="min-h-[400px]"
+      >
+        <DemoPinArt />
+      </Showcase>
+
+      <Showcase
+        id="tile-flip-3d"
+        title="Tile flip"
+        blurb="A picture cut into tiles that flip to a second picture in a ripple from wherever you click."
+        usage={`import { TileFlip3D } from "@/components/depth";
+
+<TileFlip3D front={<Before />} back={<After />} cols={6} rows={4} width={360} height={240} />`}
+        files={[f("tile-flip-3d", tileSrc), utils]}
+        previewClassName="min-h-[360px]"
+      >
+        <DemoTileFlip />
+      </Showcase>
+
+      <Showcase
+        id="image-trail-3d"
+        title="Image trail"
+        blurb="Cards that follow your pointer, tilt in from depth, float up and fade away. They are reused from a small pool, so fast swipes stay smooth."
+        usage={`import { ImageTrail3D } from "@/components/depth";
+
+<ImageTrail3D className="h-[380px] w-full" items={[<CardA />, <CardB />, <CardC />]} />`}
+        files={[f("image-trail-3d", trailSrc), utils]}
+        previewClassName="min-h-[420px]"
+      >
+        <DemoTrail />
+      </Showcase>
+
+      <Showcase
+        id="stack-scroll-3d"
+        title="Stack scroll"
+        blurb="Cards that pile up as you scroll. Each one sticks, and as the next slides over it, it shrinks, tips back and dims."
+        usage={`import { StackScroll3D } from "@/components/depth";
+
+<StackScroll3D height={400} cards={[<StepOne />, <StepTwo />, <StepThree />]} />`}
+        files={[f("stack-scroll-3d", stackSrc), utils]}
+        previewClassName="min-h-[460px]"
+      >
+        <DemoScrollStack />
       </Showcase>
     </>
   );

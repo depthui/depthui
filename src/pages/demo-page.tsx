@@ -118,6 +118,11 @@ import {
   DemoFold,
   DemoEightBall,
   DemoCompass,
+  DemoTunnel,
+  DemoPinArt,
+  DemoTileFlip,
+  DemoTrail,
+  DemoScrollStack,
   DemoRadial,
   DemoWheel,
   DemoTagCloud,
@@ -343,7 +348,7 @@ export default function DemoPage() {
 
         {/* ---------------- Showpieces ---------------- */}
         <section id="showpieces" className={sec}>
-          <SectionHeading eyebrow="Showpieces" title="The ones people screenshot" description="Forty-three signature pieces: a wireframe globe, split-flap clock, page-turning book, 3D charts and more." />
+          <SectionHeading eyebrow="Showpieces" title="The ones people screenshot" description="Forty-eight signature pieces: a wireframe globe, split-flap clock, page-turning book, 3D charts and more." />
           <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
             <Tile label="Globe (drag it)"><DemoGlobe /></Tile>
             <Tile label="Coin (click it)"><DemoCoin /></Tile>
@@ -382,6 +387,11 @@ export default function DemoPage() {
             <Tile label="Folding screen" className="md:col-span-2 lg:col-span-2"><DemoFold /></Tile>
             <Tile label="Magic 8 Ball (click)"><DemoEightBall /></Tile>
             <Tile label="Compass (move your mouse)" className="md:col-span-2 lg:col-span-3"><DemoCompass /></Tile>
+            <Tile label="Tunnel (hover to speed up)" className="md:col-span-2 lg:col-span-3 !p-0"><DemoTunnel /></Tile>
+            <Tile label="Pin art (move over it)" className="md:col-span-2"><DemoPinArt /></Tile>
+            <Tile label="Tile flip (click a tile)"><DemoTileFlip /></Tile>
+            <Tile label="Image trail (move your pointer)" className="md:col-span-2 lg:col-span-2"><DemoTrail /></Tile>
+            <Tile label="Stack scroll (scroll inside)"><DemoScrollStack /></Tile>
             <Tile label="Gallery wall" className="md:col-span-2 lg:col-span-3 !p-0"><DemoWall /></Tile>
           </div>
         </section>

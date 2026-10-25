@@ -2,6 +2,9 @@
 
 All notable changes are listed here. The project follows [Semantic Versioning](https://semver.org).
 
+## 0.14.0
+- Five more showpieces: `Tunnel3D`, `PinArt3D`, `TileFlip3D`, `ImageTrail3D`, `StackScroll3D`.
+
 ## 0.13.0
 - Five more showpieces: `Helix3D`, `Vault3D`, `FoldPanels3D`, `EightBall3D`, `Compass3D`.
 

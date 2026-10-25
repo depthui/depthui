@@ -145,6 +145,11 @@ In `src/components/depth/showpieces/`. Each is a single file (plus `lib/utils.ts
 | `FoldPanels3D` | Folding screen of hinged panels that zig-zag shut |
 | `EightBall3D` | Magic 8 Ball, shake it and an answer floats up |
 | `Compass3D` | Compass whose needle follows your pointer and overshoots |
+| `Tunnel3D` | Endless tunnel of glowing frames that bends toward your pointer |
+| `PinArt3D` | Pin-impression board, pins rise to meet your pointer |
+| `TileFlip3D` | Picture cut into tiles that flip in a ripple from your click |
+| `ImageTrail3D` | Cards that follow your pointer and fade away, from a reused pool |
+| `StackScroll3D` | Cards that pile up on scroll, older ones shrink, tip and dim |
 | `BarChart3D` | Extruded bars that grow from the floor on scroll, value on hover |
 | `WheelPicker3D` | iOS-style cylinder picker (drag, wheel, keys), controlled or not |
 | `RadialMenu3D` | Round button that fans actions along a 3D arc |
