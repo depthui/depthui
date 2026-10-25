@@ -2,6 +2,9 @@
 
 All notable changes are listed here. The project follows [Semantic Versioning](https://semver.org).
 
+## 0.10.0
+- Five more showpieces: `Dice3D`, `Ticket3D`, `CardFan3D`, `PeelCard`, `Turntable3D`.
+
 ## 0.9.0
 - Ten more showpieces: `BarChart3D`, `WheelPicker3D`, `RadialMenu3D`, `Extrude3D`, `Knob3D`, `TagCloud3D`, `Laptop3D`, `Folder3D`, `Envelope3D`, `Phone3D`.
 - `TextCylinder3D` rebuilt: the word facing you is large and sharp, and the rest fade and shrink as they turn away.

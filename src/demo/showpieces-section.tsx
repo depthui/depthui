@@ -14,6 +14,11 @@ import {
   DemoFolder,
   DemoLaptop,
   DemoPhone,
+  DemoDice,
+  DemoTicket,
+  DemoFan,
+  DemoPeel,
+  DemoTurntable,
   DemoTagCloud,
   DemoGlobe,
   DemoNotifs,
@@ -39,6 +44,11 @@ import laptopSrc from "@/components/depth/showpieces/laptop-3d.tsx?raw";
 import folderSrc from "@/components/depth/showpieces/folder-3d.tsx?raw";
 import envelopeSrc from "@/components/depth/showpieces/envelope-3d.tsx?raw";
 import phoneSrc from "@/components/depth/showpieces/phone-3d.tsx?raw";
+import diceSrc from "@/components/depth/showpieces/dice-3d.tsx?raw";
+import ticketSrc from "@/components/depth/showpieces/ticket-3d.tsx?raw";
+import fanSrc from "@/components/depth/showpieces/card-fan-3d.tsx?raw";
+import peelSrc from "@/components/depth/showpieces/peel-card.tsx?raw";
+import turntableSrc from "@/components/depth/showpieces/turntable-3d.tsx?raw";
 import progressHookSrc from "@/hooks/use-scroll-progress.ts?raw";
 import tiltHookSrc from "@/hooks/use-tilt.ts?raw";
 import utilsSrc from "@/lib/utils.ts?raw";
@@ -321,6 +331,73 @@ const [month, setMonth] = useState("Oct");
         previewClassName="min-h-[520px]"
       >
         <DemoPhone />
+      </Showcase>
+
+      <Showcase
+        id="dice-3d"
+        title="Dice"
+        blurb="A real six-sided die. Click it and it tumbles, jumps and lands on a random face. Opposite faces add to seven."
+        usage={`import { Dice3D } from "@/components/depth";
+
+<Dice3D size={96} onRoll={(n) => console.log(n)} />`}
+        files={[f("dice-3d", diceSrc), utils]}
+        previewClassName="min-h-[360px]"
+      >
+        <DemoDice />
+      </Showcase>
+
+      <Showcase
+        id="ticket-3d"
+        title="Ticket"
+        blurb="A boarding pass that tilts under a moving glare. Click it and the stub tears off along the perforation."
+        usage={`import { Ticket3D } from "@/components/depth";
+
+<Ticket3D from="BOM" to="SFO" date="24 OCT 2026" seat="12A" gate="B7" code="DU-0925" />`}
+        files={[f("ticket-3d", ticketSrc), tilt, utils]}
+        previewClassName="min-h-[320px]"
+      >
+        <DemoTicket />
+      </Showcase>
+
+      <Showcase
+        id="card-fan-3d"
+        title="Card fan"
+        blurb="A hand of cards in an arc. The one you point at rises while its neighbours part. Works with Tab and arrow keys."
+        usage={`import { CardFan3D } from "@/components/depth";
+
+<CardFan3D cards={[<CardA />, <CardB />, <CardC />]} onSelect={(i) => {}} />`}
+        files={[f("card-fan-3d", fanSrc), utils]}
+        previewClassName="min-h-[420px]"
+      >
+        <DemoFan />
+      </Showcase>
+
+      <Showcase
+        id="peel-card"
+        title="Peel card"
+        blurb="A card with a curling corner. Hover, focus or tap and it peels back to show what is underneath."
+        usage={`import { PeelCard } from "@/components/depth";
+
+<PeelCard reveal={<p>Your code: DEPTH25</p>}>
+  <p>Peel the corner</p>
+</PeelCard>`}
+        files={[f("peel-card", peelSrc), utils]}
+        previewClassName="min-h-[400px]"
+      >
+        <DemoPeel />
+      </Showcase>
+
+      <Showcase
+        id="turntable-3d"
+        title="Turntable"
+        blurb="A record player: the vinyl spins and the tonearm swings onto it when you press play."
+        usage={`import { Turntable3D } from "@/components/depth";
+
+<Turntable3D title="Midnight Depth" artist="The Perspectives" />`}
+        files={[f("turntable-3d", turntableSrc), utils]}
+        previewClassName="min-h-[460px]"
+      >
+        <DemoTurntable />
       </Showcase>
     </>
   );

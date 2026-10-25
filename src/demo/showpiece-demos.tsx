@@ -6,6 +6,11 @@ import {
   Folder3D,
   Laptop3D,
   Phone3D,
+  Dice3D,
+  Ticket3D,
+  CardFan3D,
+  PeelCard,
+  Turntable3D,
   TagCloud3D,
   Extrude3D,
   Knob3D,
@@ -317,4 +322,84 @@ export function DemoPhone() {
       </div>
     </Phone3D>
   );
+}
+
+export function DemoDice() {
+  const [last, setLast] = useState<number | null>(null);
+  return (
+    <div className="flex flex-col items-center gap-10 py-6">
+      <div className="flex gap-12">
+        <Dice3D onRoll={setLast} />
+        <Dice3D initial={6} size={72} />
+      </div>
+      <p className="text-sm text-depth-muted">
+        {last ? `You rolled a ${last}.` : "Click a die, or focus it and press Enter."}
+      </p>
+    </div>
+  );
+}
+
+export function DemoTicket() {
+  return (
+    <div className="flex flex-col items-center gap-4 py-4">
+      <Ticket3D />
+      <p className="text-xs text-depth-muted">Click the ticket to tear off the stub.</p>
+    </div>
+  );
+}
+
+const FAN: { t: string; c: string; g: string }[] = [
+  { t: "Cards", c: "A", g: "from-rose-500 to-orange-400" },
+  { t: "Buttons", c: "B", g: "from-orange-400 to-amber-300" },
+  { t: "Modals", c: "C", g: "from-emerald-500 to-teal-400" },
+  { t: "Charts", c: "D", g: "from-sky-500 to-indigo-500" },
+  { t: "Globes", c: "E", g: "from-violet-500 to-fuchsia-500" },
+];
+
+export function DemoFan() {
+  const [pick, setPick] = useState<number | null>(null);
+  const [w] = useState(() => Math.max(96, Math.min(140, ((typeof window === "undefined" ? 600 : window.innerWidth) - 76) / 2.3)));
+  return (
+    <div className="flex flex-col items-center gap-4 pt-10">
+      <CardFan3D
+        width={w}
+        height={w * 1.4}
+        onSelect={setPick}
+        cards={FAN.map((x) => (
+          <span className={`flex h-full w-full flex-col justify-between bg-gradient-to-br ${x.g} p-3 text-white`}>
+            <span className="text-2xl font-bold">{x.c}</span>
+            <span className="text-sm font-semibold">{x.t}</span>
+          </span>
+        ))}
+      />
+      <p className="mt-8 text-xs text-depth-muted">{pick === null ? "Hover, tab or arrow through the hand." : `Picked: ${FAN[pick].t}`}</p>
+    </div>
+  );
+}
+
+export function DemoPeel() {
+  const [w] = useState(() => Math.min(280, (typeof window === "undefined" ? 280 : window.innerWidth) - 76));
+  return (
+    <PeelCard
+      width={w}
+      height={320}
+      reveal={
+        <span className="flex h-full flex-col items-end justify-end text-right">
+          <span className="text-[10px] uppercase tracking-widest opacity-80">Code</span>
+          <span className="text-lg font-bold">DEPTH25</span>
+        </span>
+      }
+    >
+      <span className="flex h-full flex-col justify-between">
+        <span className="font-mono text-[10px] uppercase tracking-widest text-depth-muted">Gift card</span>
+        <span className="text-3xl font-bold leading-tight">Peel the corner</span>
+        <span className="text-sm text-depth-muted">Hover, focus or tap.</span>
+      </span>
+    </PeelCard>
+  );
+}
+
+export function DemoTurntable() {
+  const [size] = useState(fit(320));
+  return <Turntable3D size={size} />;
 }

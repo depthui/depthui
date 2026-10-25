@@ -108,7 +108,7 @@ export function Hero() {
 <details>
 <summary><b>Showpieces</b></summary>
 
-In `src/components/depth/showpieces/`. Each is a single file (plus `lib/utils.ts`; `Coin3D` and `Phone3D` also need `hooks/use-tilt.ts`, `Laptop3D` needs `hooks/use-scroll-progress.ts`).
+In `src/components/depth/showpieces/`. Each is a single file (plus `lib/utils.ts`; `Coin3D`, `Phone3D` and `Ticket3D` also need `hooks/use-tilt.ts`, `Laptop3D` needs `hooks/use-scroll-progress.ts`).
 
 | Component | Effect |
 | --- | --- |
@@ -125,6 +125,11 @@ In `src/components/depth/showpieces/`. Each is a single file (plus `lib/utils.ts
 | `Folder3D` | Folder that tips open and fans out its papers |
 | `Envelope3D` | Envelope with a 3D flap and a letter that rises out |
 | `Phone3D` | Phone with real thickness, tilts with the pointer, floating chips |
+| `Dice3D` | Six-sided die that tumbles and lands on a random face |
+| `Ticket3D` | Boarding pass that tilts under a glare, stub tears off on click |
+| `CardFan3D` | Hand of cards in an arc, hovered card rises and neighbours part |
+| `PeelCard` | Card with a curling corner that peels back to reveal content |
+| `Turntable3D` | Record player with a spinning vinyl and a swinging tonearm |
 | `BarChart3D` | Extruded bars that grow from the floor on scroll, value on hover |
 | `WheelPicker3D` | iOS-style cylinder picker (drag, wheel, keys), controlled or not |
 | `RadialMenu3D` | Round button that fans actions along a 3D arc |
