@@ -19,6 +19,11 @@ import {
   DemoFan,
   DemoPeel,
   DemoTurntable,
+  DemoSlots,
+  DemoCradle,
+  DemoShelf,
+  DemoPrism,
+  DemoDoors,
   DemoTagCloud,
   DemoGlobe,
   DemoNotifs,
@@ -49,6 +54,11 @@ import ticketSrc from "@/components/depth/showpieces/ticket-3d.tsx?raw";
 import fanSrc from "@/components/depth/showpieces/card-fan-3d.tsx?raw";
 import peelSrc from "@/components/depth/showpieces/peel-card.tsx?raw";
 import turntableSrc from "@/components/depth/showpieces/turntable-3d.tsx?raw";
+import slotSrc from "@/components/depth/showpieces/slot-machine-3d.tsx?raw";
+import cradleSrc from "@/components/depth/showpieces/newtons-cradle-3d.tsx?raw";
+import shelfSrc from "@/components/depth/showpieces/bookshelf-3d.tsx?raw";
+import prismSrc from "@/components/depth/showpieces/prism-3d.tsx?raw";
+import doorsSrc from "@/components/depth/showpieces/doors-3d.tsx?raw";
 import progressHookSrc from "@/hooks/use-scroll-progress.ts?raw";
 import tiltHookSrc from "@/hooks/use-tilt.ts?raw";
 import utilsSrc from "@/lib/utils.ts?raw";
@@ -398,6 +408,73 @@ const [month, setMonth] = useState("Oct");
         previewClassName="min-h-[460px]"
       >
         <DemoTurntable />
+      </Showcase>
+
+      <Showcase
+        id="slot-machine-3d"
+        title="Slot machine"
+        blurb="Three reels that are real cylinders. They roll to a random symbol one after another, and you get a callback with the result."
+        usage={`import { SlotMachine3D } from "@/components/depth";
+
+<SlotMachine3D onResult={(symbols, won) => console.log(symbols, won)} />`}
+        files={[f("slot-machine-3d", slotSrc), utils]}
+        previewClassName="min-h-[400px]"
+      >
+        <DemoSlots />
+      </Showcase>
+
+      <Showcase
+        id="newtons-cradle-3d"
+        title="Newton's cradle"
+        blurb="The desk toy. Each ball hangs from two strings, and the swing fades out by itself. Click to set it going again."
+        usage={`import { NewtonsCradle3D } from "@/components/depth";
+
+<NewtonsCradle3D balls={5} amplitude={38} />`}
+        files={[f("newtons-cradle-3d", cradleSrc), utils]}
+        previewClassName="min-h-[320px]"
+      >
+        <DemoCradle />
+      </Showcase>
+
+      <Showcase
+        id="bookshelf-3d"
+        title="Bookshelf"
+        blurb="Books standing on a shelf. Point at one and it slides out and turns to show its cover. Each book is a real box."
+        usage={`import { Bookshelf3D } from "@/components/depth";
+
+<Bookshelf3D books={[{ title: "Perspective", color: "#7c3aed" }]} />`}
+        files={[f("bookshelf-3d", shelfSrc), utils]}
+        previewClassName="min-h-[380px]"
+      >
+        <DemoShelf />
+      </Showcase>
+
+      <Showcase
+        id="prism-3d"
+        title="Prism"
+        blurb="A rotating prism that works as tabs. Three to eight faces, buttons, dots and arrow keys. It always turns the same way."
+        usage={`import { Prism3D } from "@/components/depth";
+
+<Prism3D faces={[<Design />, <Build />, <Ship />]} labels={["Design", "Build", "Ship"]} />`}
+        files={[f("prism-3d", prismSrc), utils]}
+        previewClassName="min-h-[340px]"
+      >
+        <DemoPrism />
+      </Showcase>
+
+      <Showcase
+        id="doors-3d"
+        title="Doors"
+        blurb="Two doors on real hinges. Hover, focus or click and they swing open on a room lit from within."
+        usage={`import { Doors3D } from "@/components/depth";
+
+<Doors3D>
+  <h3>Welcome in</h3>
+</Doors3D>`}
+        files={[f("doors-3d", doorsSrc), utils]}
+        previewClassName="min-h-[420px]"
+      >
+        <DemoDoors />
       </Showcase>
     </>
   );

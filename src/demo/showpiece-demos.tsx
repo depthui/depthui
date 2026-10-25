@@ -11,6 +11,11 @@ import {
   CardFan3D,
   PeelCard,
   Turntable3D,
+  SlotMachine3D,
+  NewtonsCradle3D,
+  Bookshelf3D,
+  Prism3D,
+  Doors3D,
   TagCloud3D,
   Extrude3D,
   Knob3D,
@@ -402,4 +407,66 @@ export function DemoPeel() {
 export function DemoTurntable() {
   const [size] = useState(fit(320));
   return <Turntable3D size={size} />;
+}
+
+export function DemoSlots() {
+  return <SlotMachine3D />;
+}
+
+export function DemoCradle() {
+  const [w] = useState(() => (typeof window === "undefined" ? 600 : window.innerWidth) - 76);
+  return <NewtonsCradle3D ball={w < 320 ? 36 : 46} length={w < 320 ? 120 : 150} />;
+}
+
+export function DemoShelf() {
+  const [scale] = useState(() => Math.min(1, ((typeof window === "undefined" ? 600 : window.innerWidth) - 76) / 420));
+  const k = (n: number) => Math.round(n * scale);
+  return (
+    <div className="py-10">
+      <Bookshelf3D
+        depth={k(120)}
+        books={[
+          { title: "Perspective", color: "#7c3aed", thickness: k(34), height: k(190) },
+          { title: "Parallax", color: "#0ea5e9", thickness: k(42), height: k(170) },
+          { title: "Vanishing Point", color: "#e11d48", thickness: k(30), height: k(200) },
+          { title: "Z-Index", color: "#16a34a", thickness: k(38), height: k(180) },
+          { title: "Depth of Field", color: "#f59e0b", thickness: k(46), height: k(195) },
+          { title: "Isometric", color: "#334155", thickness: k(32), height: k(175) },
+        ]}
+      />
+    </div>
+  );
+}
+
+export function DemoPrism() {
+  const [w] = useState(() => Math.min(260, (typeof window === "undefined" ? 600 : window.innerWidth) - 96));
+  const face = (t: string, s: string, g: string) => (
+    <div className={`flex h-full flex-col justify-end bg-gradient-to-br ${g} p-5 text-white`}>
+      <p className="text-xl font-bold">{t}</p>
+      <p className="text-sm opacity-90">{s}</p>
+    </div>
+  );
+  return (
+    <Prism3D
+      width={w}
+      labels={["Design", "Build", "Ship"]}
+      faces={[
+        face("Design", "Sketch it in depth.", "from-violet-500 to-fuchsia-500"),
+        face("Build", "Copy, paste, tweak.", "from-sky-500 to-indigo-500"),
+        face("Ship", "No WebGL, no bundle bloat.", "from-emerald-500 to-teal-400"),
+      ]}
+    />
+  );
+}
+
+export function DemoDoors() {
+  const [w] = useState(() => Math.min(280, (typeof window === "undefined" ? 600 : window.innerWidth) - 76));
+  return (
+    <Doors3D width={w} height={320}>
+      <span className="block text-white">
+        <span className="block text-xs uppercase tracking-widest opacity-80">Welcome in</span>
+        <span className="block text-2xl font-bold">Depth UI</span>
+      </span>
+    </Doors3D>
+  );
 }

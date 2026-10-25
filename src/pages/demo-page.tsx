@@ -103,6 +103,11 @@ import {
   DemoFan,
   DemoPeel,
   DemoTurntable,
+  DemoSlots,
+  DemoCradle,
+  DemoShelf,
+  DemoPrism,
+  DemoDoors,
   DemoRadial,
   DemoWheel,
   DemoTagCloud,
@@ -328,7 +333,7 @@ export default function DemoPage() {
 
         {/* ---------------- Showpieces ---------------- */}
         <section id="showpieces" className={sec}>
-          <SectionHeading eyebrow="Showpieces" title="The ones people screenshot" description="Twenty-eight signature pieces: a wireframe globe, split-flap clock, page-turning book, 3D charts and more." />
+          <SectionHeading eyebrow="Showpieces" title="The ones people screenshot" description="Thirty-three signature pieces: a wireframe globe, split-flap clock, page-turning book, 3D charts and more." />
           <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
             <Tile label="Globe (drag it)"><DemoGlobe /></Tile>
             <Tile label="Coin (click it)"><DemoCoin /></Tile>
@@ -352,6 +357,11 @@ export default function DemoPage() {
             <Tile label="Card fan" className="md:col-span-2 lg:col-span-2 min-h-[420px]"><DemoFan /></Tile>
             <Tile label="Peel card"><DemoPeel /></Tile>
             <Tile label="Turntable" className="md:col-span-2 lg:col-span-3"><DemoTurntable /></Tile>
+            <Tile label="Slot machine"><DemoSlots /></Tile>
+            <Tile label="Newton's cradle (click)" className="md:col-span-2"><DemoCradle /></Tile>
+            <Tile label="Bookshelf (point at a book)" className="md:col-span-2 lg:col-span-2"><DemoShelf /></Tile>
+            <Tile label="Prism"><DemoPrism /></Tile>
+            <Tile label="Doors" className="md:col-span-2 lg:col-span-3"><DemoDoors /></Tile>
             <Tile label="Gallery wall" className="md:col-span-2 lg:col-span-3 !p-0"><DemoWall /></Tile>
           </div>
         </section>

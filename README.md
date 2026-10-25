@@ -130,6 +130,11 @@ In `src/components/depth/showpieces/`. Each is a single file (plus `lib/utils.ts
 | `CardFan3D` | Hand of cards in an arc, hovered card rises and neighbours part |
 | `PeelCard` | Card with a curling corner that peels back to reveal content |
 | `Turntable3D` | Record player with a spinning vinyl and a swinging tonearm |
+| `SlotMachine3D` | Three cylinder reels that roll to a random symbol |
+| `NewtonsCradle3D` | Desk toy with two-string balls, swing fades out |
+| `Bookshelf3D` | Books on a shelf that slide out and turn to show the cover |
+| `Prism3D` | Rotating prism used as tabs, 3 to 8 faces |
+| `Doors3D` | Double doors on hinges that open on a lit room |
 | `BarChart3D` | Extruded bars that grow from the floor on scroll, value on hover |
 | `WheelPicker3D` | iOS-style cylinder picker (drag, wheel, keys), controlled or not |
 | `RadialMenu3D` | Round button that fans actions along a 3D arc |

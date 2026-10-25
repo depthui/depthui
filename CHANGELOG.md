@@ -2,6 +2,9 @@
 
 All notable changes are listed here. The project follows [Semantic Versioning](https://semver.org).
 
+## 0.11.0
+- Five more showpieces: `SlotMachine3D`, `NewtonsCradle3D`, `Bookshelf3D`, `Prism3D`, `Doors3D`.
+
 ## 0.10.0
 - Five more showpieces: `Dice3D`, `Ticket3D`, `CardFan3D`, `PeelCard`, `Turntable3D`.
 
