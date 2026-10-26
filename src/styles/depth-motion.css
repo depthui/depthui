@@ -152,3 +152,17 @@
 @media (prefers-reduced-motion: reduce) {
   .depth-loader-cube, .depth-rot-x, .depth-rot-y, .depth-rot-z, .depth-dot-bounce, .depth-drift { animation: none; }
 }
+
+/* Disco ball sparkle and snow globe flakes: opacity and transform only. */
+@keyframes depth-sparkle { 0%, 100% { opacity: 0; } 50% { opacity: 1; } }
+.depth-sparkle { animation: depth-sparkle 2.4s ease-in-out infinite; }
+@keyframes depth-snow {
+  0% { transform: translate3d(0, -10%, 0); opacity: 0; }
+  12% { opacity: 0.95; }
+  100% { transform: translate3d(var(--sway, 10px), var(--fall, 100%), 0); opacity: 0.9; }
+}
+.depth-snow { animation: depth-snow 6s ease-in forwards; }
+@media (prefers-reduced-motion: reduce) {
+  .depth-sparkle, .depth-snow { animation: none; }
+  .depth-snow { opacity: 0.9; }
+}

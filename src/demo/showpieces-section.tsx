@@ -14,6 +14,11 @@ import {
   DemoFolder,
   DemoLaptop,
   DemoPhone,
+  DemoDisco,
+  DemoAnalogClock,
+  DemoPopUp,
+  DemoSnowGlobe,
+  DemoOrrery,
   DemoIsland,
   DemoReorder,
   DemoExpand,
@@ -99,12 +104,19 @@ import reorderSrc from "@/components/depth/showpieces/reorder-list-3d.tsx?raw";
 import expandSrc from "@/components/depth/showpieces/expand-cards-3d.tsx?raw";
 import tabsSrc from "@/components/depth/showpieces/tabs-3d.tsx?raw";
 import accordionSrc from "@/components/depth/showpieces/accordion-3d.tsx?raw";
+import discoSrc from "@/components/depth/showpieces/disco-ball-3d.tsx?raw";
+import analogSrc from "@/components/depth/showpieces/analog-clock-3d.tsx?raw";
+import popupSrc from "@/components/depth/showpieces/pop-up-book-3d.tsx?raw";
+import snowSrc from "@/components/depth/showpieces/snow-globe-3d.tsx?raw";
+import orrerySrc from "@/components/depth/showpieces/orrery-3d.tsx?raw";
+import motionCssSrc from "@/styles/depth-motion.css?raw";
 import progressHookSrc from "@/hooks/use-scroll-progress.ts?raw";
 import tiltHookSrc from "@/hooks/use-tilt.ts?raw";
 import utilsSrc from "@/lib/utils.ts?raw";
 
 const utils: CodeFile = { name: "lib/utils.ts", code: utilsSrc };
 const tilt: CodeFile = { name: "hooks/use-tilt.ts", code: tiltHookSrc };
+const motionCss: CodeFile = { name: "styles/depth-motion.css", code: motionCssSrc };
 const f = (n: string, code: string): CodeFile => ({ name: `components/depth/showpieces/${n}.tsx`, code });
 
 export function ShowpiecesSection({ only }: { only?: string } = {}) {
@@ -783,6 +795,71 @@ const [month, setMonth] = useState("Oct");
         previewClassName="min-h-[360px]"
       >
         <DemoAccordion />
+      </Showcase>
+
+      <Showcase
+        id="disco-ball-3d"
+        title="Disco ball"
+        blurb="A sphere of mirror tiles that turns and flashes. Every tile is a real piece of the sphere, and back-facing ones are not painted."
+        usage={`import { DiscoBall3D } from "@/components/depth";
+
+<DiscoBall3D size={220} rows={11} seconds={16} />`}
+        files={[f("disco-ball-3d", discoSrc), motionCss, utils]}
+        previewClassName="min-h-[400px]"
+      >
+        <DemoDisco />
+      </Showcase>
+
+      <Showcase
+        id="analog-clock-3d"
+        title="Analog clock"
+        blurb="A working clock with a raised bezel, a recessed dial and hands that float above it and cast shadows. It tilts with your pointer."
+        usage={`import { AnalogClock3D } from "@/components/depth";
+
+<AnalogClock3D label="Tokyo" utcOffset={9} />`}
+        files={[f("analog-clock-3d", analogSrc), tilt, utils]}
+        previewClassName="min-h-[360px]"
+      >
+        <DemoAnalogClock />
+      </Showcase>
+
+      <Showcase
+        id="pop-up-book-3d"
+        title="Pop-up book"
+        blurb="An open book seen from above. Hover, focus or tap and the paper scenery stands up one cut-out at a time, then folds flat again."
+        usage={`import { PopUpBook3D } from "@/components/depth";
+
+<PopUpBook3D pageWidth={210} />`}
+        files={[f("pop-up-book-3d", popupSrc), utils]}
+        previewClassName="min-h-[400px]"
+      >
+        <DemoPopUp />
+      </Showcase>
+
+      <Showcase
+        id="snow-globe-3d"
+        title="Snow globe"
+        blurb="A glass globe with a tiny village. Shake it and the snow whirls up and settles. The globe tilts with your pointer."
+        usage={`import { SnowGlobe3D } from "@/components/depth";
+
+<SnowGlobe3D size={230} flakes={46} />`}
+        files={[f("snow-globe-3d", snowSrc), tilt, motionCss, utils]}
+        previewClassName="min-h-[440px]"
+      >
+        <DemoSnowGlobe />
+      </Showcase>
+
+      <Showcase
+        id="orrery-3d"
+        title="Orrery"
+        blurb="A tiny solar system on a tilted plane. Each planet has its own orbit and speed, one has a ring and one a moon. Hover to pause."
+        usage={`import { Orrery3D } from "@/components/depth";
+
+<Orrery3D size={340} speed={1} tilt={66} />`}
+        files={[f("orrery-3d", orrerySrc), motionCss, utils]}
+        previewClassName="min-h-[380px]"
+      >
+        <DemoOrrery />
       </Showcase>
     </>,
     only,

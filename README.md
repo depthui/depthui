@@ -149,6 +149,11 @@ In `src/components/depth/showpieces/`. Each is a single file (plus `lib/utils.ts
 | `PinArt3D` | Pin-impression board, pins rise to meet your pointer |
 | `TileFlip3D` | Picture cut into tiles that flip in a ripple from your click |
 | `ImageTrail3D` | Cards that follow your pointer and fade away, from a reused pool |
+| `DiscoBall3D` | Sphere of mirror tiles that turns and flashes |
+| `AnalogClock3D` | Working clock with a raised bezel and hands that cast shadows |
+| `PopUpBook3D` | Open book whose paper scenery stands up on hover |
+| `SnowGlobe3D` | Glass globe with a village, shake it and the snow settles |
+| `Orrery3D` | Tiny solar system on a tilted plane, hover to pause |
 | `StackScroll3D` | Cards that pile up on scroll, older ones shrink, tip and dim |
 | `DynamicIsland3D` | Pill that morphs between states on one spring, with a 3D tilt |
 | `ReorderList3D` | Drag-to-reorder list, the held row lifts and tips toward you |

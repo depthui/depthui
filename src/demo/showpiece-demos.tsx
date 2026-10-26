@@ -6,6 +6,11 @@ import {
   Folder3D,
   Laptop3D,
   Phone3D,
+  DiscoBall3D,
+  AnalogClock3D,
+  PopUpBook3D,
+  SnowGlobe3D,
+  Orrery3D,
   DynamicIsland3D,
   ReorderList3D,
   ExpandCards3D,
@@ -708,4 +713,36 @@ export function DemoAccordion() {
       ]}
     />
   );
+}
+
+const vw = () => (typeof window === "undefined" ? 600 : window.innerWidth);
+
+export function DemoDisco() {
+  const [size] = useState(() => Math.max(190, Math.min(240, vw() - 120)));
+  return <DiscoBall3D size={size} />;
+}
+
+export function DemoAnalogClock() {
+  const [size] = useState(() => Math.max(170, Math.min(220, (vw() - 100) / 1.6)));
+  return (
+    <div className="flex flex-wrap items-center justify-center gap-8">
+      <AnalogClock3D size={size} label="Local" />
+      <AnalogClock3D size={size} label="Tokyo" utcOffset={9} />
+    </div>
+  );
+}
+
+export function DemoPopUp() {
+  const [w] = useState(() => Math.max(120, Math.min(210, (vw() - 100) / 2.1)));
+  return <PopUpBook3D pageWidth={w} />;
+}
+
+export function DemoSnowGlobe() {
+  const [size] = useState(() => Math.max(190, Math.min(230, vw() - 120)));
+  return <SnowGlobe3D size={size} />;
+}
+
+export function DemoOrrery() {
+  const [size] = useState(() => Math.max(260, Math.min(360, vw() - 76)));
+  return <Orrery3D size={size} />;
 }

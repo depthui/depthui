@@ -14,6 +14,11 @@ import {
   DemoKnobs,
   DemoLaptop,
   DemoPhone,
+  DemoDisco,
+  DemoAnalogClock,
+  DemoPopUp,
+  DemoSnowGlobe,
+  DemoOrrery,
   DemoIsland,
   DemoReorder,
   DemoExpand,
@@ -106,6 +111,11 @@ export default function LandingShowpieces() {
             <Tile label="Expanding cards (click one)" className="md:col-span-2 lg:col-span-2"><DemoExpand /></Tile>
             <Tile label="3D tabs"><DemoTabs /></Tile>
             <Tile label="3D accordion" className="md:col-span-2 lg:col-span-3"><DemoAccordion /></Tile>
+            <Tile label="Disco ball"><DemoDisco /></Tile>
+            <Tile label="Analog clocks (tilt them)" className="md:col-span-2"><DemoAnalogClock /></Tile>
+            <Tile label="Pop-up book (hover it)" className="md:col-span-2 lg:col-span-2"><DemoPopUp /></Tile>
+            <Tile label="Snow globe (click to shake)"><DemoSnowGlobe /></Tile>
+            <Tile label="Orrery (hover to pause)" className="md:col-span-2 lg:col-span-3"><DemoOrrery /></Tile>
             <Tile label="Gallery wall" className="md:col-span-2 lg:col-span-3 !p-0"><DemoWall /></Tile>
           </div>
         

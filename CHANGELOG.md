@@ -2,6 +2,9 @@
 
 All notable changes are listed here. The project follows [Semantic Versioning](https://semver.org).
 
+## 0.17.0
+- Five more showpieces: `DiscoBall3D`, `AnalogClock3D`, `PopUpBook3D`, `SnowGlobe3D`, `Orrery3D`.
+
 ## 0.16.0
 - Performance: the landing page mounts each live demo only when it is near the viewport and unmounts it when far away, so only a handful of animation loops run at once. The showpiece grid is its own lazy chunk, and every page is code-split.
 - Docs are real routes: `/components` is an index with search, and every component has its own page, for example `/components/globe`. Each page loads only the code for its group. Old links such as `/components#globe-3d` and `/components/globe-3d` redirect.
