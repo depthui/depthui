@@ -154,6 +154,11 @@ In `src/components/depth/showpieces/`. Each is a single file (plus `lib/utils.ts
 | `PopUpBook3D` | Open book whose paper scenery stands up on hover |
 | `SnowGlobe3D` | Glass globe with a village, shake it and the snow settles |
 | `Orrery3D` | Tiny solar system on a tilted plane, hover to pause |
+| `Gem3D` | Cut gem with see-through facets that flash as it turns |
+| `Can3D` | Product can with a label wrapped round a real cylinder |
+| `Torus3D` | Doughnut drawn as a hoop of colour-wheel circles, tumbling |
+| `GiftBox3D` | Wrapped box whose lid lifts off in a burst of light |
+| `Room3D` | A room seen from inside, drag to look around |
 | `StackScroll3D` | Cards that pile up on scroll, older ones shrink, tip and dim |
 | `DynamicIsland3D` | Pill that morphs between states on one spring, with a 3D tilt |
 | `ReorderList3D` | Drag-to-reorder list, the held row lifts and tips toward you |

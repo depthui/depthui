@@ -14,6 +14,11 @@ import {
   DemoFolder,
   DemoLaptop,
   DemoPhone,
+  DemoGem,
+  DemoCan,
+  DemoTorus,
+  DemoGift,
+  DemoRoom,
   DemoDisco,
   DemoAnalogClock,
   DemoPopUp,
@@ -110,6 +115,11 @@ import popupSrc from "@/components/depth/showpieces/pop-up-book-3d.tsx?raw";
 import snowSrc from "@/components/depth/showpieces/snow-globe-3d.tsx?raw";
 import orrerySrc from "@/components/depth/showpieces/orrery-3d.tsx?raw";
 import motionCssSrc from "@/styles/depth-motion.css?raw";
+import gemSrc from "@/components/depth/showpieces/gem-3d.tsx?raw";
+import canSrc from "@/components/depth/showpieces/can-3d.tsx?raw";
+import torusSrc from "@/components/depth/showpieces/torus-3d.tsx?raw";
+import giftSrc from "@/components/depth/showpieces/gift-box-3d.tsx?raw";
+import roomSrc from "@/components/depth/showpieces/room-3d.tsx?raw";
 import progressHookSrc from "@/hooks/use-scroll-progress.ts?raw";
 import tiltHookSrc from "@/hooks/use-tilt.ts?raw";
 import utilsSrc from "@/lib/utils.ts?raw";
@@ -860,6 +870,71 @@ const [month, setMonth] = useState("Oct");
         previewClassName="min-h-[380px]"
       >
         <DemoOrrery />
+      </Showcase>
+
+      <Showcase
+        id="gem-3d"
+        title="Gem"
+        blurb="A cut gem with a flat table, angled crown facets and a pointed pavilion. The faces are see-through, so far facets show through near ones, and a few flash as it turns."
+        usage={`import { Gem3D } from "@/components/depth";
+
+<Gem3D size={200} sides={8} hue={265} />`}
+        files={[f("gem-3d", gemSrc), motionCss, utils]}
+        previewClassName="min-h-[380px]"
+      >
+        <DemoGem />
+      </Showcase>
+
+      <Showcase
+        id="can-3d"
+        title="Can"
+        blurb="A product can. The label wraps round a real cylinder built from thin slices, with metal rims and a fixed highlight. It pauses when you hover."
+        usage={`import { Can3D } from "@/components/depth";
+
+<Can3D name="DEPTH COLA" colors={["#7c3aed", "#ec4899"]} />`}
+        files={[f("can-3d", canSrc), motionCss, utils]}
+        previewClassName="min-h-[460px]"
+      >
+        <DemoCan />
+      </Showcase>
+
+      <Showcase
+        id="torus-3d"
+        title="Torus"
+        blurb="A doughnut drawn as a hoop of circles standing on edge, tinted round the colour wheel. It tumbles and pauses on hover."
+        usage={`import { Torus3D } from "@/components/depth";
+
+<Torus3D size={260} rings={36} tube={0.26} />`}
+        files={[f("torus-3d", torusSrc), motionCss, utils]}
+        previewClassName="min-h-[400px]"
+      >
+        <DemoTorus />
+      </Showcase>
+
+      <Showcase
+        id="gift-box-3d"
+        title="Gift box"
+        blurb="A wrapped box with a bow. Hover, focus or tap and the lid lifts off, light pours out and sparkles float up."
+        usage={`import { GiftBox3D } from "@/components/depth";
+
+<GiftBox3D size={150} colors={["#7c3aed", "#fbbf24"]} />`}
+        files={[f("gift-box-3d", giftSrc), tilt, utils]}
+        previewClassName="min-h-[440px]"
+      >
+        <DemoGift />
+      </Showcase>
+
+      <Showcase
+        id="room-3d"
+        title="Room"
+        blurb="Stand inside a room and look around. Drag to turn your head, and it drifts gently when you let go. Pass your own six faces to build your own."
+        usage={`import { Room3D } from "@/components/depth";
+
+<Room3D width={460} height={300} />`}
+        files={[f("room-3d", roomSrc), utils]}
+        previewClassName="min-h-[400px]"
+      >
+        <DemoRoom />
       </Showcase>
     </>,
     only,

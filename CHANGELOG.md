@@ -2,6 +2,9 @@
 
 All notable changes are listed here. The project follows [Semantic Versioning](https://semver.org).
 
+## 0.18.0
+- Five more 3D objects: `Gem3D`, `Can3D`, `Torus3D`, `GiftBox3D`, `Room3D`.
+
 ## 0.17.0
 - Five more showpieces: `DiscoBall3D`, `AnalogClock3D`, `PopUpBook3D`, `SnowGlobe3D`, `Orrery3D`.
 

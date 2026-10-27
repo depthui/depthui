@@ -6,6 +6,11 @@ import {
   Folder3D,
   Laptop3D,
   Phone3D,
+  Gem3D,
+  Can3D,
+  Torus3D,
+  GiftBox3D,
+  Room3D,
   DiscoBall3D,
   AnalogClock3D,
   PopUpBook3D,
@@ -745,4 +750,43 @@ export function DemoSnowGlobe() {
 export function DemoOrrery() {
   const [size] = useState(() => Math.max(260, Math.min(360, vw() - 76)));
   return <Orrery3D size={size} />;
+}
+
+export function DemoGem() {
+  const [size] = useState(() => Math.max(170, Math.min(220, vw() - 130)));
+  return (
+    <div className="flex flex-wrap items-center justify-center gap-6">
+      <Gem3D size={size} />
+    </div>
+  );
+}
+
+export function DemoCan() {
+  const [w] = useState(() => Math.max(96, Math.min(120, (vw() - 120) / 2.4)));
+  return (
+    <div className="flex flex-wrap items-center justify-center gap-4">
+      <Can3D width={w} />
+      <Can3D width={w} name="MINT FIZZ" colors={["#0d9488", "#65a30d"]} seconds={13} />
+    </div>
+  );
+}
+
+export function DemoTorus() {
+  const [size] = useState(() => Math.max(200, Math.min(270, vw() - 110)));
+  return <Torus3D size={size} />;
+}
+
+export function DemoGift() {
+  const [size] = useState(() => Math.max(112, Math.min(150, (vw() - 110) / 1.7)));
+  return <GiftBox3D size={size} />;
+}
+
+export function DemoRoom() {
+  const [w] = useState(() => Math.max(260, Math.min(460, vw() - 76)));
+  return (
+    <div className="flex flex-col items-center gap-3">
+      <Room3D width={w} height={Math.round(w * 0.65)} />
+      <p className="text-xs text-depth-muted">Drag to look around the room.</p>
+    </div>
+  );
 }
