@@ -209,6 +209,8 @@ All in `src/components/depth/buttons/`. Each file stands alone (plus `lib/utils.
 
 In `src/components/depth/ui/`: `Modal3D` (focus trap, Esc, scroll lock), `ToastProvider` + `useToast` (wrap your app once), `Switch3D`, `GlowInput`, `Tooltip3D`, `Loader3D`, `AvatarStack`, `ProgressRing`, `FlipWords`, `TextReveal`, `AuroraBackground`, `DotGlow`.
 
+Form controls, also in `ui/`: `Checkbox3D`, `SegmentedControl3D`, `Slider3D`, `Select3D`, `Rating3D`, `OtpInput3D`. Each is a real, keyboard friendly control that works controlled or uncontrolled, so you can swap it in for a plain one.
+
 </details>
 
 <details>

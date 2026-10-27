@@ -40,6 +40,11 @@ import {
   ShimmerButton,
   StatsSection,
   Switch3D,
+  Checkbox3D,
+  OtpInput3D,
+  Rating3D,
+  SegmentedControl3D,
+  Slider3D,
   TestimonialWall,
   TextReveal,
   ThemeToggle,
@@ -336,6 +341,17 @@ export default function DemoPage() {
                 />
                 <ProgressRing value={72} label="Complete" />
               </div>
+            </Tile>
+            <Tile label="Checkbox · segmented control · slider · rating">
+              <div className="flex w-full max-w-sm flex-col items-center gap-5">
+                <SegmentedControl3D aria-label="Billing period" defaultValue="year" options={[{ value: "month", label: "Monthly" }, { value: "year", label: "Yearly" }]} />
+                <Slider3D aria-label="Volume" defaultValue={60} formatValue={(n) => `${n}%`} className="w-full" />
+                <Checkbox3D label="Email me product news" defaultChecked />
+                <Rating3D aria-label="Your rating" defaultValue={4} />
+              </div>
+            </Tile>
+            <Tile label="One-time code">
+              <OtpInput3D />
             </Tile>
             <DotGlow className="flex min-h-[340px] items-center justify-center rounded-2xl border border-depth-border bg-depth-surface/60 p-5">
               <div className="text-center">

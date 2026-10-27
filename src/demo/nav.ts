@@ -97,6 +97,17 @@ export const NAV: NavGroup[] = [
     ],
   },
   {
+    title: "Form controls",
+    items: [
+      { id: "checkbox-3d", label: "Checkbox" },
+      { id: "segmented-control-3d", label: "Segmented control" },
+      { id: "slider-3d", label: "Slider" },
+      { id: "select-3d", label: "Select" },
+      { id: "rating-3d", label: "Rating" },
+      { id: "otp-input-3d", label: "OTP input" },
+    ],
+  },
+  {
     title: "Text & backgrounds",
     items: [
       { id: "flip-words", label: "Flip Words" },

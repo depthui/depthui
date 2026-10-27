@@ -11,6 +11,7 @@ const GROUP_OF: Record<string, GroupKey> = {
   Buttons: "buttons",
   "More cards": "cards",
   "UI elements": "ui",
+  "Form controls": "ui",
   "Text & backgrounds": "ui",
   Showpieces: "showpieces",
   Blocks: "blocks",

@@ -2,6 +2,9 @@
 
 All notable changes are listed here. The project follows [Semantic Versioning](https://semver.org).
 
+## 0.20.0
+- Six drop-in form controls: `Checkbox3D`, `SegmentedControl3D`, `Slider3D`, `Select3D`, `Rating3D`, `OtpInput3D`. All keyboard and screen reader friendly, controlled or uncontrolled.
+
 ## 0.19.0
 - Five more 3D objects: `Tesseract3D`, `Saturn3D`, `Rocket3D`, `Pinwheel3D`, `Lantern3D`.
 

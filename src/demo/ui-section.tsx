@@ -2,6 +2,12 @@ import { useState } from "react";
 import {
   AuroraBackground,
   AvatarStack,
+  Checkbox3D,
+  OtpInput3D,
+  Rating3D,
+  SegmentedControl3D,
+  Select3D,
+  Slider3D,
   Button3D,
   DotGlow,
   FlipWords,
@@ -16,6 +22,12 @@ import {
 } from "@/components/depth";
 import { Showcase, type CodeFile, pick } from "./showcase";
 
+import checkboxSrc from "@/components/depth/ui/checkbox-3d.tsx?raw";
+import segmentedSrc from "@/components/depth/ui/segmented-control-3d.tsx?raw";
+import sliderSrc from "@/components/depth/ui/slider-3d.tsx?raw";
+import selectSrc from "@/components/depth/ui/select-3d.tsx?raw";
+import ratingSrc from "@/components/depth/ui/rating-3d.tsx?raw";
+import otpSrc from "@/components/depth/ui/otp-input-3d.tsx?raw";
 import modalSrc from "@/components/depth/ui/modal-3d.tsx?raw";
 import toastSrc from "@/components/depth/ui/toast.tsx?raw";
 import switchSrc from "@/components/depth/ui/switch-3d.tsx?raw";
@@ -36,6 +48,102 @@ import motionCss from "@/styles/depth-motion.css?raw";
 const utils: CodeFile = { name: "lib/utils.ts", code: utilsSrc };
 const css: CodeFile = { name: "styles/depth-motion.css", code: motionCss };
 const f = (n: string, code: string): CodeFile => ({ name: `components/depth/ui/${n}.tsx`, code });
+
+function CheckboxDemo() {
+  const [all, setAll] = useState(false);
+  const [a, setA] = useState(true);
+  const [b, setB] = useState(false);
+  const mixed = a !== b;
+  return (
+    <div className="flex flex-col gap-4">
+      <Checkbox3D
+        label="Select all"
+        indeterminate={mixed}
+        checked={a && b}
+        onCheckedChange={(v) => { setAll(v); setA(v); setB(v); }}
+        aria-label="Select all"
+      />
+      <div className="flex flex-col gap-3 pl-8">
+        <Checkbox3D label="Email me product news" description="One short email a month." checked={a} onCheckedChange={setA} />
+        <Checkbox3D label="Send weekly digest" checked={b} onCheckedChange={setB} />
+        <Checkbox3D label="Disabled option" disabled />
+      </div>
+      <span className="sr-only">{String(all)}</span>
+    </div>
+  );
+}
+
+function SegmentedDemo() {
+  const [v, setV] = useState("month");
+  return (
+    <div className="flex flex-col items-center gap-5">
+      <SegmentedControl3D
+        aria-label="Billing period"
+        value={v}
+        onValueChange={setV}
+        options={[{ value: "month", label: "Monthly" }, { value: "year", label: "Yearly" }, { value: "life", label: "Lifetime" }]}
+      />
+      <SegmentedControl3D
+        aria-label="View"
+        size="sm"
+        defaultValue="grid"
+        options={[{ value: "list", label: "List" }, { value: "grid", label: "Grid" }, { value: "map", label: "Map", disabled: true }]}
+      />
+    </div>
+  );
+}
+
+function SliderDemo() {
+  const [v, setV] = useState(40);
+  return (
+    <div className="w-full max-w-sm">
+      <Slider3D aria-label="Volume" value={v} onValueChange={setV} formatValue={(n) => `${n}%`} />
+      <Slider3D aria-label="Price" defaultValue={250} min={0} max={1000} step={50} formatValue={(n) => `$${n}`} />
+    </div>
+  );
+}
+
+function SelectDemo() {
+  const [v, setV] = useState<string | undefined>();
+  return (
+    <div className="flex w-full max-w-xs flex-col gap-3 pb-40">
+      <Select3D
+        aria-label="Framework"
+        placeholder="Choose a framework"
+        value={v}
+        onValueChange={setV}
+        options={[
+          { value: "react", label: "React" },
+          { value: "vue", label: "Vue" },
+          { value: "svelte", label: "Svelte" },
+          { value: "solid", label: "Solid", disabled: true },
+          { value: "angular", label: "Angular" },
+        ]}
+      />
+    </div>
+  );
+}
+
+function RatingDemo() {
+  const [v, setV] = useState(3);
+  return (
+    <div className="flex flex-col items-center gap-4">
+      <Rating3D aria-label="Your rating" value={v} onValueChange={setV} />
+      <Rating3D aria-label="Average rating" value={4} readOnly size={22} />
+      <p className="text-xs text-depth-muted">{v ? `You rated it ${v} out of 5` : "Not rated yet"}</p>
+    </div>
+  );
+}
+
+function OtpDemo() {
+  const [done, setDone] = useState("");
+  return (
+    <div className="flex flex-col items-center gap-4">
+      <OtpInput3D onComplete={setDone} onValueChange={() => setDone("")} />
+      <p className="text-xs text-depth-muted">{done ? `Entered ${done}` : "Type or paste a 6 digit code"}</p>
+    </div>
+  );
+}
 
 function ToastDemo() {
   const { toast } = useToast();
@@ -296,6 +404,92 @@ toast({ title: "Saved", description: "Changes are live.", tone: "success" });`}
         <DotGlow className="flex h-[340px] w-full items-center justify-center">
           <h3 className="text-2xl font-semibold tracking-tight">Move your pointer</h3>
         </DotGlow>
+      </Showcase>
+
+      <Showcase
+        id="checkbox-3d"
+        title="Checkbox"
+        blurb="A raised checkbox that sinks when pressed. The tick draws itself in. It supports the mixed state, a label and a description."
+        usage={`import { Checkbox3D } from "@/components/depth";
+
+<Checkbox3D label="Email me product news" description="One short email a month." />`}
+        files={[f("checkbox-3d", checkboxSrc), utils]}
+        previewClassName="min-h-[260px]"
+      >
+        <CheckboxDemo />
+      </Showcase>
+
+      <Showcase
+        id="segmented-control-3d"
+        title="Segmented control"
+        blurb="A row of options with one raised thumb that slides to the choice. It is a real radio group: arrow keys move the choice."
+        usage={`import { SegmentedControl3D } from "@/components/depth";
+
+<SegmentedControl3D
+  aria-label="Billing period"
+  defaultValue="month"
+  options={[{ value: "month", label: "Monthly" }, { value: "year", label: "Yearly" }]}
+/>`}
+        files={[f("segmented-control-3d", segmentedSrc), utils]}
+        previewClassName="min-h-[220px]"
+      >
+        <SegmentedDemo />
+      </Showcase>
+
+      <Showcase
+        id="slider-3d"
+        title="Slider"
+        blurb="A range slider with a glossy knob and a value bubble that lifts while you drag. Keyboard and touch work too."
+        usage={`import { Slider3D } from "@/components/depth";
+
+<Slider3D aria-label="Volume" defaultValue={40} formatValue={(n) => n + "%"} />`}
+        files={[f("slider-3d", sliderSrc), utils]}
+        previewClassName="min-h-[240px]"
+      >
+        <SliderDemo />
+      </Showcase>
+
+      <Showcase
+        id="select-3d"
+        title="Select"
+        blurb="A custom dropdown whose menu tips open like a lid. Arrow keys, type-ahead and Escape work, and it opens upward when there is no room below."
+        usage={`import { Select3D } from "@/components/depth";
+
+<Select3D
+  aria-label="Framework"
+  placeholder="Choose a framework"
+  options={[{ value: "react", label: "React" }, { value: "vue", label: "Vue" }]}
+/>`}
+        files={[f("select-3d", selectSrc), utils]}
+        previewClassName="min-h-[340px]"
+      >
+        <SelectDemo />
+      </Showcase>
+
+      <Showcase
+        id="rating-3d"
+        title="Rating"
+        blurb="Glossy stars that preview on hover and pop in order when chosen. Use it to collect a rating, or read-only to show one."
+        usage={`import { Rating3D } from "@/components/depth";
+
+<Rating3D aria-label="Your rating" defaultValue={3} />`}
+        files={[f("rating-3d", ratingSrc), utils]}
+        previewClassName="min-h-[260px]"
+      >
+        <RatingDemo />
+      </Showcase>
+
+      <Showcase
+        id="otp-input-3d"
+        title="OTP input"
+        blurb="A one-time code field. The focused box lifts and glows. Typing moves on, Backspace goes back, and pasting a code fills every box."
+        usage={`import { OtpInput3D } from "@/components/depth";
+
+<OtpInput3D length={6} onComplete={(code) => verify(code)} />`}
+        files={[f("otp-input-3d", otpSrc), utils]}
+        previewClassName="min-h-[220px]"
+      >
+        <OtpDemo />
       </Showcase>
     </>,
     only,
