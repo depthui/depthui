@@ -159,6 +159,11 @@ In `src/components/depth/showpieces/`. Each is a single file (plus `lib/utils.ts
 | `Torus3D` | Doughnut drawn as a hoop of colour-wheel circles, tumbling |
 | `GiftBox3D` | Wrapped box whose lid lifts off in a burst of light |
 | `Room3D` | A room seen from inside, drag to look around |
+| `Tesseract3D` | Cube inside a cube, a hypercube tumbling in 3D |
+| `Saturn3D` | Banded planet sitting inside its own ring |
+| `Rocket3D` | Cylinder rocket with fins that lights its engine on hover |
+| `Pinwheel3D` | Paper pinwheel with folded blades that spins up |
+| `Lantern3D` | See-through paper lantern with a flickering light |
 | `StackScroll3D` | Cards that pile up on scroll, older ones shrink, tip and dim |
 | `DynamicIsland3D` | Pill that morphs between states on one spring, with a 3D tilt |
 | `ReorderList3D` | Drag-to-reorder list, the held row lifts and tips toward you |

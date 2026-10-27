@@ -19,6 +19,11 @@ import {
   DemoTorus,
   DemoGift,
   DemoRoom,
+  DemoTesseract,
+  DemoSaturn,
+  DemoRocket,
+  DemoPinwheel,
+  DemoLantern,
   DemoDisco,
   DemoAnalogClock,
   DemoPopUp,
@@ -119,6 +124,11 @@ import gemSrc from "@/components/depth/showpieces/gem-3d.tsx?raw";
 import canSrc from "@/components/depth/showpieces/can-3d.tsx?raw";
 import torusSrc from "@/components/depth/showpieces/torus-3d.tsx?raw";
 import giftSrc from "@/components/depth/showpieces/gift-box-3d.tsx?raw";
+import tesseractSrc from "@/components/depth/showpieces/tesseract-3d.tsx?raw";
+import saturnSrc from "@/components/depth/showpieces/saturn-3d.tsx?raw";
+import rocketSrc from "@/components/depth/showpieces/rocket-3d.tsx?raw";
+import pinwheelSrc from "@/components/depth/showpieces/pinwheel-3d.tsx?raw";
+import lanternSrc from "@/components/depth/showpieces/lantern-3d.tsx?raw";
 import roomSrc from "@/components/depth/showpieces/room-3d.tsx?raw";
 import progressHookSrc from "@/hooks/use-scroll-progress.ts?raw";
 import tiltHookSrc from "@/hooks/use-tilt.ts?raw";
@@ -935,6 +945,71 @@ const [month, setMonth] = useState("Oct");
         previewClassName="min-h-[400px]"
       >
         <DemoRoom />
+      </Showcase>
+
+      <Showcase
+        id="tesseract-3d"
+        title="Tesseract"
+        blurb="A cube inside a cube, joined corner to corner: the classic picture of a four-dimensional hypercube. It tumbles on two axes and pauses when you hover."
+        usage={`import { Tesseract3D } from "@/components/depth";
+
+<Tesseract3D size={170} hue={190} />`}
+        files={[f("tesseract-3d", tesseractSrc), motionCss, utils]}
+        previewClassName="min-h-[440px]"
+      >
+        <DemoTesseract />
+      </Showcase>
+
+      <Showcase
+        id="saturn-3d"
+        title="Saturn"
+        blurb="A banded planet inside its own ring. The far half of the ring sits behind the planet and the near half in front, and the layers shift as you move your pointer."
+        usage={`import { Saturn3D } from "@/components/depth";
+
+<Saturn3D size={300} hue={36} />`}
+        files={[f("saturn-3d", saturnSrc), tilt, motionCss, utils]}
+        previewClassName="min-h-[380px]"
+      >
+        <DemoSaturn />
+      </Showcase>
+
+      <Showcase
+        id="rocket-3d"
+        title="Rocket"
+        blurb="A rocket built as a real cylinder with a nose cone, fins and windows. Hover, focus or tap to light the engine: the flame grows, it shakes and lifts, and smoke trails below."
+        usage={`import { Rocket3D } from "@/components/depth";
+
+<Rocket3D size={340} color=\"#ef4444\" />`}
+        files={[f("rocket-3d", rocketSrc), motionCss, utils]}
+        previewClassName="min-h-[460px]"
+      >
+        <DemoRocket />
+      </Showcase>
+
+      <Showcase
+        id="pinwheel-3d"
+        title="Pinwheel"
+        blurb="A paper pinwheel on a stick. Each blade has a raised folded triangle, so it has real depth. It spins up while you hover or press it, then eases back."
+        usage={`import { Pinwheel3D } from "@/components/depth";
+
+<Pinwheel3D size={120} />`}
+        files={[f("pinwheel-3d", pinwheelSrc), tilt, utils]}
+        previewClassName="min-h-[460px]"
+      >
+        <DemoPinwheel />
+      </Showcase>
+
+      <Showcase
+        id="lantern-3d"
+        title="Lantern"
+        blurb="A paper lantern that turns and sways with a flickering light inside. The paper is see-through, so you see the far side and the glow. Hover to pause."
+        usage={`import { Lantern3D } from "@/components/depth";
+
+<Lantern3D size={220} mark=\"福\" />`}
+        files={[f("lantern-3d", lanternSrc), motionCss, utils]}
+        previewClassName="min-h-[440px]"
+      >
+        <DemoLantern />
       </Showcase>
     </>,
     only,

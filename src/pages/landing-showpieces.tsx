@@ -19,6 +19,11 @@ import {
   DemoTorus,
   DemoGift,
   DemoRoom,
+  DemoTesseract,
+  DemoSaturn,
+  DemoRocket,
+  DemoPinwheel,
+  DemoLantern,
   DemoDisco,
   DemoAnalogClock,
   DemoPopUp,
@@ -67,7 +72,7 @@ export default function LandingShowpieces() {
   return (
     <>
 
-          <SectionHeading eyebrow="Showpieces" title="The ones people screenshot" description="Fifty-three signature pieces: a wireframe globe, split-flap clock, page-turning book, 3D charts and more." />
+          <SectionHeading eyebrow="Showpieces" title="The ones people screenshot" description="Sixty-three signature pieces: a wireframe globe, split-flap clock, page-turning book, 3D charts and more." />
           <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
             <Tile label="Globe (drag it)"><DemoGlobe /></Tile>
             <Tile label="Coin (click it)"><DemoCoin /></Tile>
@@ -126,6 +131,11 @@ export default function LandingShowpieces() {
             <Tile label="Torus (hover to pause)"><DemoTorus /></Tile>
             <Tile label="Gift box (hover it)" className="md:col-span-2"><DemoGift /></Tile>
             <Tile label="Room (drag to look around)" className="md:col-span-2 lg:col-span-3"><DemoRoom /></Tile>
+            <Tile label="Tesseract (hover to pause)"><DemoTesseract /></Tile>
+            <Tile label="Saturn" className="md:col-span-2"><DemoSaturn /></Tile>
+            <Tile label="Rocket (hover to launch)"><DemoRocket /></Tile>
+            <Tile label="Pinwheels (hover to spin up)" className="md:col-span-2"><DemoPinwheel /></Tile>
+            <Tile label="Lanterns (hover to pause)" className="md:col-span-2"><DemoLantern /></Tile>
             <Tile label="Gallery wall" className="md:col-span-2 lg:col-span-3 !p-0"><DemoWall /></Tile>
           </div>
         

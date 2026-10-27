@@ -11,6 +11,11 @@ import {
   Torus3D,
   GiftBox3D,
   Room3D,
+  Tesseract3D,
+  Saturn3D,
+  Rocket3D,
+  Pinwheel3D,
+  Lantern3D,
   DiscoBall3D,
   AnalogClock3D,
   PopUpBook3D,
@@ -787,6 +792,41 @@ export function DemoRoom() {
     <div className="flex flex-col items-center gap-3">
       <Room3D width={w} height={Math.round(w * 0.65)} />
       <p className="text-xs text-depth-muted">Drag to look around the room.</p>
+    </div>
+  );
+}
+
+export function DemoTesseract() {
+  const [size] = useState(() => Math.max(110, Math.min(170, (vw() - 110) / 1.9)));
+  return <Tesseract3D size={size} />;
+}
+
+export function DemoSaturn() {
+  const [size] = useState(() => Math.max(250, Math.min(340, vw() - 90)));
+  return <Saturn3D size={size} />;
+}
+
+export function DemoRocket() {
+  const [size] = useState(() => Math.max(300, Math.min(360, vw() + 20)));
+  return <Rocket3D size={size} />;
+}
+
+export function DemoPinwheel() {
+  const [size] = useState(() => Math.max(80, Math.min(120, (vw() - 90) / 2.6)));
+  return (
+    <div className="flex flex-wrap items-center justify-center gap-4">
+      <Pinwheel3D size={size} />
+      <Pinwheel3D size={size} colors={["#ec4899", "#a855f7", "#06b6d4", "#f97316"]} />
+    </div>
+  );
+}
+
+export function DemoLantern() {
+  const [size] = useState(() => Math.max(170, Math.min(220, (vw() - 100) / 1.6)));
+  return (
+    <div className="flex flex-wrap items-end justify-center gap-6">
+      <Lantern3D size={size} />
+      <Lantern3D size={size * 0.8} hue={28} mark="喜" />
     </div>
   );
 }
