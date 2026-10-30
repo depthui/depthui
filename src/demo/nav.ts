@@ -105,6 +105,10 @@ export const NAV: NavGroup[] = [
       { id: "select-3d", label: "Select" },
       { id: "rating-3d", label: "Rating" },
       { id: "otp-input-3d", label: "OTP input" },
+      { id: "progress-bar-3d", label: "Progress bar" },
+      { id: "stepper-3d", label: "Stepper" },
+      { id: "pagination-3d", label: "Pagination" },
+      { id: "skeleton-3d", label: "Skeleton" },
     ],
   },
   {

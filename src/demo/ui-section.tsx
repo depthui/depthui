@@ -3,6 +3,10 @@ import {
   AuroraBackground,
   AvatarStack,
   Checkbox3D,
+  Pagination3D,
+  ProgressBar3D,
+  Skeleton3D,
+  Stepper3D,
   OtpInput3D,
   Rating3D,
   SegmentedControl3D,
@@ -28,6 +32,10 @@ import sliderSrc from "@/components/depth/ui/slider-3d.tsx?raw";
 import selectSrc from "@/components/depth/ui/select-3d.tsx?raw";
 import ratingSrc from "@/components/depth/ui/rating-3d.tsx?raw";
 import otpSrc from "@/components/depth/ui/otp-input-3d.tsx?raw";
+import progressBarSrc from "@/components/depth/ui/progress-bar-3d.tsx?raw";
+import stepperSrc from "@/components/depth/ui/stepper-3d.tsx?raw";
+import paginationSrc from "@/components/depth/ui/pagination-3d.tsx?raw";
+import skeletonSrc from "@/components/depth/ui/skeleton-3d.tsx?raw";
 import modalSrc from "@/components/depth/ui/modal-3d.tsx?raw";
 import toastSrc from "@/components/depth/ui/toast.tsx?raw";
 import switchSrc from "@/components/depth/ui/switch-3d.tsx?raw";
@@ -141,6 +149,58 @@ function OtpDemo() {
     <div className="flex flex-col items-center gap-4">
       <OtpInput3D onComplete={setDone} onValueChange={() => setDone("")} />
       <p className="text-xs text-depth-muted">{done ? `Entered ${done}` : "Type or paste a 6 digit code"}</p>
+    </div>
+  );
+}
+
+function ProgressBarDemo() {
+  const [v, setV] = useState(64);
+  return (
+    <div className="flex w-full max-w-sm flex-col gap-5">
+      <ProgressBar3D label="Uploading" value={v} />
+      <ProgressBar3D label="Storage" value={82} size="sm" />
+      <ProgressBar3D label="Working…" size="lg" />
+      <div className="flex gap-2">
+        <Button3D variant="neutral" onClick={() => setV((x) => Math.max(0, x - 15))}>-15</Button3D>
+        <Button3D variant="neutral" onClick={() => setV((x) => Math.min(100, x + 15))}>+15</Button3D>
+      </div>
+    </div>
+  );
+}
+
+function StepperDemo() {
+  const [s, setS] = useState(1);
+  const steps = [{ label: "Account", description: "Your details" }, { label: "Plan", description: "Pick a tier" }, { label: "Payment", description: "Card" }, { label: "Done" }];
+  return (
+    <div className="flex w-full max-w-xl flex-col items-center gap-6">
+      <Stepper3D steps={steps} current={s} onStepClick={setS} />
+      <div className="flex gap-2">
+        <Button3D variant="neutral" onClick={() => setS((x) => Math.max(0, x - 1))}>Back</Button3D>
+        <Button3D onClick={() => setS((x) => Math.min(steps.length, x + 1))}>Next</Button3D>
+      </div>
+    </div>
+  );
+}
+
+function PaginationDemo() {
+  const [p, setP] = useState(6);
+  return (
+    <div className="flex flex-col items-center gap-4">
+      <Pagination3D total={20} page={p} onPageChange={setP} />
+      <Pagination3D total={5} defaultPage={2} />
+      <p className="text-xs text-depth-muted">Page {p} of 20</p>
+    </div>
+  );
+}
+
+function SkeletonDemo() {
+  return (
+    <div aria-busy="true" className="flex w-full max-w-sm items-start gap-4 rounded-2xl border border-depth-border bg-depth-surface p-4">
+      <Skeleton3D circle className="w-14 shrink-0" />
+      <div className="flex-1 space-y-3">
+        <Skeleton3D className="h-4 w-1/2" />
+        <Skeleton3D lines={3} />
+      </div>
     </div>
   );
 }
@@ -490,6 +550,59 @@ toast({ title: "Saved", description: "Changes are live.", tone: "success" });`}
         previewClassName="min-h-[220px]"
       >
         <OtpDemo />
+      </Showcase>
+
+      <Showcase
+        id="progress-bar-3d"
+        title="Progress bar"
+        blurb="A raised, glossy bar. The fill is scaled with a transform and has a moving sheen. Leave the value out for an indeterminate bar."
+        usage={`import { ProgressBar3D } from "@/components/depth";
+
+<ProgressBar3D label="Uploading" value={64} />`}
+        files={[f("progress-bar-3d", progressBarSrc), css, utils]}
+        previewClassName="min-h-[340px]"
+      >
+        <ProgressBarDemo />
+      </Showcase>
+
+      <Showcase
+        id="stepper-3d"
+        title="Stepper"
+        blurb="Numbered steps joined by a bar that fills as you move on. Finished steps show a tick, and can be clicked to go back."
+        usage={`import { Stepper3D } from "@/components/depth";
+
+<Stepper3D current={1} steps={[{ label: "Account" }, { label: "Plan" }, { label: "Done" }]} />`}
+        files={[f("stepper-3d", stepperSrc), utils]}
+        previewClassName="min-h-[240px]"
+      >
+        <StepperDemo />
+      </Showcase>
+
+      <Showcase
+        id="pagination-3d"
+        title="Pagination"
+        blurb="Page buttons with a raised thumb that slides to the current page. Long ranges collapse with ellipses."
+        usage={`import { Pagination3D } from "@/components/depth";
+
+<Pagination3D total={20} onPageChange={(p) => load(p)} />`}
+        files={[f("pagination-3d", paginationSrc), utils]}
+        previewClassName="min-h-[240px]"
+      >
+        <PaginationDemo />
+      </Showcase>
+
+      <Showcase
+        id="skeleton-3d"
+        title="Skeleton"
+        blurb="A loading placeholder with a soft sheen sweeping across. Use lines for text, or circle for an avatar. Stops for reduced motion."
+        usage={`import { Skeleton3D } from "@/components/depth";
+
+<Skeleton3D lines={3} />
+<Skeleton3D circle className="w-12" />`}
+        files={[f("skeleton-3d", skeletonSrc), css, utils]}
+        previewClassName="min-h-[200px]"
+      >
+        <SkeletonDemo />
       </Showcase>
     </>,
     only,

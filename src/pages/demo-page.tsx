@@ -45,6 +45,10 @@ import {
   Rating3D,
   SegmentedControl3D,
   Slider3D,
+  Pagination3D,
+  ProgressBar3D,
+  Skeleton3D,
+  Stepper3D,
   TestimonialWall,
   TextReveal,
   ThemeToggle,
@@ -350,8 +354,17 @@ export default function DemoPage() {
                 <Rating3D aria-label="Your rating" defaultValue={4} />
               </div>
             </Tile>
-            <Tile label="One-time code">
-              <OtpInput3D />
+            <Tile label="One-time code · stepper · pagination · loading">
+              <div className="flex w-full max-w-md flex-col items-center gap-6">
+                <OtpInput3D />
+                <Stepper3D current={1} steps={[{ label: "Account" }, { label: "Plan" }, { label: "Done" }]} />
+                <ProgressBar3D label="Uploading" value={64} />
+                <Pagination3D total={12} defaultPage={5} />
+                <div aria-busy="true" className="flex w-full items-center gap-3">
+                  <Skeleton3D circle className="w-10 shrink-0" />
+                  <Skeleton3D lines={2} />
+                </div>
+              </div>
             </Tile>
             <DotGlow className="flex min-h-[340px] items-center justify-center rounded-2xl border border-depth-border bg-depth-surface/60 p-5">
               <div className="text-center">

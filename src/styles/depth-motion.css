@@ -166,3 +166,8 @@
   .depth-sparkle, .depth-snow { animation: none; }
   .depth-snow { opacity: 0.9; }
 }
+
+/* Skeleton sheen: transform only. */
+@keyframes depth-skeleton { from { transform: translateX(-100%); } to { transform: translateX(100%); } }
+.depth-skeleton { animation: depth-skeleton 1.6s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .depth-skeleton { animation: none; opacity: 0; } }
