@@ -5,7 +5,7 @@
   "description": "Copy-paste 3D React components built on Tailwind CSS v4 and Framer Motion. CSS transforms, no WebGL.",
   "license": "MIT",
   "author": "akram6t",
-  "homepage": "https://depthui.github.io/depthui/",
+  "homepage": "https://depthui.vercel.app",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/depthui/depthui.git"
@@ -24,7 +24,11 @@
     "copy-paste",
     "shadcn",
     "animation",
-    "dark-mode"
+    "dark-mode",
+    "3d-components",
+    "react-components",
+    "tailwind-v4",
+    "open-source"
   ],
   "engines": {
     "node": ">=20"
@@ -32,6 +36,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "prebuild": "node scripts/sitemap.mjs",
     "build": "tsc -b && vite build",
     "typecheck": "tsc -b",
     "preview": "vite preview"
