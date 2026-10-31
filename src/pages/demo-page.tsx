@@ -57,6 +57,7 @@ import {
 } from "@/components/depth";
 import { REPO } from "@/lib/site";
 import { LazyMount } from "@/demo/lazy-mount";
+import { KanbanDemo } from "@/demo/kanban-demo";
 import {
   HeroMock,
   LogoItem,
@@ -365,6 +366,9 @@ export default function DemoPage() {
                   <Skeleton3D lines={2} />
                 </div>
               </div>
+            </Tile>
+            <Tile label="Kanban board (drag the cards)" className="md:col-span-2">
+              <KanbanDemo />
             </Tile>
             <DotGlow className="flex min-h-[340px] items-center justify-center rounded-2xl border border-depth-border bg-depth-surface/60 p-5">
               <div className="text-center">

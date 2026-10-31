@@ -3,6 +3,14 @@ import {
   AuroraBackground,
   AvatarStack,
   Checkbox3D,
+  CommandPalette3D,
+  Drawer3D,
+  Dropzone3D,
+  Kanban3D,
+  NumberTicker3D,
+  TagInput3D,
+  type KanbanItem,
+  type KanbanMove,
   Pagination3D,
   ProgressBar3D,
   Skeleton3D,
@@ -36,6 +44,14 @@ import progressBarSrc from "@/components/depth/ui/progress-bar-3d.tsx?raw";
 import stepperSrc from "@/components/depth/ui/stepper-3d.tsx?raw";
 import paginationSrc from "@/components/depth/ui/pagination-3d.tsx?raw";
 import skeletonSrc from "@/components/depth/ui/skeleton-3d.tsx?raw";
+import kanbanSrc from "@/components/depth/ui/kanban-3d.tsx?raw";
+import dropzoneSrc from "@/components/depth/ui/dropzone-3d.tsx?raw";
+import drawerSrc from "@/components/depth/ui/drawer-3d.tsx?raw";
+import paletteSrc from "@/components/depth/ui/command-palette-3d.tsx?raw";
+import tagSrc from "@/components/depth/ui/tag-input-3d.tsx?raw";
+import tickerSrc from "@/components/depth/ui/number-ticker-3d.tsx?raw";
+import overlaySrc from "@/hooks/use-overlay.ts?raw";
+import { KanbanDemo } from "./kanban-demo";
 import modalSrc from "@/components/depth/ui/modal-3d.tsx?raw";
 import toastSrc from "@/components/depth/ui/toast.tsx?raw";
 import switchSrc from "@/components/depth/ui/switch-3d.tsx?raw";
@@ -201,6 +217,88 @@ function SkeletonDemo() {
         <Skeleton3D className="h-4 w-1/2" />
         <Skeleton3D lines={3} />
       </div>
+    </div>
+  );
+}
+
+function DrawerDemo() {
+  const [side, setSide] = useState<"right" | "left" | "bottom" | null>(null);
+  return (
+    <>
+      <div className="flex flex-wrap justify-center gap-3">
+        <Button3D onClick={() => setSide("right")}>Right</Button3D>
+        <Button3D variant="neutral" onClick={() => setSide("left")}>Left</Button3D>
+        <Button3D variant="neutral" onClick={() => setSide("bottom")}>Bottom</Button3D>
+      </div>
+      <Drawer3D
+        open={side !== null}
+        side={side ?? "right"}
+        onClose={() => setSide(null)}
+        title="Filters"
+        description="Narrow the list down."
+        footer={<><Button3D variant="neutral" onClick={() => setSide(null)}>Cancel</Button3D><Button3D onClick={() => setSide(null)}>Apply</Button3D></>}
+      >
+        <div className="flex flex-col gap-4">
+          <Switch3D label="Only show open tasks" defaultChecked />
+          <Switch3D label="Include archived" />
+          <GlowInput label="Search" hint="Matches title and tag." />
+        </div>
+      </Drawer3D>
+    </>
+  );
+}
+
+function PaletteDemo() {
+  const [open, setOpen] = useState(false);
+  const { toast } = useToast();
+  const say = (t: string) => () => toast({ title: t, tone: "success" });
+  return (
+    <div className="flex flex-col items-center gap-3">
+      <Button3D onClick={() => setOpen(true)}>Open palette</Button3D>
+      <p className="text-xs text-depth-muted">or press <kbd className="rounded border border-depth-border px-1.5 py-0.5 font-mono">Ctrl</kbd> + <kbd className="rounded border border-depth-border px-1.5 py-0.5 font-mono">K</kbd></p>
+      <CommandPalette3D
+        open={open}
+        onOpenChange={setOpen}
+        items={[
+          { id: "home", label: "Go to home", group: "Navigate", keywords: ["landing"], onSelect: say("Going home") },
+          { id: "docs", label: "Open the docs", group: "Navigate", hint: "G D", onSelect: say("Opening docs") },
+          { id: "star", label: "Star on GitHub", group: "Actions", keywords: ["like"], onSelect: say("Thank you!") },
+          { id: "theme", label: "Toggle dark mode", group: "Actions", hint: "T", onSelect: () => document.documentElement.classList.toggle("dark") },
+          { id: "copy", label: "Copy install command", group: "Actions", onSelect: say("Copied") },
+        ]}
+      />
+    </div>
+  );
+}
+
+function TagDemo() {
+  const [tags, setTags] = useState(["react", "3d"]);
+  return (
+    <div className="w-full max-w-md">
+      <TagInput3D value={tags} onValueChange={setTags} suggestions={["tailwind", "framer-motion", "typescript", "ui"]} max={8} />
+      <p className="mt-3 text-xs text-depth-muted">{tags.length} of 8 tags</p>
+    </div>
+  );
+}
+
+function TickerDemo() {
+  const [n, setN] = useState(12840);
+  return (
+    <div className="flex flex-col items-center gap-6">
+      <div className="flex flex-wrap items-end justify-center gap-x-10 gap-y-4 text-5xl font-semibold tracking-tight">
+        <NumberTicker3D value={n} />
+        <NumberTicker3D value={n / 100} decimals={2} prefix="$" className="text-4xl text-depth-accent" />
+        <NumberTicker3D value={98} suffix="%" className="text-4xl" />
+      </div>
+      <Button3D variant="neutral" onClick={() => setN(Math.round(Math.random() * 90000 + 1000))}>Roll a new number</Button3D>
+    </div>
+  );
+}
+
+function DropzoneDemo() {
+  return (
+    <div className="w-full max-w-md">
+      <Dropzone3D accept="image/*" maxSizeMB={5} maxFiles={4} hint="PNG or JPG, up to 5 MB" />
     </div>
   );
 }
@@ -603,6 +701,98 @@ toast({ title: "Saved", description: "Changes are live.", tone: "success" });`}
         previewClassName="min-h-[200px]"
       >
         <SkeletonDemo />
+      </Showcase>
+
+      <Showcase
+        id="kanban-3d"
+        title="Kanban board"
+        blurb="Columns like Not started, Processing, Success and Failed. Drag cards between them or reorder inside a column. Works with a mouse, a finger and the keyboard: focus a grip, press Space, move with the arrows, Space to drop."
+        usage={`import { Kanban3D } from "@/components/depth";
+
+const columns = [
+  { id: "todo", title: "Not started", tone: "slate" },
+  { id: "doing", title: "Processing", tone: "amber" },
+  { id: "done", title: "Success", tone: "green" },
+  { id: "failed", title: "Failed", tone: "red" },
+];
+
+<Kanban3D
+  columns={columns}
+  defaultCards={[{ id: "1", columnId: "todo", title: "Write docs", tag: "Docs" }]}
+  onCardsChange={(cards, move) => save(cards)}
+/>`}
+        files={[f("kanban-3d", kanbanSrc), utils]}
+        previewClassName="min-h-[520px] items-start p-3 sm:p-6"
+      >
+        <KanbanDemo />
+      </Showcase>
+
+      <Showcase
+        id="dropzone-3d"
+        title="Dropzone"
+        blurb="Drag files onto it, or click to browse. The zone lifts and glows while files are over it. Files show a size and an image preview, and too-big or wrong-type files are refused with a message."
+        usage={`import { Dropzone3D } from "@/components/depth";
+
+<Dropzone3D accept="image/*" maxSizeMB={5} onFilesChange={(files) => setFiles(files)} />`}
+        files={[f("dropzone-3d", dropzoneSrc), utils]}
+        previewClassName="min-h-[380px]"
+      >
+        <DropzoneDemo />
+      </Showcase>
+
+      <Showcase
+        id="drawer-3d"
+        title="Drawer"
+        blurb="A side panel or bottom sheet that slides in with a slight 3D tilt. Esc and a backdrop click close it, Tab stays inside, and focus returns to the button that opened it."
+        usage={`import { Drawer3D } from "@/components/depth";
+
+<Drawer3D open={open} onClose={() => setOpen(false)} title="Filters" side="right">
+  ...
+</Drawer3D>`}
+        files={[f("drawer-3d", drawerSrc), f("../../../hooks/use-overlay", overlaySrc), utils]}
+        previewClassName="min-h-[220px]"
+      >
+        <DrawerDemo />
+      </Showcase>
+
+      <Showcase
+        id="command-palette-3d"
+        title="Command palette"
+        blurb="A Ctrl+K / Cmd+K search that jumps to any action. Type to filter, arrows to move, Enter to run, Esc to close. Items can be grouped and carry extra search words."
+        usage={`import { CommandPalette3D } from "@/components/depth";
+
+<CommandPalette3D open={open} onOpenChange={setOpen} items={[{ id: "docs", label: "Open the docs", group: "Navigate", onSelect: goDocs }]} />`}
+        files={[f("command-palette-3d", paletteSrc), f("../../../hooks/use-overlay", overlaySrc), utils]}
+        previewClassName="min-h-[240px]"
+      >
+        <PaletteDemo />
+      </Showcase>
+
+      <Showcase
+        id="tag-input-3d"
+        title="Tag input"
+        blurb="Type a word and press Enter or a comma to make a chip. Backspace removes the last chip, pasting a comma list adds several, and suggestions add with a click."
+        usage={`import { TagInput3D } from "@/components/depth";
+
+<TagInput3D defaultValue={["react"]} suggestions={["tailwind", "ui"]} max={8} />`}
+        files={[f("tag-input-3d", tagSrc), utils]}
+        previewClassName="min-h-[260px]"
+      >
+        <TagDemo />
+      </Showcase>
+
+      <Showcase
+        id="number-ticker-3d"
+        title="Number ticker"
+        blurb="A number whose digits roll like an odometer. It rolls up when scrolled into view and again whenever the value changes. Screen readers get the plain number."
+        usage={`import { NumberTicker3D } from "@/components/depth";
+
+<NumberTicker3D value={12840} />
+<NumberTicker3D value={98} suffix="%" />`}
+        files={[f("number-ticker-3d", tickerSrc), utils]}
+        previewClassName="min-h-[280px]"
+      >
+        <TickerDemo />
       </Showcase>
     </>,
     only,

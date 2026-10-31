@@ -112,6 +112,17 @@ export const NAV: NavGroup[] = [
     ],
   },
   {
+    title: "App components",
+    items: [
+      { id: "kanban-3d", label: "Kanban board" },
+      { id: "dropzone-3d", label: "Dropzone" },
+      { id: "drawer-3d", label: "Drawer" },
+      { id: "command-palette-3d", label: "Command palette" },
+      { id: "tag-input-3d", label: "Tag input" },
+      { id: "number-ticker-3d", label: "Number ticker" },
+    ],
+  },
+  {
     title: "Text & backgrounds",
     items: [
       { id: "flip-words", label: "Flip Words" },

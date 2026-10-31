@@ -62,6 +62,12 @@
   <url><loc>https://depthui.vercel.app/components/stepper</loc><lastmod>2026-10-31</lastmod><priority>0.7</priority></url>
   <url><loc>https://depthui.vercel.app/components/pagination</loc><lastmod>2026-10-31</lastmod><priority>0.7</priority></url>
   <url><loc>https://depthui.vercel.app/components/skeleton</loc><lastmod>2026-10-31</lastmod><priority>0.7</priority></url>
+  <url><loc>https://depthui.vercel.app/components/kanban</loc><lastmod>2026-10-31</lastmod><priority>0.7</priority></url>
+  <url><loc>https://depthui.vercel.app/components/dropzone</loc><lastmod>2026-10-31</lastmod><priority>0.7</priority></url>
+  <url><loc>https://depthui.vercel.app/components/drawer</loc><lastmod>2026-10-31</lastmod><priority>0.7</priority></url>
+  <url><loc>https://depthui.vercel.app/components/command-palette</loc><lastmod>2026-10-31</lastmod><priority>0.7</priority></url>
+  <url><loc>https://depthui.vercel.app/components/tag-input</loc><lastmod>2026-10-31</lastmod><priority>0.7</priority></url>
+  <url><loc>https://depthui.vercel.app/components/number-ticker</loc><lastmod>2026-10-31</lastmod><priority>0.7</priority></url>
   <url><loc>https://depthui.vercel.app/components/flip-words</loc><lastmod>2026-10-31</lastmod><priority>0.7</priority></url>
   <url><loc>https://depthui.vercel.app/components/text-reveal</loc><lastmod>2026-10-31</lastmod><priority>0.7</priority></url>
   <url><loc>https://depthui.vercel.app/components/aurora-background</loc><lastmod>2026-10-31</lastmod><priority>0.7</priority></url>

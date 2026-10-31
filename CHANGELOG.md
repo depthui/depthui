@@ -2,6 +2,10 @@
 
 All notable changes are listed here. The project follows [Semantic Versioning](https://semver.org).
 
+## 0.23.0
+- `Kanban3D`: a board with columns (Not started, Processing, Success, Failed) where cards drag between columns and reorder. Mouse, touch (via the grip) and keyboard (Space, arrows, Esc), with screen reader announcements.
+- Five more app components: `Dropzone3D`, `Drawer3D`, `CommandPalette3D`, `TagInput3D`, `NumberTicker3D`, plus a shared `useOverlay` hook.
+
 ## 0.22.0
 - Every component docs page now has a Props table: name, type, default and a plain description. It is generated from the TypeScript source (`scripts/props.mjs`), so it cannot drift from the code. Every prop now has a short JSDoc comment.
 
