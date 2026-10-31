@@ -8,13 +8,21 @@ import { cn } from "@/lib/utils";
  * glare. Click (or press Enter) and the stub tears off along the perforation.
  */
 export interface Ticket3DProps {
+  /** Airline or heading text at the top of the ticket. */
   title?: string;
+  /** Departure code or city. */
   from?: string;
+  /** Arrival code or city. */
   to?: string;
+  /** Travel date as display text. */
   date?: string;
+  /** Seat number. */
   seat?: string;
+  /** Boarding gate. */
   gate?: string;
+  /** Booking or ticket code shown at the bottom. */
   code?: string;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

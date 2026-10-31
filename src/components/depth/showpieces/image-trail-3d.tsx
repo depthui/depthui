@@ -18,6 +18,7 @@ export interface ImageTrail3DProps {
   pool?: number;
   /** Shown in the middle until the first move. */
   hint?: ReactNode;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

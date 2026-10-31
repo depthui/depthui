@@ -19,6 +19,7 @@ export interface Tunnel3DProps {
   twist?: number;
   /** Content shown in the middle. */
   children?: ReactNode;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

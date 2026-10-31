@@ -18,6 +18,7 @@ const Ctx = createContext<TiltCtx>({ depthScale: 1 });
 
 export interface TiltCardProps
   extends Omit<HTMLMotionProps<"div">, "ref" | "children"> {
+  /** Content shown on the card. */
   children?: ReactNode;
   /** Max tilt in degrees. */
   max?: number;
@@ -27,6 +28,7 @@ export interface TiltCardProps
   glare?: boolean;
   /** Scale multiplier applied to all TiltLayer z offsets. */
   depthScale?: number;
+  /** Extra classes added to the outer perspective wrapper. className styles the card itself. */
   containerClassName?: string;
 }
 

@@ -7,12 +7,17 @@ import { cn } from "@/lib/utils";
  * Arrow keys and buttons navigate; clicking a side card brings it forward.
  */
 export interface Carousel3DProps {
+  /** Cards placed around the ring. */
   items: ReactNode[];
+  /** Width of each card in px. */
   itemWidth?: number;
+  /** Height of each card in px. */
   itemHeight?: number;
   /** Gap multiplier on the ring radius (1 = cards just touch). */
   spread?: number;
+  /** CSS perspective distance in px. Lower values look more dramatic. */
   perspective?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

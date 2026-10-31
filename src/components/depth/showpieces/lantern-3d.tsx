@@ -14,6 +14,7 @@ export interface Lantern3DProps {
   mark?: string;
   /** Paper hue: 0 is red, 40 is amber. */
   hue?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

@@ -12,11 +12,13 @@ export interface FAQItem {
 }
 
 export interface FAQAccordionProps {
+  /** Questions and answers, shown in order. */
   items: FAQItem[];
   /** Let several answers stay open at once. */
   multiple?: boolean;
   /** Index opened first. */
   defaultOpen?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

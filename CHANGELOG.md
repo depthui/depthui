@@ -2,6 +2,9 @@
 
 All notable changes are listed here. The project follows [Semantic Versioning](https://semver.org).
 
+## 0.22.0
+- Every component docs page now has a Props table: name, type, default and a plain description. It is generated from the TypeScript source (`scripts/props.mjs`), so it cannot drift from the code. Every prop now has a short JSDoc comment.
+
 ## 0.21.0
 - Four more drop-in controls: `ProgressBar3D`, `Stepper3D`, `Pagination3D`, `Skeleton3D`.
 

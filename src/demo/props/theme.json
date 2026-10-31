@@ -1,0 +1,1 @@
+[{"component":"ThemeProvider","extends":[],"props":[{"name":"children","type":"ReactNode","required":true,"default":null,"description":"Content that can read and change the theme."}]},{"component":"ThemeToggle","extends":[],"props":[{"name":"className","type":"string","required":false,"default":null,"description":"Extra classes added to the toggle button."}]}]

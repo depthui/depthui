@@ -15,8 +15,11 @@ export interface CardsSectionItem extends ArticleCardProps {
 }
 
 export interface CardsSectionProps {
+  /** Cards to show. Each needs an id and a category used for the filter chips. */
   items: CardsSectionItem[];
+  /** Label of the chip that shows every category. */
   allLabel?: string;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

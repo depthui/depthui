@@ -8,10 +8,13 @@ import { cn } from "@/lib/utils";
  * answer is announced to screen readers.
  */
 export interface EightBall3DProps {
+  /** Possible answers. One is picked at random after each shake. */
   answers?: string[];
   /** Ball diameter in px. */
   size?: number;
+  /** Called with the chosen answer after each shake. */
   onAnswer?: (answer: string) => void;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

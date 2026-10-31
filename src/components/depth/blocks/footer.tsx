@@ -17,17 +17,23 @@ export interface FooterSocial {
 }
 
 export interface FooterProps {
+  /** Logo or name shown at the top left. */
   brand: ReactNode;
+  /** Short text shown under the brand. */
   description?: string;
+  /** Link columns, each with a title and a list of links. */
   columns: FooterColumn[];
+  /** Social icon links shown under the description. */
   socials?: FooterSocial[];
   /** Show the email signup form. */
   newsletter?: boolean;
+  /** Called with the email address when the signup form is submitted. */
   onSubscribe?: (email: string) => void;
   /** Left side of the bottom bar, e.g. a copyright line. */
   bottom?: ReactNode;
   /** Big decorative word under everything. */
   wordmark?: string;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

@@ -22,6 +22,7 @@ export interface DockItem {
 }
 
 export interface Dock3DProps {
+  /** Icons in the dock, each with a label and click handler. */
   items: DockItem[];
   /** Resting icon size in px. */
   baseSize?: number;
@@ -29,6 +30,7 @@ export interface Dock3DProps {
   magnification?: number;
   /** Pointer distance (px) over which magnification fades out. */
   distance?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

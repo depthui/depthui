@@ -13,6 +13,7 @@ export interface Tesseract3DProps {
   hue?: number;
   /** Seconds for one full turn. */
   seconds?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

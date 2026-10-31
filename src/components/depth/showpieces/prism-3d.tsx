@@ -8,11 +8,15 @@ import { cn } from "@/lib/utils";
  * direction instead of unwinding back through the faces.
  */
 export interface Prism3DProps {
+  /** Content of each face of the prism. */
   faces: ReactNode[];
   /** Face width in px. */
   width?: number;
+  /** Face height in px. */
   height?: number;
+  /** Accessible name for each face, in the same order as faces. */
   labels?: string[];
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

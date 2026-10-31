@@ -1,0 +1,1 @@
+[{"component":"TimelineSteps","extends":[],"props":[{"name":"steps","type":"TimelineStep[]","required":true,"default":null,"description":"Steps shown in order along the timeline."},{"name":"className","type":"string","required":false,"default":null,"description":"Extra classes added to the outer element."}]}]

@@ -8,8 +8,11 @@ import { cn } from "@/lib/utils";
  */
 export interface GlowInputProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, "placeholder"> {
+  /** Label text that floats above the field. Also the accessible name. */
   label: string;
+  /** Helper text shown under the field. */
   hint?: string;
+  /** Error message shown under the field. It replaces the hint and turns the border red. */
   error?: string;
 }
 

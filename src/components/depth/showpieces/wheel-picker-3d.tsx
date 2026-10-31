@@ -9,14 +9,19 @@ import { cn } from "@/lib/utils";
  * Works as a controlled (`value`) or uncontrolled (`defaultValue`) input.
  */
 export interface WheelPicker3DProps {
+  /** Values the wheel can pick from. */
   options: string[];
+  /** Selected option when controlled. */
   value?: string;
+  /** Starting option when uncontrolled. */
   defaultValue?: string;
+  /** Called with the selected option whenever it changes. */
   onChange?: (value: string) => void;
   /** Accessible name. */
   label: string;
   /** Row height in px. */
   itemHeight?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

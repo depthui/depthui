@@ -11,12 +11,15 @@ import { cn } from "@/lib/utils";
 export interface FoldPanels3DProps {
   /** The picture, drawn across all panels. Give it a full-bleed background. */
   children: ReactNode;
+  /** Number of panels. */
   panels?: number;
   /** Width of one panel in px. */
   panelWidth?: number;
+  /** Height of the panels in px. */
   height?: number;
   /** Fold angle at fully folded, in degrees. */
   angle?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

@@ -14,10 +14,13 @@ export interface StepperStep {
 }
 
 export interface Stepper3DProps {
+  /** Steps to show, in order. */
   steps: StepperStep[];
   /** Zero-based index of the current step. */
   current: number;
+  /** Called with the step index when a step is clicked. */
   onStepClick?: (index: number) => void;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

@@ -13,6 +13,7 @@ export interface Pinwheel3DProps {
   size?: number;
   /** Four blade colours. */
   colors?: [string, string, string, string];
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

@@ -19,10 +19,13 @@ export interface PhoneChip {
 }
 
 export interface Phone3DProps {
+  /** Content shown on the phone screen. */
   children?: ReactNode;
+  /** Floating items placed in front of the phone. */
   chips?: PhoneChip[];
   /** Width in px. */
   width?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

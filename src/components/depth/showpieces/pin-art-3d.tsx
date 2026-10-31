@@ -9,7 +9,9 @@ import { cn } from "@/lib/utils";
  * transform writes only.
  */
 export interface PinArt3DProps {
+  /** Number of pins per row. */
   cols?: number;
+  /** Number of rows of pins. */
   rows?: number;
   /** Pin spacing in px. */
   gap?: number;
@@ -17,6 +19,7 @@ export interface PinArt3DProps {
   lift?: number;
   /** How wide the pointer's influence is, in px. */
   radius?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

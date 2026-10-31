@@ -8,11 +8,15 @@ import { cn } from "@/lib/utils";
  * lifts toward you. Touch devices get the static, tilted wall.
  */
 export interface GalleryWall3DProps {
+  /** Items placed in the wall, laid out in columns. */
   items: ReactNode[];
+  /** Number of columns in the wall. */
   columns?: number;
   /** Height of the viewing window in px. */
   height?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
+  /** Extra classes added to each item. */
   itemClassName?: string;
 }
 

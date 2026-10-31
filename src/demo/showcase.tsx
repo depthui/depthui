@@ -2,6 +2,7 @@ import { Children, isValidElement, useState, type ReactElement, type ReactNode }
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { CodeBlock } from "./code-block";
+import { PropsTable } from "./props-table";
 
 export interface CodeFile {
   name: string;
@@ -106,6 +107,8 @@ export function Showcase({
           </div>
         )}
       </div>
+
+      <PropsTable files={files} />
     </section>
   );
 }

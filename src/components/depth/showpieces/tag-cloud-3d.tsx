@@ -15,12 +15,15 @@ export interface CloudTag {
 }
 
 export interface TagCloud3DProps {
+  /** Tags to place on the sphere, as strings or objects with a label and optional href. */
   tags: (string | CloudTag)[];
   /** Diameter in px. */
   size?: number;
   /** Idle speed, radians per second. */
   speed?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
+  /** Extra classes added to each tag. */
   tagClassName?: string;
 }
 

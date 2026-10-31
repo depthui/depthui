@@ -8,12 +8,15 @@ import { cn } from "@/lib/utils";
  * letter's content.
  */
 export interface Envelope3DProps {
+  /** Content of the letter inside the envelope. */
   children?: ReactNode;
   /** Width in px. */
   width?: number;
   /** Controlled open state. */
   open?: boolean;
+  /** Called with the new open state whenever it changes. */
   onOpenChange?: (open: boolean) => void;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

@@ -7,12 +7,15 @@ import { cn } from "@/lib/utils";
  * Needs depth-motion.css. Use it twice with `reverse` for opposing rows.
  */
 export interface MarqueeProps {
+  /** Elements to scroll. Each is repeated to fill the track. */
   items: ReactNode[];
   /** Seconds for one full loop. */
   duration?: number;
+  /** Scroll right instead of left. */
   reverse?: boolean;
   /** Gap between items in px. */
   gap?: number;
+  /** Pause the scrolling while the pointer is over the marquee. */
   pauseOnHover?: boolean;
   /** Fade the left and right edges. */
   fade?: boolean;
@@ -21,6 +24,7 @@ export interface MarqueeProps {
    * if your items are narrower than the container.
    */
   repeat?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

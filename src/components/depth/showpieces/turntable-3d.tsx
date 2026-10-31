@@ -8,13 +8,17 @@ import { cn } from "@/lib/utils";
  * swings onto the record when you press play. Needs depth-motion.css.
  */
 export interface Turntable3DProps {
+  /** Track title shown under the record. */
   title?: string;
+  /** Artist name shown under the title. */
   artist?: string;
   /** Controlled playing state. */
   playing?: boolean;
+  /** Called with the new playing state when playback starts or stops. */
   onPlayingChange?: (playing: boolean) => void;
   /** Width in px. */
   size?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

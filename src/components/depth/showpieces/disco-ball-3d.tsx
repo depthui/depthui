@@ -14,6 +14,7 @@ export interface DiscoBall3DProps {
   rows?: number;
   /** Seconds per turn. */
   seconds?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

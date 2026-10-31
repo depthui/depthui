@@ -13,7 +13,9 @@ export interface Room3DProps {
   faces?: ReactNode[];
   /** Viewport width in px. */
   width?: number;
+  /** Viewport height in px. */
   height?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

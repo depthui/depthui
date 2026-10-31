@@ -10,7 +10,9 @@ import { cn } from "@/lib/utils";
 export interface Skeleton3DProps {
   /** Number of text lines. The last one is shorter. */
   lines?: number;
+  /** Render a round placeholder instead of lines, for avatars. */
   circle?: boolean;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

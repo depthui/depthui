@@ -8,12 +8,15 @@ import { cn } from "@/lib/utils";
  * into view. Driven by scroll progress, so it never re-renders.
  */
 export interface ScrollReveal3DProps {
+  /** Content that tilts into place as it scrolls into view. */
   children: ReactNode;
   /** Starting tilt in degrees. */
   from?: number;
   /** Starting scale. */
   fromScale?: number;
+  /** Perspective distance in px. Lower values look more dramatic. */
   perspective?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

@@ -7,11 +7,13 @@ import { cn } from "@/lib/utils";
  * `label` to say what is loading.
  */
 export interface Loader3DProps {
+  /** Animation style: "cube", "rings" or "dots". */
   variant?: "cube" | "rings" | "dots";
   /** Overall size in px. */
   size?: number;
   /** Read out by screen readers. */
   label?: string;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

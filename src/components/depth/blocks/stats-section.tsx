@@ -16,12 +16,17 @@ import { cn } from "@/lib/utils";
  * use anywhere you want a number to count up.
  */
 export interface AnimatedCounterProps {
+  /** Number the counter counts up to. */
   value: number;
+  /** Text placed before the number, such as "$". */
   prefix?: string;
+  /** Text placed after the number, such as "+" or "%". */
   suffix?: string;
+  /** Number of digits shown after the decimal point. */
   decimals?: number;
   /** Seconds. */
   duration?: number;
+  /** Extra classes added to the number element. */
   className?: string;
 }
 
@@ -68,7 +73,9 @@ export interface Stat extends Omit<AnimatedCounterProps, "className"> {
 }
 
 export interface StatsSectionProps {
+  /** The numbers to show, each with a label. */
   stats: Stat[];
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

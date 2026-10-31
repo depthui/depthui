@@ -1,0 +1,1 @@
+[{"component":"Compass3D","extends":[],"props":[{"name":"size","type":"number","required":false,"default":"240","description":"Diameter in px."},{"name":"className","type":"string","required":false,"default":null,"description":"Extra classes added to the outer element."}]}]

@@ -9,10 +9,13 @@ import { cn } from "@/lib/utils";
  * slides to stay centred.
  */
 export interface PageTurnProps {
+  /** Page contents. Pages come in pairs: front and back of each leaf. */
   pages: ReactNode[];
   /** Width of one page in px. */
   pageWidth?: number;
+  /** Height of one page in px. */
   pageHeight?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

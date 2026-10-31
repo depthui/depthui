@@ -9,16 +9,23 @@ import { cn } from "@/lib/utils";
  * chosen star again to clear it. Controlled or uncontrolled.
  */
 export interface Rating3DProps {
+  /** Current rating. Set it to control the component. */
   value?: number;
+  /** Starting rating when uncontrolled. */
   defaultValue?: number;
+  /** Called with the new rating whenever it changes. */
   onValueChange?: (value: number) => void;
+  /** Number of stars. */
   max?: number;
   /** Star size in px. */
   size?: number;
+  /** Show the rating without letting the user change it. */
   readOnly?: boolean;
   /** Allow clicking the chosen star to clear it. */
   allowClear?: boolean;
+  /** Accessible name of the rating group. */
   "aria-label"?: string;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

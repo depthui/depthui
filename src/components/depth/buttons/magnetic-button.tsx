@@ -16,6 +16,7 @@ import { cn } from "@/lib/utils";
  */
 export interface MagneticButtonProps
   extends Omit<HTMLMotionProps<"button">, "children"> {
+  /** Button label or content. */
   children?: ReactNode;
   /** How far the button follows the pointer (0 to 1). */
   strength?: number;

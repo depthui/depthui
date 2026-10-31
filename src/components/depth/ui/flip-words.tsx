@@ -9,9 +9,11 @@ import { cn } from "@/lib/utils";
  * instead of every change.
  */
 export interface FlipWordsProps {
+  /** Words to cycle through, in order. */
   words: string[];
   /** Milliseconds each word stays. */
   interval?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

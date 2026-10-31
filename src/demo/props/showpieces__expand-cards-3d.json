@@ -1,0 +1,1 @@
+[{"component":"ExpandCards3D","extends":[],"props":[{"name":"items","type":"ExpandItem3D[]","required":true,"default":null,"description":"Cards to show. One expands at a time."},{"name":"className","type":"string","required":false,"default":null,"description":"Extra classes added to the outer element."}]}]

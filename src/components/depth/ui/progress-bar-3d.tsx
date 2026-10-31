@@ -9,11 +9,15 @@ import { cn } from "@/lib/utils";
 export interface ProgressBar3DProps {
   /** 0 to max. Omit for indeterminate. */
   value?: number;
+  /** Value at which the bar is full. */
   max?: number;
   /** Text above the bar. Also names it for screen readers. */
   label?: string;
+  /** Show the percentage next to the label. */
   showValue?: boolean;
+  /** Bar thickness: "sm", "md" or "lg". */
   size?: "sm" | "md" | "lg";
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

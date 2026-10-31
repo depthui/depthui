@@ -11,6 +11,7 @@ export interface BeamCardProps extends HTMLAttributes<HTMLDivElement> {
   duration?: number;
   /** Border thickness in px. */
   thickness?: number;
+  /** Extra classes added to the inner content wrapper. */
   contentClassName?: string;
 }
 

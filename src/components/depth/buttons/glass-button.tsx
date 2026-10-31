@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils";
  */
 export interface GlassButtonProps
   extends Omit<HTMLMotionProps<"button">, "children"> {
+  /** Button label or content. */
   children?: ReactNode;
 }
 

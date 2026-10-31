@@ -11,6 +11,7 @@ import { cn } from "@/lib/utils";
 export interface PopUpBook3DProps {
   /** Width of one page in px. */
   pageWidth?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

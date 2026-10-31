@@ -8,10 +8,13 @@ import { cn } from "@/lib/utils";
  * shine that slide across the surface as you move the pointer.
  */
 export interface HoloCardProps {
+  /** Content shown on the card. */
   children?: ReactNode;
+  /** Extra classes added to the outer element. */
   className?: string;
   /** Max tilt in degrees. */
   max?: number;
+  /** Perspective distance in px. Lower is more dramatic. */
   perspective?: number;
 }
 

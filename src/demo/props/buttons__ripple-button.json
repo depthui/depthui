@@ -1,0 +1,1 @@
+[{"component":"RippleButton","extends":["Omit<HTMLMotionProps<\"button\">, \"children\">"],"props":[{"name":"children","type":"ReactNode","required":false,"default":null,"description":"Content shown inside the button."}]}]

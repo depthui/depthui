@@ -10,10 +10,15 @@ import { cn } from "@/lib/utils";
 export interface Doors3DProps {
   /** What is behind the doors. */
   children: ReactNode;
+  /** Width of the doorway in px. */
   width?: number;
+  /** Height of the doorway in px. */
   height?: number;
+  /** Whether the doors are open. Leave out to let hover, focus and click control it. */
   open?: boolean;
+  /** Called with true or false when the doors open or close. */
   onOpenChange?: (open: boolean) => void;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

@@ -14,7 +14,9 @@ export interface Vault3DProps {
   children?: ReactNode;
   /** Size of the safe in px. */
   size?: number;
+  /** Called once the correct code has been entered and the door opens. */
   onOpen?: () => void;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

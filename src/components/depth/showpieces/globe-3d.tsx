@@ -19,9 +19,11 @@ export interface Globe3DProps {
   size?: number;
   /** Degrees per second of idle spin. 0 disables. */
   speed?: number;
+  /** Locations pinned on the globe surface. */
   markers?: GlobeMarker[];
   /** Number of meridian lines. */
   meridians?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

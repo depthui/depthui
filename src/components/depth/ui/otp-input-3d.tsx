@@ -9,9 +9,13 @@ import { cn } from "@/lib/utils";
  * Controlled or uncontrolled; the value is a plain string with no gaps.
  */
 export interface OtpInput3DProps {
+  /** Number of boxes. */
   length?: number;
+  /** Controlled value. Pair it with onValueChange. */
   value?: string;
+  /** Initial value when uncontrolled. */
   defaultValue?: string;
+  /** Called with the current code whenever it changes. */
   onValueChange?: (value: string) => void;
   /** Called once when every box is filled. */
   onComplete?: (value: string) => void;
@@ -19,10 +23,15 @@ export interface OtpInput3DProps {
   numeric?: boolean;
   /** Hide the characters, like a password. */
   mask?: boolean;
+  /** Show the error style. */
   invalid?: boolean;
+  /** Disable all boxes. */
   disabled?: boolean;
+  /** Focus the first box on mount. */
   autoFocus?: boolean;
+  /** Accessible label for the input group. */
   "aria-label"?: string;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

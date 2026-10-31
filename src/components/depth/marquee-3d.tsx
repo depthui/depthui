@@ -7,12 +7,15 @@ import { cn } from "@/lib/utils";
  * Needs depth-motion.css.
  */
 export interface Marquee3DProps {
+  /** Elements to scroll, spread across the columns. */
   items: ReactNode[];
+  /** Number of scrolling columns. */
   columns?: number;
   /** Seconds for one full loop. */
   duration?: number;
   /** Times the column content repeats. Keep it even and tall enough to cover the plane. */
   copies?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

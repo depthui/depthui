@@ -10,15 +10,21 @@ import { cn } from "@/lib/utils";
  * blocks/stats-section (for AnimatedCounter).
  */
 export interface MetricCardProps {
+  /** Name of the metric, shown above the value. */
   label: string;
+  /** Current value of the metric. Counts up when shown. */
   value: number;
+  /** Text before the value, e.g. "$". */
   prefix?: string;
+  /** Text after the value, e.g. "%". */
   suffix?: string;
+  /** Number of digits shown after the decimal point. */
   decimals?: number;
   /** Change versus the previous period, in percent. */
   delta?: number;
   /** Points for the sparkline. At least two. */
   data: number[];
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

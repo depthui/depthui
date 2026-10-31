@@ -1,0 +1,1 @@
+[{"component":"FeatureGrid","extends":[],"props":[{"name":"features","type":"Feature[]","required":true,"default":null,"description":"Features to show, one card each."},{"name":"className","type":"string","required":false,"default":null,"description":"Extra classes added to the outer element."}]}]

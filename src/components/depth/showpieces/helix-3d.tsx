@@ -19,6 +19,7 @@ export interface Helix3DProps {
   seconds?: number;
   /** Twist: degrees between neighbouring rungs. */
   twist?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

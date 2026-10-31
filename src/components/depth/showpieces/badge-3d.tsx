@@ -8,11 +8,15 @@ import { cn } from "@/lib/utils";
  * swings so it reads as a 3D object. Keys: arrow keys nudge it.
  */
 export interface Badge3DProps {
+  /** Content shown on the badge face. */
   children?: ReactNode;
+  /** Badge width in px. */
   width?: number;
+  /** Badge height in px. */
   height?: number;
   /** Lanyard length in px. */
   strap?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

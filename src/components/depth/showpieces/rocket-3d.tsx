@@ -12,6 +12,7 @@ export interface Rocket3DProps {
   size?: number;
   /** Accent colour for the nose, fins and band. */
   color?: string;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

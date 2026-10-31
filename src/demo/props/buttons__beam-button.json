@@ -1,0 +1,1 @@
+[{"component":"BeamButton","extends":["ButtonHTMLAttributes<HTMLButtonElement>"],"props":[{"name":"duration","type":"number","required":false,"default":"3.2","description":"Seconds per lap."},{"name":"thickness","type":"number","required":false,"default":"1.5","description":"Border thickness in px."}]}]

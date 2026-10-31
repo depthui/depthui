@@ -8,17 +8,25 @@ import { cn } from "@/lib/utils";
  * End or PageUp and PageDown. It is a real slider for assistive tech.
  */
 export interface Knob3DProps {
+  /** Current value when controlled. */
   value?: number;
+  /** Starting value when uncontrolled. */
   defaultValue?: number;
+  /** Called with the new value whenever it changes. */
   onChange?: (value: number) => void;
+  /** Lowest allowed value. */
   min?: number;
+  /** Highest allowed value. */
   max?: number;
+  /** Amount the value snaps to and changes by per key press. */
   step?: number;
+  /** Accessible name for the knob. */
   label: string;
   /** Diameter in px. */
   size?: number;
   /** Show the number inside the knob. */
   showValue?: boolean;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

@@ -9,11 +9,13 @@ import { cn } from "@/lib/utils";
  * re-renders.
  */
 export interface DotGlowProps {
+  /** Content shown on top of the dots. */
   children?: ReactNode;
   /** Distance between dots in px. */
   spacing?: number;
   /** Radius of the lit area in px. */
   radius?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

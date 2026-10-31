@@ -8,12 +8,15 @@ import { cn } from "@/lib/utils";
  * It tilts with the pointer and flips with a spring on click, Enter or Space.
  */
 export interface Coin3DProps {
+  /** Content on the front face. */
   front: ReactNode;
+  /** Content on the back face. */
   back?: ReactNode;
   /** Diameter in px. */
   size?: number;
   /** Rim thickness in px. */
   thickness?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

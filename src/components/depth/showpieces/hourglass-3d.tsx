@@ -12,7 +12,9 @@ export interface Hourglass3DProps {
   seconds?: number;
   /** Glass width in px. */
   width?: number;
+  /** Called when the sand has all run through. */
   onFinish?: () => void;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

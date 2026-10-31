@@ -13,9 +13,11 @@ import { useScrollProgress } from "@/hooks/use-scroll-progress";
  * it. Driven by scroll progress, so it never re-renders React.
  */
 export interface TextRevealProps {
+  /** The paragraph to reveal, as plain text. */
   text: string;
   /** Opacity of words that have not been reached yet. */
   dim?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

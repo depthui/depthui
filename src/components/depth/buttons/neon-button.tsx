@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
  * is a blurred layer whose opacity changes, so it never repaints a shadow.
  */
 export interface NeonButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  /** Glow colour: "violet", "cyan" or "pink". */
   tone?: "violet" | "cyan" | "pink";
 }
 

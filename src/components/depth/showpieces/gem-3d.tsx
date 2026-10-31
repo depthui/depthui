@@ -16,6 +16,7 @@ export interface Gem3DProps {
   hue?: number;
   /** Seconds per turn. */
   seconds?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

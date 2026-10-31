@@ -1,0 +1,1 @@
+[{"component":"FeatureTabs","extends":[],"props":[{"name":"tabs","type":"FeatureTab[]","required":true,"default":null,"description":"The features to switch between, in display order."},{"name":"className","type":"string","required":false,"default":null,"description":"Extra classes added to the outer element."}]}]

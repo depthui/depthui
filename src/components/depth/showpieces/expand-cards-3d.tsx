@@ -21,7 +21,9 @@ export interface ExpandItem3D {
 }
 
 export interface ExpandCards3DProps {
+  /** Cards to show. One expands at a time. */
   items: ExpandItem3D[];
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

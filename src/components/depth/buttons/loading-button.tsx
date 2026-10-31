@@ -17,12 +17,17 @@ export type LoadingStatus = "idle" | "loading" | "success" | "error";
 
 export interface LoadingButtonProps
   extends Omit<HTMLMotionProps<"button">, "children" | "onClick"> {
+  /** Label shown while idle. */
   children: ReactNode;
+  /** Label shown while loading. */
   loadingLabel?: ReactNode;
+  /** Label shown after success. */
   successLabel?: ReactNode;
+  /** Label shown after an error. */
   errorLabel?: ReactNode;
   /** Controlled status. Leave it out to let a returned Promise drive it. */
   status?: LoadingStatus;
+  /** Called on click. If it returns a Promise, the button tracks it as loading, success or error. */
   onClick?: (e: MouseEvent<HTMLButtonElement>) => void | Promise<unknown>;
   /** Milliseconds before success or error returns to idle. */
   resetAfter?: number;

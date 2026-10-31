@@ -35,7 +35,12 @@ type ViewTransitionDoc = Document & {
   startViewTransition?: (cb: () => void) => unknown;
 };
 
-export function ThemeProvider({ children }: { children: ReactNode }) {
+export interface ThemeProviderProps {
+  /** Content that can read and change the theme. */
+  children: ReactNode;
+}
+
+export function ThemeProvider({ children }: ThemeProviderProps) {
   const [theme, setThemeState] = useState<Theme>(readInitial);
   const reduced = !!useReducedMotion();
 
@@ -109,7 +114,12 @@ function Moon() {
   );
 }
 
-export function ThemeToggle({ className }: { className?: string }) {
+export interface ThemeToggleProps {
+  /** Extra classes added to the toggle button. */
+  className?: string;
+}
+
+export function ThemeToggle({ className }: ThemeToggleProps) {
   const { theme, toggle } = useTheme();
   const isDark = theme === "dark";
 

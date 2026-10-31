@@ -7,11 +7,15 @@ import { cn } from "@/lib/utils";
  * Enter / arrow keys to send the top card to the back.
  */
 export interface CardDeckProps {
+  /** Cards in the stack, first item on top. */
   cards: ReactNode[];
+  /** Width of each card in px. */
   width?: number;
+  /** Height of each card in px. */
   height?: number;
   /** How many cards are visible behind the top one. */
   visible?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

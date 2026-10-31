@@ -14,9 +14,13 @@ import { cn } from "@/lib/utils";
  * at different depths as the pointer moves across it.
  */
 export interface CTASectionProps {
+  /** Main heading text of the banner. */
   title: ReactNode;
+  /** Supporting text shown under the heading. */
   description?: ReactNode;
+  /** Buttons or links shown in a row below the text. */
   actions?: ReactNode;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

@@ -13,6 +13,7 @@ export interface Saturn3DProps {
   size?: number;
   /** Planet hue, 0 to 360. */
   hue?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

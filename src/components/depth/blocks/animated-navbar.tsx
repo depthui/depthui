@@ -34,10 +34,13 @@ export interface NavbarItem {
 }
 
 export interface AnimatedNavbarProps {
+  /** Brand mark or name shown at the left of the bar. */
   logo: ReactNode;
+  /** Navigation links, optionally with dropdown sub-items. */
   items: NavbarItem[];
   /** Right side: theme toggle, sign in, call to action... */
   actions?: ReactNode;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

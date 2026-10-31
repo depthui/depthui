@@ -14,7 +14,9 @@ export interface AnalogClock3DProps {
   size?: number;
   /** Hours from UTC. Leave out to use the viewer's local time. */
   utcOffset?: number;
+  /** Short text shown on the dial and before the digital time. */
   label?: string;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

@@ -54,9 +54,11 @@ export function TestimonialCard({
 }
 
 export interface TestimonialWallProps {
+  /** Testimonials to scroll across the two rows. */
   items: Testimonial[];
   /** Seconds per loop for the first row; the second row is a little slower. */
   duration?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

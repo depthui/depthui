@@ -1,0 +1,1 @@
+[{"component":"BrutalButton","extends":["ButtonHTMLAttributes<HTMLButtonElement>"],"props":[{"name":"offset","type":"number","required":false,"default":"5","description":"Shadow offset in px."}]}]

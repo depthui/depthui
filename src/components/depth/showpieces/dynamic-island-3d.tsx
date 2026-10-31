@@ -15,11 +15,15 @@ import { cn } from "@/lib/utils";
 export type IslandMode = "idle" | "call" | "timer" | "music";
 
 export interface DynamicIsland3DProps {
+  /** Current mode when controlled: "idle", "call", "timer" or "music". */
   mode?: IslandMode;
+  /** Starting mode when uncontrolled. */
   defaultMode?: IslandMode;
+  /** Called with the new mode whenever it changes. */
   onModeChange?: (mode: IslandMode) => void;
   /** Show the built-in mode switcher below the pill. */
   controls?: boolean;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

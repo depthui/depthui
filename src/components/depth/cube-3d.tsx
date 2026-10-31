@@ -18,8 +18,11 @@ export interface Cube3DProps {
   size?: number;
   /** Degrees per second of idle rotation on Y. 0 disables. */
   speed?: number;
+  /** Perspective distance in px. Lower values look more dramatic. */
   perspective?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
+  /** Extra classes added to each face. */
   faceClassName?: string;
 }
 

@@ -15,10 +15,13 @@ export interface Accordion3DItem {
 }
 
 export interface Accordion3DProps {
+  /** The panels to show, each with an id, title and content. */
   items: Accordion3DItem[];
   /** Let more than one panel stay open. */
   multiple?: boolean;
+  /** Ids of the panels that start open. */
   defaultOpen?: string[];
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

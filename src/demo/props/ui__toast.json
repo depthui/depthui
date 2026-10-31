@@ -1,0 +1,1 @@
+[{"component":"ToastProvider","extends":[],"props":[{"name":"children","type":"ReactNode","required":true,"default":null,"description":"Content that can show toasts."},{"name":"max","type":"number","required":false,"default":"4","description":"Most toasts shown at once. Older ones are dropped."}]}]

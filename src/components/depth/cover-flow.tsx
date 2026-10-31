@@ -7,13 +7,17 @@ import { cn } from "@/lib/utils";
  * the rest fan out and angle away. Click an item or use the arrow keys.
  */
 export interface CoverFlowProps {
+  /** Items shown in the row, one per slide. */
   items: ReactNode[];
+  /** Width of each item in px. */
   itemWidth?: number;
+  /** Height of each item in px. */
   itemHeight?: number;
   /** Horizontal distance between side items in px. */
   spacing?: number;
   /** Index shown first. Defaults to the middle. */
   initial?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

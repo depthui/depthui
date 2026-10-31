@@ -12,7 +12,9 @@ import { cn } from "@/lib/utils";
 export interface SnowGlobe3DProps {
   /** Globe diameter in px. */
   size?: number;
+  /** Number of snowflakes falling inside the globe. */
   flakes?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

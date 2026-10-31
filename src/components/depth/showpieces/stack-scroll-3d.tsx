@@ -17,7 +17,9 @@ export interface StackScroll3DProps {
   shrink?: number;
   /** Gap between the stuck cards, in px. */
   step?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
+  /** Extra classes added to every card. */
   cardClassName?: string;
 }
 

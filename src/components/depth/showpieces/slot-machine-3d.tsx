@@ -7,11 +7,15 @@ import { cn } from "@/lib/utils";
  * random symbol one after another. Call `onResult` to react to a win.
  */
 export interface SlotMachine3DProps {
+  /** Symbols that appear on each reel. */
   symbols?: string[];
+  /** Number of reels. */
   reels?: number;
   /** Height of one symbol in px. */
   itemHeight?: number;
+  /** Called after a spin with the final symbols and whether all of them match. */
   onResult?: (result: string[], won: boolean) => void;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

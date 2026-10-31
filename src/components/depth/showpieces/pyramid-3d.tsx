@@ -14,6 +14,7 @@ export interface Pyramid3DProps {
   size?: number;
   /** Idle turn speed in degrees per second. */
   speed?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

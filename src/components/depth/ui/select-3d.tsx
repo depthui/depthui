@@ -15,16 +15,23 @@ export interface SelectOption {
 }
 
 export interface Select3DProps {
+  /** Choices in the dropdown, each with a value and label. */
   options: SelectOption[];
+  /** Selected value when controlled. */
   value?: string;
+  /** Starting value when uncontrolled. */
   defaultValue?: string;
+  /** Called with the new value when an option is picked. */
   onValueChange?: (value: string) => void;
+  /** Text shown when nothing is selected. */
   placeholder?: string;
+  /** Turns off interaction when true. */
   disabled?: boolean;
   /** When set, a hidden input is rendered so the value posts with a form. */
   name?: string;
   /** Required: names the select for screen readers. */
   "aria-label": string;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

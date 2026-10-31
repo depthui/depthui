@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
  * It rotates with the pointer so the thickness is visible.
  */
 export interface Text3DProps {
+  /** Text to draw. */
   text: string;
   /** Number of stacked layers. More = smoother, but more DOM. */
   layers?: number;
@@ -14,6 +15,7 @@ export interface Text3DProps {
   spacing?: number;
   /** Max rotation in degrees. */
   max?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

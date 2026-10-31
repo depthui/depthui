@@ -7,13 +7,17 @@ import { cn } from "@/lib/utils";
  * lifts off the surface, leaving its shadow behind.
  */
 export interface IsometricGridProps {
+  /** Content of each tile, filled row by row. */
   items: ReactNode[];
+  /** Number of tiles per row. */
   columns?: number;
   /** Tile edge in px. */
   size?: number;
+  /** Space between tiles in px. */
   gap?: number;
   /** How far a tile lifts, in px. */
   lift?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

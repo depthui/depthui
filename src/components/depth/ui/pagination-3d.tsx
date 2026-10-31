@@ -9,12 +9,17 @@ import { cn } from "@/lib/utils";
  * Controlled or uncontrolled.
  */
 export interface Pagination3DProps {
+  /** Total number of pages. */
   total: number;
+  /** Controlled current page, starting at 1. Pair it with onPageChange. */
   page?: number;
+  /** Initial page when uncontrolled. */
   defaultPage?: number;
+  /** Called with the new page number when it changes. */
   onPageChange?: (page: number) => void;
   /** Pages shown either side of the current one. */
   siblings?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

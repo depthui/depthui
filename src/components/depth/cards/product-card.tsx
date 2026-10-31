@@ -15,16 +15,25 @@ export interface ProductColor {
 }
 
 export interface ProductCardProps {
+  /** Product name. */
   name: string;
+  /** Price as a number, shown with the currency symbol. */
   price: number;
+  /** Currency symbol placed before the price. */
   currency?: string;
+  /** Short text under the product name. */
   description?: string;
   /** 0 to 5. */
   rating?: number;
+  /** Color options shown as swatches the user can pick. */
   colors?: ProductColor[];
+  /** Small label on the card, such as "New" or "Sale". */
   badge?: string;
+  /** Product picture or any element shown at the top. */
   image?: ReactNode;
+  /** Called when the add button is clicked, with the selected color if any. */
   onAdd?: (color?: ProductColor) => void;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

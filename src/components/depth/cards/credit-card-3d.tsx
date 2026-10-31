@@ -11,12 +11,17 @@ import { cn } from "@/lib/utils";
 export interface CreditCard3DProps {
   /** Shown as given, e.g. "•••• •••• •••• 4821". */
   number: string;
+  /** Cardholder name printed on the card. */
   name: string;
+  /** Expiry date as text, e.g. "08/28". */
   expires: string;
+  /** Security code shown on the back of the card. */
   cvv?: string;
+  /** Issuer name shown on the card. */
   brand?: string;
   /** Card width in px. Height follows the standard card ratio. */
   width?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

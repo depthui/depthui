@@ -1,0 +1,1 @@
+[{"component":"Saturn3D","extends":[],"props":[{"name":"size","type":"number","required":false,"default":"300","description":"Overall width in px."},{"name":"hue","type":"number","required":false,"default":"36","description":"Planet hue, 0 to 360."},{"name":"className","type":"string","required":false,"default":null,"description":"Extra classes added to the outer element."}]}]

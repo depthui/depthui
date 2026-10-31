@@ -15,8 +15,11 @@ export interface Tab3DItem {
 }
 
 export interface Tabs3DProps {
+  /** Tabs to show, each with an id, label and content. */
   tabs: Tab3DItem[];
+  /** Id of the tab open at first. Defaults to the first tab. */
   defaultTab?: string;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

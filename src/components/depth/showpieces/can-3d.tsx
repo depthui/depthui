@@ -17,6 +17,7 @@ export interface Can3DProps {
   width?: number;
   /** Seconds per turn. */
   seconds?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

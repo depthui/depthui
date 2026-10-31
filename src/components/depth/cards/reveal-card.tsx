@@ -6,12 +6,15 @@ import { cn } from "@/lib/utils";
  * focus or tap, a panel slides up with the details. Only `transform` moves.
  */
 export interface RevealCardProps {
+  /** Heading shown on the card. */
   title: string;
+  /** Small label shown above the title. */
   eyebrow?: string;
   /** The details shown when the panel opens. */
   children?: ReactNode;
   /** Full-bleed background. Defaults to a gradient. */
   background?: ReactNode;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

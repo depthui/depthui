@@ -10,11 +10,15 @@ import { cn } from "@/lib/utils";
 export type TooltipSide = "top" | "bottom" | "left" | "right";
 
 export interface Tooltip3DProps {
+  /** Content shown in the bubble. */
   content: ReactNode;
+  /** The trigger element the tooltip is attached to. */
   children: ReactNode;
+  /** Which side of the trigger the bubble appears on. */
   side?: TooltipSide;
   /** Hover delay in ms. */
   delay?: number;
+  /** Extra classes added to the bubble. */
   className?: string;
 }
 

@@ -13,8 +13,11 @@ export interface BookCardProps {
   left?: ReactNode;
   /** Revealed right page. */
   right: ReactNode;
+  /** Width of the closed book in px. */
   width?: number;
+  /** Height of the book in px. */
   height?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

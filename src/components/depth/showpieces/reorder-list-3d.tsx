@@ -15,8 +15,11 @@ export interface ReorderItem3D {
 }
 
 export interface ReorderList3DProps {
+  /** The rows to show. Each needs a unique id, a title and an optional subtitle. */
   items: ReorderItem3D[];
+  /** Called with the new order of items after a row moves. */
   onChange?: (items: ReorderItem3D[]) => void;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

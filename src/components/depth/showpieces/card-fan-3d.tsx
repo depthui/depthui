@@ -8,14 +8,19 @@ import { cn } from "@/lib/utils";
  * button, so the whole fan works with a keyboard (Tab or arrow keys).
  */
 export interface CardFan3DProps {
+  /** Content of each card in the fan. */
   cards: ReactNode[];
   /** Card width in px. */
   width?: number;
+  /** Card height in px. */
   height?: number;
   /** Total angle of the fan in degrees. */
   spread?: number;
+  /** Called with the index of the card the user picks. */
   onSelect?: (index: number) => void;
+  /** Extra classes added to the outer element. */
   className?: string;
+  /** Extra classes added to each card. */
   cardClassName?: string;
 }
 

@@ -8,14 +8,19 @@ import { cn } from "@/lib/utils";
  * with the keyboard and screen readers. Controlled or uncontrolled.
  */
 export interface Switch3DProps {
+  /** Controlled on/off state. */
   checked?: boolean;
+  /** Initial on/off state when uncontrolled. */
   defaultChecked?: boolean;
+  /** Called with the new on/off state whenever it changes. */
   onCheckedChange?: (checked: boolean) => void;
+  /** Stops the user from toggling the switch. */
   disabled?: boolean;
   /** Visible label. Clicking it toggles the switch. */
   label?: ReactNode;
   /** Required when there is no visible label. */
   "aria-label"?: string;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

@@ -22,10 +22,13 @@ export interface PricingPlan {
 }
 
 export interface PricingTableProps {
+  /** Pricing plans to show, one card each. */
   plans: PricingPlan[];
+  /** Currency symbol put before prices. */
   currency?: string;
   /** Shown on the yearly option, e.g. "Save 20%". */
   savingsLabel?: string;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

@@ -1,0 +1,1 @@
+[{"component":"GlassButton","extends":["Omit<HTMLMotionProps<\"button\">, \"children\">"],"props":[{"name":"children","type":"ReactNode","required":false,"default":null,"description":"Button label or content."}]}]

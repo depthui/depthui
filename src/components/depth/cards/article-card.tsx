@@ -6,17 +6,25 @@ import { cn } from "@/lib/utils";
  * in on hover. Renders as a link. Pass `cover` to use your own image.
  */
 export interface ArticleCardProps {
+  /** Article headline. */
   title: string;
+  /** Short summary shown under the title. */
   excerpt?: string;
+  /** Category label shown over the cover. */
   category?: string;
+  /** Author name shown in the footer. */
   author?: string;
+  /** Publish date as display text. It is shown as given. */
   date?: string;
+  /** Reading time as display text, such as "5 min read". */
   readTime?: string;
+  /** URL the card links to. */
   href?: string;
   /** Replaces the built-in gradient cover. Should fill its box. */
   cover?: ReactNode;
   /** Picks the gradient when no cover is given. */
   tone?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

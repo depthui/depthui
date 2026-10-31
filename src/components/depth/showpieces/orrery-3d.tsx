@@ -14,6 +14,7 @@ export interface Orrery3DProps {
   speed?: number;
   /** Tilt of the orbit plane in degrees. */
   tilt?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

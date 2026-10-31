@@ -15,6 +15,7 @@ export interface Laptop3DProps {
   width?: number;
   /** Force it open or closed. Leave undefined to open with scroll. */
   open?: boolean;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

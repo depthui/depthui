@@ -12,14 +12,21 @@ export interface ProfileStat {
 }
 
 export interface ProfileCardProps {
+  /** Person's display name. */
   name: string;
+  /** Job title or short description under the name. */
   role: string;
+  /** Username shown next to the name, e.g. "@akram". */
   handle?: string;
+  /** Short paragraph about the person. */
   bio?: string;
   /** Shown in the avatar. Defaults to the initials of `name`. */
   initials?: string;
+  /** Label and value pairs shown in a row, such as followers. */
   stats?: ProfileStat[];
+  /** Called with true or false when the follow button is toggled. */
   onFollowChange?: (following: boolean) => void;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

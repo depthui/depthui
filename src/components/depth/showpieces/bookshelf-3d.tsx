@@ -19,9 +19,11 @@ export interface Book3DItem {
 }
 
 export interface Bookshelf3DProps {
+  /** Books to place on the shelf. */
   books: Book3DItem[];
   /** Book depth (cover width) in px. */
   depth?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

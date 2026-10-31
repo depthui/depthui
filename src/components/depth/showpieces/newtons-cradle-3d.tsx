@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
  * Rotations are written straight to the DOM each frame (no React renders).
  */
 export interface NewtonsCradle3DProps {
+  /** Number of balls. */
   balls?: number;
   /** Ball diameter in px. */
   ball?: number;
@@ -15,6 +16,7 @@ export interface NewtonsCradle3DProps {
   length?: number;
   /** Peak swing angle in degrees. */
   amplitude?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

@@ -48,6 +48,7 @@ export function ToastProvider({
   children,
   max = 4,
 }: {
+  /** Content that can show toasts. */
   children: ReactNode;
   /** Most toasts shown at once. Older ones are dropped. */
   max?: number;

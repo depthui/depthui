@@ -15,7 +15,9 @@ export interface ProgressRingProps {
   size?: number;
   /** Ring thickness in px. */
   thickness?: number;
+  /** Small text shown under the value in the centre. */
   label?: ReactNode;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

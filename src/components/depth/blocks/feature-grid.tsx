@@ -17,7 +17,9 @@ export interface Feature {
 }
 
 export interface FeatureGridProps {
+  /** Features to show, one card each. */
   features: Feature[];
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

@@ -12,7 +12,9 @@ export interface GitHubStarButtonProps {
   repo: string;
   /** Hide the count and show only the label. */
   showCount?: boolean;
+  /** Text shown on the button. */
   label?: string;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

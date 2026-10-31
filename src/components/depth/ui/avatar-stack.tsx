@@ -11,11 +11,13 @@ export interface AvatarPerson {
 }
 
 export interface AvatarStackProps {
+  /** People to show, each with a name and optional image src. */
   people: AvatarPerson[];
   /** Most avatars shown before "+N". */
   max?: number;
   /** Avatar diameter in px. */
   size?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

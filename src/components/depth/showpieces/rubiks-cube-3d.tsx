@@ -13,6 +13,7 @@ export interface RubiksCube3DProps {
   size?: number;
   /** Seconds per layer turn when scrambling. */
   turnSeconds?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

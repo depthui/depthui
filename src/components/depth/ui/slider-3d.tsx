@@ -9,18 +9,27 @@ import { cn } from "@/lib/utils";
  * negligible; the fill uses a transform.)
  */
 export interface Slider3DProps {
+  /** Controlled value. */
   value?: number;
+  /** Initial value when uncontrolled. */
   defaultValue?: number;
+  /** Called with the new value whenever it changes. */
   onValueChange?: (value: number) => void;
+  /** Smallest allowed value. */
   min?: number;
+  /** Largest allowed value. */
   max?: number;
+  /** Amount the value changes by per step. */
   step?: number;
+  /** Stops the user from changing the slider. */
   disabled?: boolean;
   /** Show the value bubble while dragging or focused. */
   showValue?: boolean;
+  /** Turns the value into the text shown in the bubble. */
   formatValue?: (value: number) => string;
   /** Required: names the slider for screen readers. */
   "aria-label": string;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

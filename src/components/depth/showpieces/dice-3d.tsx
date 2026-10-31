@@ -14,6 +14,7 @@ export interface Dice3DProps {
   onRoll?: (value: number) => void;
   /** Starting face, 1 to 6. */
   initial?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

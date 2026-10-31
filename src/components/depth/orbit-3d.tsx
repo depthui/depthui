@@ -15,10 +15,13 @@ export interface OrbitRing {
 }
 
 export interface Orbit3DProps {
+  /** Content shown in the middle of the orbits. */
   center?: ReactNode;
+  /** Rings to draw, each with a radius in px and its own items. */
   rings: OrbitRing[];
   /** Tilt of the orbital plane in degrees. */
   tilt?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

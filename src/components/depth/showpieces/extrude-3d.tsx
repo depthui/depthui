@@ -10,6 +10,7 @@ import { cn } from "@/lib/utils";
  * The extra copies are hidden from screen readers.
  */
 export interface Extrude3DProps {
+  /** Text, SVG or icon to extrude. It should draw with currentColor. */
   children: ReactNode;
   /** Total thickness in px. */
   depth?: number;
@@ -21,6 +22,7 @@ export interface Extrude3DProps {
   sideColor?: string;
   /** Maximum idle sway in degrees. 0 disables. */
   sway?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

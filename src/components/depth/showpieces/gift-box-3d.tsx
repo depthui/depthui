@@ -13,8 +13,11 @@ export interface GiftBox3DProps {
   size?: number;
   /** Box and ribbon colours. */
   colors?: [string, string];
+  /** Controlled open state. Leave unset to let the box manage itself. */
   open?: boolean;
+  /** Called with the new open state when the box opens or closes. */
   onOpenChange?: (open: boolean) => void;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

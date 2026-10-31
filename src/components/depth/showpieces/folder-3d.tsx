@@ -14,9 +14,11 @@ export interface FolderPaper {
 export interface Folder3DProps {
   /** Up to three papers. */
   papers?: FolderPaper[];
+  /** Text printed on the folder front. */
   label?: string;
   /** Width in px. */
   width?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

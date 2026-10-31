@@ -17,7 +17,9 @@ export interface FeatureTab {
 }
 
 export interface FeatureTabsProps {
+  /** The features to switch between, in display order. */
   tabs: FeatureTab[];
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

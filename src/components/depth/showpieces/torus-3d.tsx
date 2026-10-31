@@ -16,6 +16,7 @@ export interface Torus3DProps {
   tube?: number;
   /** Seconds per tumble. */
   seconds?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

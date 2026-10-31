@@ -11,6 +11,7 @@ export interface Gyroscope3DProps {
   size?: number;
   /** Seconds per turn of the outer ring. Inner rings run faster. */
   seconds?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

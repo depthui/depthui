@@ -1,0 +1,1 @@
+[{"component":"NeonButton","extends":["ButtonHTMLAttributes<HTMLButtonElement>"],"props":[{"name":"tone","type":"\"violet\" | \"cyan\" | \"pink\"","required":false,"default":"\"violet\"","description":"Glow colour: \"violet\", \"cyan\" or \"pink\"."}]}]

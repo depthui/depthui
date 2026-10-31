@@ -10,6 +10,7 @@ import { cn } from "@/lib/utils";
 export interface Compass3DProps {
   /** Diameter in px. */
   size?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

@@ -9,11 +9,13 @@ import { cn } from "@/lib/utils";
  */
 export interface Button3DProps
   extends Omit<HTMLMotionProps<"button">, "children"> {
+  /** Content shown inside the button. */
   children?: ReactNode;
   /** Extrusion height in px. */
   depth?: number;
   /** Max lean in degrees. */
   max?: number;
+  /** Colour style: "accent" is filled with the accent colour, "neutral" is a bordered surface. */
   variant?: "accent" | "neutral";
 }
 

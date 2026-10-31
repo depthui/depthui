@@ -16,12 +16,15 @@ import { cn } from "@/lib/utils";
  * focus, and it holds still under prefers-reduced-motion.
  */
 export interface TextCylinder3DProps {
+  /** Words printed around the cylinder, one per row. */
   words: string[];
   /** Height of one row in px. */
   itemHeight?: number;
   /** Degrees per second. 0 disables. */
   speed?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
+  /** Extra classes added to each word. */
   wordClassName?: string;
 }
 

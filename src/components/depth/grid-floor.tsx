@@ -11,6 +11,7 @@ export interface GridFloorProps {
   cell?: number;
   /** Floor angle in degrees. Higher = flatter. */
   tilt?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
   /** Content drawn above the floor. */
   children?: ReactNode;

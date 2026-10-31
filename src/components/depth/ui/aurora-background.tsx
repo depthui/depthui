@@ -7,7 +7,9 @@ import { cn } from "@/lib/utils";
  * depth-motion.css. Stops moving for people who prefer reduced motion.
  */
 export interface AuroraBackgroundProps {
+  /** Content shown on top of the background. */
   children?: ReactNode;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

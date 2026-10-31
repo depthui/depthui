@@ -1,0 +1,1 @@
+[{"component":"AuroraBackground","extends":[],"props":[{"name":"children","type":"ReactNode","required":false,"default":null,"description":"Content shown on top of the background."},{"name":"className","type":"string","required":false,"default":null,"description":"Extra classes added to the outer element."}]}]

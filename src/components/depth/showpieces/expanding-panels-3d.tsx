@@ -19,10 +19,13 @@ export interface ExpandingPanel {
 }
 
 export interface ExpandingPanels3DProps {
+  /** The panels to show, each with a title and optional content. */
   panels: ExpandingPanel[];
+  /** Index of the panel that starts expanded. */
   defaultActive?: number;
   /** Height in px. */
   height?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

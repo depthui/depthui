@@ -1,0 +1,1 @@
+[{"component":"SpotlightCard","extends":["HTMLAttributes<HTMLDivElement>"],"props":[{"name":"radius","type":"number","required":false,"default":"260","description":"Radius of the spotlight in px."}]}]

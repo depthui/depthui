@@ -16,10 +16,13 @@ export interface StackNotification {
 }
 
 export interface NotificationStack3DProps {
+  /** Notifications to show, stacked in depth. */
   items: StackNotification[];
+  /** Called with the id of a notification when the user dismisses it. */
   onDismiss?: (id: string) => void;
   /** Height of one notification in px. */
   itemHeight?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

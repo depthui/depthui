@@ -9,13 +9,19 @@ import { cn } from "@/lib/utils";
  * locked while it is open, and focus returns to what opened it.
  */
 export interface Modal3DProps {
+  /** Whether the modal is visible. */
   open: boolean;
+  /** Called when the user asks to close the modal. */
   onClose: () => void;
+  /** Heading of the modal. Also names it for screen readers. */
   title: string;
+  /** Short text shown under the title. */
   description?: string;
+  /** Content shown in the body of the modal. */
   children?: ReactNode;
   /** Buttons row shown under the content. */
   footer?: ReactNode;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

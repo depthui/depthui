@@ -13,10 +13,13 @@ export interface PeelCardProps {
   children: ReactNode;
   /** What is hidden underneath. */
   reveal: ReactNode;
+  /** Width of the card in px. */
   width?: number;
+  /** Height of the card in px. */
   height?: number;
   /** How far the corner peels, in px. */
   peel?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

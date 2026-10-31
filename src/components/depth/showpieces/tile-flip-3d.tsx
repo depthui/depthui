@@ -8,14 +8,21 @@ import { cn } from "@/lib/utils";
  * flip back. Each tile is a plain transform, so it stays smooth.
  */
 export interface TileFlip3DProps {
+  /** Content shown on the front side of the tiles. */
   front: ReactNode;
+  /** Content shown on the back side of the tiles. */
   back: ReactNode;
+  /** Number of tile columns. */
   cols?: number;
+  /** Number of tile rows. */
   rows?: number;
+  /** Total width in px. */
   width?: number;
+  /** Total height in px. */
   height?: number;
   /** Ripple speed: seconds of delay per tile of distance. */
   stagger?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

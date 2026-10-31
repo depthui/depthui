@@ -14,7 +14,9 @@ export interface TimelineStep {
 }
 
 export interface TimelineStepsProps {
+  /** Steps shown in order along the timeline. */
   steps: TimelineStep[];
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

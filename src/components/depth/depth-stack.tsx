@@ -23,12 +23,15 @@ interface StackCtx {
 const Ctx = createContext<StackCtx | null>(null);
 
 export interface DepthStackProps {
+  /** DepthLayer elements to stack. */
   children: ReactNode;
   /** Max layer shift in px at depth = 1. */
   strength?: number;
   /** Tilt of the whole stack in degrees. */
   tilt?: number;
+  /** CSS perspective distance in px. Lower values look more dramatic. */
   perspective?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 
@@ -80,8 +83,11 @@ export function DepthStack({
 }
 
 export interface DepthLayerProps {
+  /** How far the layer sits from the back, from 0 to 1. Higher moves more. */
   depth?: number;
+  /** Content shown in this layer. */
   children?: ReactNode;
+  /** Extra classes added to the layer. */
   className?: string;
 }
 

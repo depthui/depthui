@@ -9,19 +9,27 @@ import { cn } from "@/lib/utils";
  * (indeterminate) state. Controlled or uncontrolled.
  */
 export interface Checkbox3DProps {
+  /** Controlled checked state. */
   checked?: boolean;
+  /** Initial checked state when uncontrolled. */
   defaultChecked?: boolean;
+  /** Called with the new checked state whenever it changes. */
   onCheckedChange?: (checked: boolean) => void;
   /** Show the mixed state (a dash). It clears as soon as the user clicks. */
   indeterminate?: boolean;
+  /** Stops the user from changing the checkbox. */
   disabled?: boolean;
+  /** Visible label shown next to the checkbox. */
   label?: ReactNode;
+  /** Smaller helper text shown under the label. */
   description?: ReactNode;
   /** When set, a hidden input is rendered so the value posts with a form. */
   name?: string;
+  /** Value posted with the form when checked. Used with name. */
   value?: string;
   /** Required when there is no visible label. */
   "aria-label"?: string;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

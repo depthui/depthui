@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
  */
 export interface RollButtonProps
   extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children"> {
+  /** Button label. Must be a plain string, since each letter is animated. */
   children: string;
   /** Delay between letters in ms. */
   stagger?: number;

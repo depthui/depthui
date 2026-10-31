@@ -16,6 +16,7 @@ export interface BarDatum {
 }
 
 export interface BarChart3DProps {
+  /** Bars to draw, each with a label and a number. */
   data: BarDatum[];
   /** Plot height in px. */
   height?: number;
@@ -23,6 +24,7 @@ export interface BarChart3DProps {
   depth?: number;
   /** Format the value label. */
   format?: (v: number) => string;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

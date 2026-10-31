@@ -16,7 +16,9 @@ export interface LayerStackProps {
   gap?: number;
   /** Z distance between layers when exploded. */
   spread?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
+  /** Extra classes added to each layer. */
   layerClassName?: string;
 }
 

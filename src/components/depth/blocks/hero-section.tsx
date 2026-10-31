@@ -9,12 +9,17 @@ import { cn } from "@/lib/utils";
  * Put <HeroFloat> elements inside `visual` to float chips above the surface.
  */
 export interface HeroSectionProps {
+  /** Small chip shown above the headline. */
   badge?: ReactNode;
+  /** Main headline text. */
   title: ReactNode;
+  /** Supporting text shown under the headline. */
   description?: ReactNode;
+  /** Buttons or links shown in a row below the text. */
   actions?: ReactNode;
   /** Large visual shown under the text (a screenshot, a mock window, ...). */
   visual?: ReactNode;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 
@@ -133,9 +138,13 @@ export function HeroFloat({
   className,
   children,
 }: {
+  /** Height above the visual surface in px. */
   z?: number;
+  /** Seconds before the float animation starts. */
   delay?: number;
+  /** Extra classes added to the element. Use them to position the chip. */
   className?: string;
+  /** Content shown inside the floating element. */
   children: ReactNode;
 }) {
   return (

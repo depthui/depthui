@@ -7,12 +7,19 @@ import { cn } from "@/lib/utils";
  * tap or Enter/Space (touch + keyboard).
  */
 export interface FlipCardProps {
+  /** Content on the front face. */
   front: ReactNode;
+  /** Content on the back face. */
   back: ReactNode;
+  /** Flip direction: "y" turns sideways, "x" turns top to bottom. */
   axis?: "x" | "y";
+  /** What flips the card: "hover" or "click". */
   trigger?: "hover" | "click";
+  /** CSS perspective distance in px. Lower values look more dramatic. */
   perspective?: number;
+  /** Extra classes added to the outer element. */
   className?: string;
+  /** Extra classes added to both faces. */
   faceClassName?: string;
 }
 

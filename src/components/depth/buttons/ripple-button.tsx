@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
  */
 export interface RippleButtonProps
   extends Omit<HTMLMotionProps<"button">, "children"> {
+  /** Content shown inside the button. */
   children?: ReactNode;
 }
 

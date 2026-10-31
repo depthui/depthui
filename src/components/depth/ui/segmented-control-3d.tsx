@@ -15,15 +15,21 @@ export interface SegmentedOption<T extends string = string> {
 }
 
 export interface SegmentedControl3DProps<T extends string = string> {
+  /** The choices to show, each with a value, label and optional disabled flag. */
   options: SegmentedOption<T>[];
+  /** Selected option value. Set it to control the component. */
   value?: T;
+  /** Option selected at first when uncontrolled. Defaults to the first enabled option. */
   defaultValue?: T;
+  /** Called with the new option value whenever the choice changes. */
   onValueChange?: (value: T) => void;
+  /** Control height and text size: "sm", "md" or "lg". */
   size?: "sm" | "md" | "lg";
   /** Stretch to the full width and share it equally. */
   fullWidth?: boolean;
   /** Required: names the group for screen readers. */
   "aria-label": string;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

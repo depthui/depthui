@@ -14,15 +14,19 @@ export interface RadialMenuItem {
 }
 
 export interface RadialMenu3DProps {
+  /** The actions to fan out, each with a label, icon and optional onSelect. */
   items: RadialMenuItem[];
   /** Distance from the centre button in px. */
   radius?: number;
   /** Arc in degrees. 0 is right, -90 is up. Defaults to the upper half. */
   startAngle?: number;
+  /** Angle in degrees where the arc ends. 0 is right, -90 is up. */
   endAngle?: number;
   /** Content of the centre button. */
   trigger?: ReactNode;
+  /** Accessible name of the centre button. */
   label?: string;
+  /** Extra classes added to the outer element. */
   className?: string;
 }
 

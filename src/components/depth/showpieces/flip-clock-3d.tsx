@@ -13,7 +13,9 @@ export interface FlipClock3DProps {
   value?: string;
   /** Hide seconds when showing the current time. */
   hideSeconds?: boolean;
+  /** Extra classes added to the outer element. */
   className?: string;
+  /** Extra classes added to each flip tile. */
   tileClassName?: string;
 }
 
