@@ -1,6 +1,6 @@
 {
   "name": "depth-ui",
-  "version": "0.23.0",
+  "version": "0.23.1",
   "private": true,
   "description": "Copy-paste 3D React components built on Tailwind CSS v4 and Framer Motion. CSS transforms, no WebGL.",
   "license": "MIT",
@@ -37,7 +37,7 @@
   "scripts": {
     "dev": "vite",
     "prebuild": "node scripts/sitemap.mjs && node scripts/props.mjs",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && node scripts/prerender.mjs",
     "typecheck": "tsc -b",
     "preview": "vite preview"
   },

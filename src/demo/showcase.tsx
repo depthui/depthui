@@ -41,7 +41,7 @@ export function Showcase({
 
   return (
     <section id={id} className="scroll-mt-24 py-10">
-      <h2 className="text-2xl font-semibold tracking-tight">{title}</h2>
+      <h1 className="text-2xl font-semibold tracking-tight">{title}</h1>
       <p className="mt-1 max-w-xl text-depth-muted">{blurb}</p>
 
       <div

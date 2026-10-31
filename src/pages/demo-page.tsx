@@ -55,7 +55,7 @@ import {
   TimelineSteps,
   type NavbarItem,
 } from "@/components/depth";
-import { REPO } from "@/lib/site";
+import { REPO, VERSION } from "@/lib/site";
 import { LazyMount } from "@/demo/lazy-mount";
 import { KanbanDemo } from "@/demo/kanban-demo";
 import {
@@ -170,11 +170,12 @@ export default function DemoPage() {
           <HeroSection
             badge={
               <span className="rounded-full border border-depth-border bg-depth-surface px-3 py-1 font-mono text-xs text-depth-muted">
-                <span className="text-depth-accent">v0.5</span> · open source
+                <span className="text-depth-accent">v{VERSION}</span> · open source
               </span>
             }
             title={
               <>
+                <span className="sr-only">Depth UI: free copy-paste 3D React components. </span>
                 Build <FlipWords words={["deeper", "faster", "calmer", "bolder"]} className="text-depth-accent" />
                 <br />
                 interfaces with{" "}
@@ -183,7 +184,7 @@ export default function DemoPage() {
                 </span>
               </>
             }
-            description="Copy-paste React components in CSS 3D. No WebGL, no heavy runtime, light and dark themes built in."
+            description="Free, open-source, copy-paste 3D React components built with CSS 3D, Tailwind CSS and Framer Motion. No WebGL, no heavy runtime, light and dark themes built in."
             actions={
               <>
                 <ShimmerButton onClick={() => navigate("/components")}>Browse components</ShimmerButton>

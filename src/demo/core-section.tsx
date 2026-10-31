@@ -125,7 +125,7 @@ const chip = (t: string, c: string) => (
 function Intro({ id, title, children }: { id: string; title: string; children: ReactNode }) {
   return (
     <section id={id} className="scroll-mt-24 py-10">
-      <h2 className="text-2xl font-semibold tracking-tight">{title}</h2>
+      <h1 className="text-2xl font-semibold tracking-tight">{title}</h1>
       <div className="mt-3 space-y-4 text-depth-muted">{children}</div>
     </section>
   );

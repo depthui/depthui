@@ -2,6 +2,10 @@
 
 All notable changes are listed here. The project follows [Semantic Versioning](https://semver.org).
 
+## 0.23.1
+- SEO: every route is now pre-rendered at build time (`scripts/prerender.mjs`) with its own title, description, canonical link, JSON-LD, readable text and internal links, so crawlers and link previews do not depend on JavaScript.
+- Every page has a single `<h1>`. Guide pages get their own titles. Added `llms.txt`.
+
 ## 0.23.0
 - `Kanban3D`: a board with columns (Not started, Processing, Success, Failed) where cards drag between columns and reorder. Mouse, touch (via the grip) and keyboard (Space, arrows, Esc), with screen reader announcements.
 - Five more app components: `Dropzone3D`, `Drawer3D`, `CommandPalette3D`, `TagInput3D`, `NumberTicker3D`, plus a shared `useOverlay` hook.

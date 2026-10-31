@@ -1,7 +1,7 @@
 import { Suspense, useCallback, useRef, useState } from "react";
 import { Link, Outlet, useMatch } from "react-router-dom";
 import { GitHubStarButton, ThemeToggle } from "@/components/depth";
-import { REPO } from "@/lib/site";
+import { REPO, VERSION } from "@/lib/site";
 import { MobileDrawer } from "@/demo/mobile-drawer";
 import { NavList } from "@/demo/nav-list";
 import { findDoc } from "@/demo/docs-registry";
@@ -68,7 +68,7 @@ export default function ComponentsLayout() {
             >
               <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden><path d="m12 2.5 2.93 5.94 6.57.95-4.75 4.63 1.12 6.54L12 17.47l-5.87 3.09 1.12-6.54L2.5 9.39l6.57-.95L12 2.5Z" /></svg>
             </a>
-            <span className="hidden font-mono text-xs text-depth-muted lg:inline">v0.23</span>
+            <span className="hidden font-mono text-xs text-depth-muted lg:inline">v{VERSION}</span>
             <ThemeToggle />
           </div>
         </div>

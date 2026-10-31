@@ -51,7 +51,8 @@ export default function ComponentDoc() {
     const desc = document.querySelector<HTMLMetaElement>('meta[name="description"]');
     const canon = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
     const prev = { desc: desc?.content, canon: canon?.href };
-    document.title = `${entry.label}: free copy-paste 3D React component · Depth UI`;
+    const guide = entry.id === "getting-started" || entry.id === "theme";
+    document.title = guide ? `${entry.label}: Install and Use Depth UI 3D React Components` : `${entry.label}: Free Copy-Paste 3D React Component · Depth UI`;
     if (desc) desc.content = `${entry.label} from Depth UI. A free, open-source ${entry.group.toLowerCase()} component for React with live preview, usage and full source. CSS 3D, Tailwind v4 and Framer Motion, no WebGL.`;
     if (canon) canon.href = `https://depthui.vercel.app${docPath(entry)}`;
     return () => {

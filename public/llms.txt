@@ -1,0 +1,9 @@
+# Depth UI
+
+> Depth UI is a free, open-source library of copy-paste 3D React components built with CSS 3D transforms, Tailwind CSS v4 and Framer Motion. No WebGL. Light and dark themes. MIT licensed.
+
+- Live demo: https://depthui.vercel.app
+- All components: https://depthui.vercel.app/components
+- Source: https://github.com/depthui/depthui
+
+Every component page has a live preview, usage code, the full source and a props table. Components include tilt cards, 3D carousels, a wireframe globe, a kanban board with drag and drop, form controls, a command palette, drawers and more.
