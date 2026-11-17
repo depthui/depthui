@@ -49,16 +49,29 @@ function propsFor(id) {
   return [];
 }
 
+// ---- Guides ----
+const guides = JSON.parse(readFileSync(join(root, "src/guides/guides.json"), "utf8"));
+const inline = (t) =>
+  esc(t)
+    .replace(/`([^`]+)`/g, "<code>$1</code>")
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, text, href) => `<a href="${SITE}${href}">${text}</a>`);
+const blocksHtml = (blocks) =>
+  blocks
+    .map((b) => (b.type === "h2" ? `<h2>${esc(b.text)}</h2>` : b.type === "p" ? `<p>${inline(b.text)}</p>` : b.type === "ul" ? `<ul>${b.items.map((i) => `<li>${inline(i)}</li>`).join("")}</ul>` : `<pre><code>${esc(b.code)}</code></pre>`))
+    .join("");
+
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 const trim = (s, n) => (s.length <= n ? s : s.slice(0, n - 1).replace(/\s+\S*$/, "") + "…");
 
 const nameOf = (e) => e.label;
+const guideLinks = () => `<h3>Guides</h3><ul>${guides.map((g) => `<li><a href="${SITE}/guides/${g.slug}">${esc(g.title)}</a></li>`).join("")}</ul>`;
 const links = () =>
+  guideLinks() +
   groups
     .map((g) => `<h3>${esc(g.title)}</h3><ul>${g.items.map((i) => { const e = all.find((x) => x.id === i.id); return `<li><a href="${SITE}/components/${e.slug}">${esc(i.label)}</a></li>`; }).join("")}</ul>`)
     .join("");
 
-function page({ path, title, description, body, crumbs, type = "WebPage" }) {
+function page({ path, title, description, body, crumbs, type = "WebPage", extra = {} }) {
   const url = SITE + path;
   let html = template
     .replace(/<title>[\s\S]*?<\/title>/, `<title>${esc(title)}</title>`)
@@ -69,7 +82,7 @@ function page({ path, title, description, body, crumbs, type = "WebPage" }) {
     .replace(/(<meta property="og:url" content=")[^"]*(")/, `$1${url}$2`)
     .replace(/(<meta name="twitter:title" content=")[^"]*(")/, `$1${esc(title)}$2`)
     .replace(/(<meta name="twitter:description" content=")[^"]*(")/, `$1${esc(description)}$2`);
-  const ld = [{ "@context": "https://schema.org", "@type": type, name: title, description, url, isPartOf: { "@type": "WebSite", name: "Depth UI", url: SITE + "/" } }];
+  const ld = [{ "@context": "https://schema.org", "@type": type, name: title, description, url, isPartOf: { "@type": "WebSite", name: "Depth UI", url: SITE + "/" }, ...extra }];
   if (crumbs) ld.push({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: crumbs.map((c, i) => ({ "@type": "ListItem", position: i + 1, name: c[0], item: SITE + c[1] })) });
   html = html.replace("</head>", `${ld.map((o) => `<script type="application/ld+json">${JSON.stringify(o)}</script>`).join("\n    ")}\n  </head>`);
   // Crawler-readable text, clipped out of view. React replaces it on load.
@@ -101,6 +114,27 @@ page({
   crumbs: [["Home", "/"], ["Components", "/components"]],
 });
 
+// Guides
+page({
+  path: "/guides",
+  title: "React 3D UI Guides: Tilt Cards, Kanban, CSS 3D · Depth UI",
+  description: "Short, practical guides to building 3D interfaces in React with CSS, Tailwind and Framer Motion.",
+  body: `<h1>Guides</h1>${guideLinks()}`,
+  crumbs: [["Home", "/"], ["Guides", "/guides"]],
+});
+for (const g of guides) {
+  const comps = g.related.map((s) => all.find((e) => e.slug === s)).filter(Boolean);
+  page({
+    path: `/guides/${g.slug}`,
+    title: `${g.title} · Depth UI`,
+    description: g.description,
+    body: `<nav><a href="${SITE}/guides">Guides</a></nav><article><h1>${esc(g.title)}</h1><p>${g.published}</p>${blocksHtml(g.blocks)}<h2>Components from this guide</h2><ul>${comps.map((e) => `<li><a href="${SITE}/components/${e.slug}">${esc(e.label)}</a></li>`).join("")}</ul></article>`,
+    crumbs: [["Home", "/"], ["Guides", "/guides"], [g.title, `/guides/${g.slug}`]],
+    type: "TechArticle",
+    extra: { headline: g.title, datePublished: g.published, dateModified: g.published, author: { "@type": "Organization", name: "Depth UI", url: SITE + "/" }, publisher: { "@type": "Organization", name: "Depth UI", url: SITE + "/" } },
+  });
+}
+
 // One page per component
 let n = 0;
 for (const e of docs) {
@@ -122,9 +156,9 @@ for (const e of docs) {
     path: `/components/${e.slug}`,
     title,
     description,
-    body: `<nav><a href="${SITE}/">Depth UI</a> / <a href="${SITE}/components">Components</a> / ${esc(e.group)}</nav><h1>${esc(nameOf(e))}</h1><p>${esc(blurb)}</p><p>Install it the shadcn way: copy the source file into your project. It uses ${KW}.</p>${propsHtml}<h2>More components</h2>${links()}`,
+    body: `<nav><a href="${SITE}/">Depth UI</a> / <a href="${SITE}/components">Components</a> / ${esc(e.group)}</nav><h1>${esc(nameOf(e))}</h1><p>${esc(blurb)}</p><p>Install it the shadcn way: copy the source file into your project. It uses ${KW}.</p>${propsHtml}${guides.filter((g) => g.related.includes(e.slug)).map((g) => `<h2>Read the guide</h2><p><a href="${SITE}/guides/${g.slug}">${esc(g.title)}</a></p>`).join("")}<h2>More components</h2>${links()}`,
     crumbs: [["Home", "/"], ["Components", "/components"], [e.label, `/components/${e.slug}`]],
   });
   n++;
 }
-console.log(`prerender: ${n + 2} pages written`);
+console.log(`prerender: ${n + 2 + guides.length + 1} pages written`);

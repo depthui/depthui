@@ -248,6 +248,7 @@ Shared engine: `src/hooks/use-tilt.ts`. Keyframes for GridFloor, Marquee3D and O
 | Path | What |
 | --- | --- |
 | `/` | The landing page, built entirely from the library (`src/pages/demo-page.tsx`) |
+| `/guides` | Written guides (tilt cards, Kanban, CSS 3D), pre-rendered for search |
 | `/components` | Docs: every component with Preview / Usage / Source |
 
 ## Theming (light and dark)

@@ -53,6 +53,12 @@ export default function ComponentsLayout() {
           </div>
           <div className="flex items-center gap-3">
             <Link
+              to="/guides"
+              className="hidden rounded-full border border-depth-border bg-depth-surface px-3.5 py-2 text-sm outline-none transition-colors hover:border-depth-accent focus-visible:ring-2 focus-visible:ring-depth-accent md:inline-flex"
+            >
+              Guides
+            </Link>
+            <Link
               to="/"
               className="hidden rounded-full border border-depth-border bg-depth-surface px-3.5 py-2 text-sm outline-none transition-colors hover:border-depth-accent focus-visible:ring-2 focus-visible:ring-depth-accent md:inline-flex"
             >

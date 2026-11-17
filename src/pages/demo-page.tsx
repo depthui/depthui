@@ -155,6 +155,12 @@ export default function DemoPage() {
               <GitHubStarButton repo={REPO} className="hidden sm:inline-flex" />
               <ThemeToggle className="h-9 w-9" />
               <Link
+                to="/guides"
+                className="hidden rounded-full px-3 py-2 text-sm font-medium text-depth-muted outline-none transition-colors hover:text-depth-text focus-visible:ring-2 focus-visible:ring-depth-accent md:inline-flex"
+              >
+                Guides
+              </Link>
+              <Link
                 to="/components"
                 className="rounded-full bg-depth-accent px-4 py-2 text-sm font-medium text-white outline-none transition-opacity hover:opacity-90 focus-visible:ring-2 focus-visible:ring-depth-accent focus-visible:ring-offset-2 focus-visible:ring-offset-depth-surface"
               >

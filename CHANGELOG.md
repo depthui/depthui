@@ -2,6 +2,13 @@
 
 All notable changes are listed here. The project follows [Semantic Versioning](https://semver.org).
 
+## 0.24.0
+- Guides: three written tutorials at `/guides` (3D card tilt, drag and drop Kanban, CSS 3D transforms without WebGL), pre-rendered with TechArticle JSON-LD and linked from the related component pages.
+- Every docs page now ends with related links (a guide when there is one, and neighbouring components).
+- Fonts are self-hosted (`@fontsource-variable`), so there are no third-party font requests.
+- Accessibility: proper heading order on props tables, higher-contrast required markers.
+- `sitemap.xml` `lastmod` now comes from the last git commit, so it stays stable between builds.
+
 ## 0.23.1
 - SEO: every route is now pre-rendered at build time (`scripts/prerender.mjs`) with its own title, description, canonical link, JSON-LD, readable text and internal links, so crawlers and link previews do not depend on JavaScript.
 - Every page has a single `<h1>`. Guide pages get their own titles. Added `llms.txt`.

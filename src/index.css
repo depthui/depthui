@@ -44,8 +44,8 @@
 
 /* `inline` makes utilities read the live CSS variable, so .dark overrides work */
 @theme inline {
-  --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-sans: "Space Grotesk Variable", "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", "JetBrains Mono", ui-monospace, monospace;
 
   --color-depth-bg: var(--depth-bg);
   --color-depth-surface: var(--depth-surface);

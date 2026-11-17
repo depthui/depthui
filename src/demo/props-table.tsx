@@ -40,7 +40,7 @@ function DefaultCell({ value }: { value: string | null }) {
 function Table({ data }: { data: CompProps }) {
   return (
     <div className="mt-4 first:mt-0">
-      <h4 className="font-mono text-sm font-medium">&lt;{data.component} /&gt;</h4>
+      <h3 className="font-mono text-sm font-medium">&lt;{data.component} /&gt;</h3>
       {data.extends.length > 0 && (
         <p className="mt-1 text-xs text-depth-muted">
           Also accepts every prop of <code className="font-mono">{data.extends.join(", ")}</code>.
@@ -62,7 +62,7 @@ function Table({ data }: { data: CompProps }) {
               <tr key={p.name} className="border-b border-depth-border/70 align-top last:border-0">
                 <th scope="row" className="whitespace-nowrap px-4 py-3 font-mono text-[13px] font-medium">
                   {p.name}
-                  {p.required && <span className="ml-1 text-red-500" title="Required" aria-label="required">*</span>}
+                  {p.required && <span className="ml-1 text-red-700 dark:text-red-400" title="Required" aria-label="required">*</span>}
                 </th>
                 <td className="max-w-[280px] px-4 py-3"><TypeCell type={p.type} /></td>
                 <td className="px-4 py-3"><DefaultCell value={p.default} /></td>
@@ -78,7 +78,7 @@ function Table({ data }: { data: CompProps }) {
           <li key={p.name} className="rounded-xl border border-depth-border bg-depth-surface/60 p-3">
             <div className="flex flex-wrap items-center gap-2">
               <span className="font-mono text-[13px] font-medium">{p.name}</span>
-              {p.required && <span className="rounded bg-red-500/10 px-1.5 text-[11px] font-medium text-red-500">required</span>}
+              {p.required && <span className="rounded bg-red-500/10 px-1.5 text-[11px] font-medium text-red-700 dark:text-red-300">required</span>}
             </div>
             <p className="mt-1 text-sm text-depth-muted">{p.description}</p>
             <dl className="mt-2 grid grid-cols-[auto_1fr] items-baseline gap-x-3 gap-y-1.5 text-xs">
@@ -109,9 +109,9 @@ export function PropsTable({ files }: { files: CodeFile[] }) {
   if (!key || !data || data.length === 0) return null;
   return (
     <div className="mt-10">
-      <h3 className="text-lg font-semibold tracking-tight">Props</h3>
+      <h2 className="text-lg font-semibold tracking-tight">Props</h2>
       <p className="mt-1 text-sm text-depth-muted">
-        Every prop the component accepts. <span className="text-red-500">*</span> marks a required prop. Leave the rest out to use the default.
+        Every prop the component accepts. <span className="text-red-700 dark:text-red-400">*</span> marks a required prop. Leave the rest out to use the default.
       </p>
       <div className="mt-4">
         {data.map((d) => <Table key={d.component} data={d} />)}

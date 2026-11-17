@@ -7,3 +7,8 @@
 - Source: https://github.com/depthui/depthui
 
 Every component page has a live preview, usage code, the full source and a props table. Components include tilt cards, 3D carousels, a wireframe globe, a kanban board with drag and drop, form controls, a command palette, drawers and more.
+
+## Guides
+- https://depthui.vercel.app/guides/3d-card-tilt-effect-react: 3D card tilt effect in React with Tailwind and Framer Motion
+- https://depthui.vercel.app/guides/kanban-board-react-framer-motion: drag and drop kanban board in React with Framer Motion
+- https://depthui.vercel.app/guides/css-3d-transforms-without-webgl: CSS 3D transforms without WebGL

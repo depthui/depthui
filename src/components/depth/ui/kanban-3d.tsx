@@ -240,7 +240,7 @@ export function Kanban3D({
               >
                 <header className="mb-3 flex items-center gap-2 px-1">
                   <span aria-hidden className={cn("h-2.5 w-2.5 rounded-full shadow-[0_0_8px_currentColor]", DOT[col.tone ?? "slate"])} />
-                  <h3 className="text-sm font-semibold tracking-tight">{col.title}</h3>
+                  <h2 className="text-sm font-semibold tracking-tight">{col.title}</h2>
                   <span className="ml-auto rounded-full bg-depth-surface px-2 py-0.5 text-xs tabular-nums text-depth-muted">{list.length}</span>
                 </header>
                 <ul className="relative flex min-h-[72px] flex-col gap-2.5">

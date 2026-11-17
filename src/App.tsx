@@ -7,6 +7,9 @@ const DemoPage = lazy(() => import("@/pages/demo-page"));
 const ComponentsLayout = lazy(() => import("@/pages/components-layout"));
 const ComponentsIndex = lazy(() => import("@/pages/components-index"));
 const ComponentDoc = lazy(() => import("@/pages/component-doc"));
+const GuidesLayout = lazy(() => import("@/pages/guides-layout"));
+const GuidesIndex = lazy(() => import("@/pages/guides-index"));
+const GuideArticle = lazy(() => import("@/pages/guide-article"));
 
 /** Scroll to the #hash target (or the top) after each navigation. */
 function ScrollManager() {
@@ -38,6 +41,10 @@ export default function App() {
           <Route path="/components" element={<ComponentsLayout />}>
             <Route index element={<ComponentsIndex />} />
             <Route path=":slug" element={<ComponentDoc />} />
+          </Route>
+          <Route path="/guides" element={<GuidesLayout />}>
+            <Route index element={<GuidesIndex />} />
+            <Route path=":slug" element={<GuideArticle />} />
           </Route>
           <Route path="/demo" element={<Navigate to="/" replace />} />
           <Route path="*" element={<Navigate to="/" replace />} />

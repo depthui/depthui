@@ -1,5 +1,6 @@
 // Writes public/sitemap.xml from the docs nav, so every component page is listed.
 // Run automatically before `npm run build`.
+import { execSync } from "node:child_process";
 import { readFileSync, writeFileSync } from "node:fs";
 
 const SITE = process.env.SITE_URL ?? "https://depthui.vercel.app";
@@ -17,11 +18,15 @@ const slugs = ids.map((id) => {
   return base === id || clash ? id : base;
 });
 
-const today = new Date().toISOString().slice(0, 10);
+// Use the date of the latest commit, so lastmod only changes when the site does.
+// (A lastmod that changes on every build teaches Google to ignore it.)
+let today = new Date().toISOString().slice(0, 10);
+try { today = execSync("git log -1 --format=%cs", { cwd: new URL("..", import.meta.url).pathname }).toString().trim() || today; } catch {}
+const guides = JSON.parse(readFileSync(new URL("../src/guides/guides.json", import.meta.url), "utf8"));
 const url = (path, pri) => `  <url><loc>${SITE}${path}</loc><lastmod>${today}</lastmod><priority>${pri}</priority></url>`;
 const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${[url("/", "1.0"), url("/components", "0.9"), ...slugs.map((s) => url(`/components/${s}`, "0.7"))].join("\n")}
+${[url("/", "1.0"), url("/components", "0.9"), url("/guides", "0.8"), ...guides.map((g) => url(`/guides/${g.slug}`, "0.8")), ...slugs.map((s) => url(`/components/${s}`, "0.7"))].join("\n")}
 </urlset>
 `;
 writeFileSync(new URL("../public/sitemap.xml", import.meta.url), xml);

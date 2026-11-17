@@ -1,7 +1,8 @@
 import { Suspense, lazy, useEffect, type ComponentType } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
 import { cn } from "@/lib/utils";
-import { DOCS, docIndex, docPath, findDoc, type GroupKey } from "@/demo/docs-registry";
+import { DOCS, docIndex, docPath, findDoc, type DocEntry, type GroupKey } from "@/demo/docs-registry";
+import { guidesFor } from "@/guides/render";
 
 type SectionProps = { only?: string };
 
@@ -15,6 +16,46 @@ const SECTIONS: Record<GroupKey, ComponentType<SectionProps>> = {
   showpieces: lazy(() => import("@/demo/showpieces-section").then((m) => ({ default: m.ShowpiecesSection }))),
   blocks: lazy(() => import("@/demo/blocks-section").then((m) => ({ default: m.BlocksSection }))),
 };
+
+/** Links to neighbours in the same group, and to any guide about this component. Good for readers and for crawlers. */
+function Related({ entry }: { entry: DocEntry }) {
+  const same = DOCS.filter((d) => d.group === entry.group && d.id !== entry.id);
+  const at = same.findIndex((d) => DOCS.indexOf(d) > DOCS.indexOf(entry));
+  const start = Math.max(0, Math.min((at < 0 ? same.length : at) - 3, same.length - 6));
+  const near = same.slice(start, start + 6);
+  const guides = guidesFor(entry.slug);
+  if (!near.length && !guides.length) return null;
+  const pill =
+    "inline-flex rounded-full border border-depth-border bg-depth-surface px-3.5 py-1.5 text-sm outline-none transition-colors hover:border-depth-accent focus-visible:ring-2 focus-visible:ring-depth-accent";
+  return (
+    <section aria-label="Related" className="mt-12 border-t border-depth-border pt-8">
+      {guides.length > 0 && (
+        <div className="mb-8">
+          <h2 className="text-lg font-semibold tracking-tight">Read the guide</h2>
+          <ul className="mt-3 space-y-2">
+            {guides.map((g) => (
+              <li key={g.slug}>
+                <Link to={`/guides/${g.slug}`} className="text-depth-accent underline decoration-depth-accent/40 underline-offset-4 hover:decoration-depth-accent">
+                  {g.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+      {near.length > 0 && (
+        <>
+          <h2 className="text-lg font-semibold tracking-tight">More {entry.group.toLowerCase()}</h2>
+          <ul className="mt-3 flex flex-wrap gap-2">
+            {near.map((d) => (
+              <li key={d.id}><Link to={docPath(d)} className={pill}>{d.label}</Link></li>
+            ))}
+          </ul>
+        </>
+      )}
+    </section>
+  );
+}
 
 function Pager({ i }: { i: number }) {
   const prev = DOCS[i - 1];
@@ -79,6 +120,7 @@ export default function ComponentDoc() {
       <Suspense fallback={<div aria-busy className="mt-10 h-[60vh] animate-pulse rounded-2xl bg-depth-elevated/50" />}>
         <Section only={entry.id} />
       </Suspense>
+      <Related entry={entry} />
       <Pager i={i} />
     </article>
   );

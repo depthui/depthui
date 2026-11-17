@@ -1,0 +1,259 @@
+[
+ {
+  "slug": "3d-card-tilt-effect-react",
+  "title": "3D Card Tilt Effect in React with Tailwind and Framer Motion",
+  "description": "Build a 3D tilt card that follows the pointer, using Framer Motion springs, CSS perspective and Tailwind. Includes touch and reduced-motion handling.",
+  "published": "2026-11-17",
+  "related": [
+   "tilt-card",
+   "spotlight-card",
+   "holo-card"
+  ],
+  "blocks": [
+   {
+    "type": "p",
+    "text": "A tilt card leans toward your pointer, like a physical card resting on a table. It is one of the most copied 3D effects on the web, and it needs no WebGL: just CSS perspective, two rotations and a spring. This guide builds one from scratch, then points out the details that separate a good version from a janky one."
+   },
+   {
+    "type": "h2",
+    "text": "How the effect works"
+   },
+   {
+    "type": "p",
+    "text": "Three ideas combine. First, `perspective` on a parent gives its children depth, so rotated elements look 3D instead of flat. Second, the pointer position inside the card (0 to 1 on each axis) is converted into a small `rotateX` and `rotateY`. Third, a spring smooths the movement so the card eases toward the pointer and settles back when you leave."
+   },
+   {
+    "type": "h2",
+    "text": "The component"
+   },
+   {
+    "type": "p",
+    "text": "Framer Motion's motion values update the transform without re-rendering React, which is what keeps this smooth. `useTransform` maps the pointer range to degrees and `useSpring` adds the easing."
+   },
+   {
+    "type": "code",
+    "lang": "tsx",
+    "code": "import { useRef, type ReactNode, type PointerEvent } from \"react\";\nimport { motion, useMotionValue, useSpring, useTransform } from \"framer-motion\";\n\nexport function TiltCard({ children }: { children: ReactNode }) {\n  const ref = useRef<HTMLDivElement>(null);\n  const rect = useRef<DOMRect | null>(null);\n  const x = useMotionValue(0.5);\n  const y = useMotionValue(0.5);\n  const spring = { stiffness: 200, damping: 20 };\n  const rotateX = useSpring(useTransform(y, [0, 1], [10, -10]), spring);\n  const rotateY = useSpring(useTransform(x, [0, 1], [-10, 10]), spring);\n\n  function onEnter(e: PointerEvent) {\n    if (e.pointerType === \"touch\") return;\n    rect.current = ref.current!.getBoundingClientRect(); // measure once, not on every move\n  }\n  function onMove(e: PointerEvent) {\n    const r = rect.current;\n    if (!r) return;\n    x.set((e.clientX - r.left) / r.width);\n    y.set((e.clientY - r.top) / r.height);\n  }\n  function onLeave() {\n    rect.current = null;\n    x.set(0.5);\n    y.set(0.5);\n  }\n\n  return (\n    <div style={{ perspective: 900 }}>\n      <motion.div\n        ref={ref}\n        onPointerEnter={onEnter}\n        onPointerMove={onMove}\n        onPointerLeave={onLeave}\n        style={{ rotateX, rotateY, transformStyle: \"preserve-3d\" }}\n        className=\"rounded-2xl border border-slate-200 bg-white p-6 shadow-xl dark:border-slate-800 dark:bg-slate-900\"\n      >\n        {children}\n      </motion.div>\n    </div>\n  );\n}"
+   },
+   {
+    "type": "h2",
+    "text": "Details that matter"
+   },
+   {
+    "type": "ul",
+    "items": [
+     "Measure the card's rectangle once when the pointer enters. Calling `getBoundingClientRect` on every move forces layout work and is the usual cause of stutter.",
+     "Ignore touch. A finger dragging across a card should scroll the page, not tilt it, so the handler skips `pointerType === \"touch\"`.",
+     "Keep the angle small. Eight to twelve degrees looks premium. Twenty or more looks like a toy and can make text hard to read.",
+     "Respect `prefers-reduced-motion`. Framer Motion's `useReducedMotion()` tells you when to skip the tilt entirely.",
+     "Only animate `transform`. It runs on the GPU. Animating `top`, `left` or `box-shadow` on every frame does not."
+    ]
+   },
+   {
+    "type": "h2",
+    "text": "Adding depth inside the card"
+   },
+   {
+    "type": "p",
+    "text": "Because the card has `transformStyle: \"preserve-3d\"`, you can lift children off its surface with `translateZ`. A title at `translateZ(40px)` appears to float above a background at `translateZ(0)`, and it shifts slightly as the card tilts. This parallax is what makes the effect feel real. Remember that every ancestor between the perspective container and the lifted child must also use `preserve-3d`, or the depth is flattened."
+   },
+   {
+    "type": "h2",
+    "text": "Skip the boilerplate"
+   },
+   {
+    "type": "p",
+    "text": "Depth UI ships this as a copy-paste component with glare, layered depth and touch handling already done. See the [Tilt card](/components/tilt-card), the [Spotlight card](/components/spotlight-card) that adds a pointer-following light, and the [Holo card](/components/holo-card) with a foil sheen. Each page has a live preview, the full source and a props table, and the code is yours to edit."
+   }
+  ]
+ },
+ {
+  "slug": "kanban-board-react-framer-motion",
+  "title": "Build a Drag and Drop Kanban Board in React with Framer Motion",
+  "description": "How to build an accessible kanban board with drag and drop between columns, smooth layout animations and keyboard controls, using Framer Motion and no drag-and-drop library.",
+  "published": "2026-11-17",
+  "related": [
+   "kanban",
+   "reorder-list",
+   "dropzone"
+  ],
+  "blocks": [
+   {
+    "type": "p",
+    "text": "A kanban board shows work as cards in columns such as Not started, Processing, Success and Failed. The hard part is not the layout. It is making drag and drop feel smooth, work with a keyboard and stay in sync with your data. This guide explains the approach used by the [Depth UI Kanban board](/components/kanban), with the key code, and needs no drag-and-drop library."
+   },
+   {
+    "type": "h2",
+    "text": "Model the data as one flat list"
+   },
+   {
+    "type": "p",
+    "text": "Keep every card in a single array, each with a `columnId`. A card's position in the array is its position in its column. This makes moves a pure function, easy to test and easy to hand to a server."
+   },
+   {
+    "type": "code",
+    "lang": "tsx",
+    "code": "type Card = { id: string; columnId: string; title: string };\n\nfunction moveCard(cards: Card[], id: string, to: string, index: number): Card[] {\n  const card = cards.find((c) => c.id === id);\n  if (!card) return cards;\n  const rest = cards.filter((c) => c.id !== id);\n  const col = rest.filter((c) => c.columnId === to);\n  const moved = { ...card, columnId: to };\n  const at =\n    index >= col.length\n      ? col.length ? rest.indexOf(col[col.length - 1]) + 1 : rest.length\n      : rest.indexOf(col[index]);\n  return [...rest.slice(0, at), moved, ...rest.slice(at)];\n}"
+   },
+   {
+    "type": "h2",
+    "text": "Drag with Framer Motion"
+   },
+   {
+    "type": "p",
+    "text": "Give each card `drag`, `dragSnapToOrigin` and `dragMomentum={false}`, and a `layoutId` so it animates smoothly when it lands in a new column. Use `useDragControls` with `dragListener={false}` so you decide what starts a drag: the whole card for a mouse, but only a grip handle on touch, which lets the page keep scrolling."
+   },
+   {
+    "type": "code",
+    "lang": "tsx",
+    "code": "const controls = useDragControls();\n\n<motion.li\n  layoutId={card.id}\n  drag\n  dragControls={controls}\n  dragListener={false}\n  dragSnapToOrigin\n  dragMomentum={false}\n  whileDrag={{ scale: 1.04, rotate: 2.5, zIndex: 50 }}\n  onPointerDown={(e) => e.pointerType !== \"touch\" && controls.start(e)}\n  onDrag={(_, info) => hover(info.point.x - scrollX, info.point.y - scrollY)}\n  onDragEnd={drop}\n/>"
+   },
+   {
+    "type": "h2",
+    "text": "Find the drop target"
+   },
+   {
+    "type": "p",
+    "text": "On every drag event, ask the browser what is under the pointer. The dragged card is itself under the pointer, so filter it out, then find the nearest column and count how many cards sit above the pointer to get the insert position."
+   },
+   {
+    "type": "code",
+    "lang": "tsx",
+    "code": "const els = document\n  .elementsFromPoint(x, y)\n  .filter((e) => !e.closest(`[data-card-id=\"${draggedId}\"]`));\nconst column = els.map((e) => e.closest<HTMLElement>(\"[data-column]\")).find(Boolean);\n\nlet index = 0;\nfor (const row of column.querySelectorAll<HTMLElement>(\"[data-card-id]\")) {\n  if (row.dataset.cardId === draggedId) continue;\n  const b = row.getBoundingClientRect();\n  if (y > b.top + b.height / 2) index++;\n}"
+   },
+   {
+    "type": "p",
+    "text": "Only update React state when the target column or index actually changes, and highlight the column with a thin insertion line. Re-rendering on every pixel is what makes naive boards laggy."
+   },
+   {
+    "type": "h2",
+    "text": "Make it work without a mouse"
+   },
+   {
+    "type": "p",
+    "text": "Drag and drop alone fails keyboard and screen reader users, and it is easy to fix. Give each card a focusable grip button. Space picks the card up, the arrow keys move it between columns or up and down, Space drops it and Escape puts it back. Announce each step in an `aria-live` region, for example \"Moved Design the pricing page to Processing, position 2 of 4\"."
+   },
+   {
+    "type": "h2",
+    "text": "Pitfalls"
+   },
+   {
+    "type": "ul",
+    "items": [
+     "A card that moves to another column is a new element. Move focus back to its grip after a keyboard move or the keyboard user loses their place.",
+     "Do not put `overflow: hidden` on columns. It clips the card while it is dragged across them.",
+     "Let the board scroll sideways on small screens and nudge it when the pointer nears an edge during a drag."
+    ]
+   },
+   {
+    "type": "h2",
+    "text": "Use it as is"
+   },
+   {
+    "type": "p",
+    "text": "If you want a finished version, the [Kanban board](/components/kanban) is a single copy-paste file with all of the above, controlled or uncontrolled state and a props table. The [Reorder list](/components/reorder-list) covers simple one-column sorting, and the [Dropzone](/components/dropzone) handles dragging files in."
+   }
+  ]
+ },
+ {
+  "slug": "css-3d-transforms-without-webgl",
+  "title": "CSS 3D Transforms Without WebGL: Perspective, preserve-3d and the Gotchas",
+  "description": "A practical guide to CSS 3D: how perspective works, why preserve-3d must be on every ancestor, what flattens a 3D scene, and how to keep it fast.",
+  "published": "2026-11-17",
+  "related": [
+   "cube",
+   "globe",
+   "carousel"
+  ],
+  "blocks": [
+   {
+    "type": "p",
+    "text": "You do not need WebGL or Three.js to put real depth on a web page. CSS can rotate, move and layer elements in three dimensions on the GPU, with no heavy runtime. It is ideal for cards, carousels, cubes and product showcases. It is not a 3D engine, so it helps to know where it stops. This guide covers the properties that matter and the mistakes that cost people hours."
+   },
+   {
+    "type": "h2",
+    "text": "Perspective: what makes it 3D"
+   },
+   {
+    "type": "p",
+    "text": "Without perspective, a rotated element just looks squashed. `perspective` on a parent sets how far the viewer is from the scene. A smaller value (400px) gives a dramatic effect, a larger one (1200px) is subtle. The `perspective-origin` property moves the vanishing point. You can also write `perspective(800px)` inside a single element's `transform`, but then every element gets its own vanishing point, which is rarely what you want."
+   },
+   {
+    "type": "h2",
+    "text": "preserve-3d: the property people forget"
+   },
+   {
+    "type": "p",
+    "text": "By default an element flattens its children into its own plane. `transform-style: preserve-3d` keeps them in 3D space so they can sit in front of and behind each other. It has to be set on every element between the perspective container and the 3D content. One missing link silently flattens everything below it."
+   },
+   {
+    "type": "code",
+    "lang": "html",
+    "code": "<div class=\"scene\">            <!-- perspective: 900px -->\n  <div class=\"cube\">            <!-- transform-style: preserve-3d -->\n    <div class=\"face front\"></div>\n    <div class=\"face back\"></div>\n  </div>\n</div>"
+   },
+   {
+    "type": "code",
+    "lang": "css",
+    "code": ".scene { perspective: 900px; }\n.cube  { position: relative; width: 200px; height: 200px;\n         transform-style: preserve-3d; animation: spin 12s linear infinite; }\n.face  { position: absolute; inset: 0; backface-visibility: hidden; }\n.front { transform: translateZ(100px); }\n.back  { transform: rotateY(180deg) translateZ(100px); }\n@keyframes spin { to { transform: rotateY(360deg); } }"
+   },
+   {
+    "type": "h2",
+    "text": "What silently flattens a 3D scene"
+   },
+   {
+    "type": "p",
+    "text": "Several properties force an element to flatten its children, even if you set `preserve-3d`:"
+   },
+   {
+    "type": "ul",
+    "items": [
+     "`overflow` set to anything but `visible`",
+     "`opacity` below 1",
+     "`filter`, `clip-path` and `mask`",
+     "`isolation: isolate` and `mix-blend-mode`"
+    ]
+   },
+   {
+    "type": "p",
+    "text": "If your cube turns into a flat card, look for one of these on the element or an ancestor. The fix is usually to move the effect to a child that is not part of the 3D chain."
+   },
+   {
+    "type": "h2",
+    "text": "Order of transforms matters"
+   },
+   {
+    "type": "p",
+    "text": "Transforms apply right to left in the order you write them, relative to the element's own, already transformed, axes. `rotateY(45deg) translateZ(100px)` pushes the element forward and then swings it around the origin, which is how you build the faces of a cube or the items of a carousel. Swap the order and you get a different shape. Setting `transform-origin` changes the pivot point for all of it."
+   },
+   {
+    "type": "h2",
+    "text": "Keep it fast"
+   },
+   {
+    "type": "ul",
+    "items": [
+     "Animate only `transform` and `opacity`. They run on the GPU compositor without layout or paint.",
+     "Use `will-change: transform` sparingly, on elements that are actually animating. Putting it on everything wastes memory.",
+     "Avoid large blurred `box-shadow` on 3D elements. Fake the shadow with a small gradient element instead.",
+     "Pause animations that are off screen, and honor `prefers-reduced-motion`."
+    ]
+   },
+   {
+    "type": "h2",
+    "text": "When to use WebGL instead"
+   },
+   {
+    "type": "p",
+    "text": "CSS 3D is perfect for a few dozen planes and boxes. Reach for WebGL when you need real lighting, thousands of objects, imported models or shaders. For most interface work, such as hero cards, carousels and product showcases, CSS is lighter, more accessible and easier to style."
+   },
+   {
+    "type": "h2",
+    "text": "See it working"
+   },
+   {
+    "type": "p",
+    "text": "Every Depth UI component is built this way. Open the [Cube](/components/cube) to see the six-face setup above, the [Globe](/components/globe) for markers that vanish as they turn away, and the [3D carousel](/components/carousel) for items placed around a ring. All come with full source you can copy."
+   }
+  ]
+ }
+]

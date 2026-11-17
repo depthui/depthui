@@ -2,6 +2,10 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://depthui.vercel.app/</loc><lastmod>2026-10-31</lastmod><priority>1.0</priority></url>
   <url><loc>https://depthui.vercel.app/components</loc><lastmod>2026-10-31</lastmod><priority>0.9</priority></url>
+  <url><loc>https://depthui.vercel.app/guides</loc><lastmod>2026-10-31</lastmod><priority>0.8</priority></url>
+  <url><loc>https://depthui.vercel.app/guides/3d-card-tilt-effect-react</loc><lastmod>2026-10-31</lastmod><priority>0.8</priority></url>
+  <url><loc>https://depthui.vercel.app/guides/kanban-board-react-framer-motion</loc><lastmod>2026-10-31</lastmod><priority>0.8</priority></url>
+  <url><loc>https://depthui.vercel.app/guides/css-3d-transforms-without-webgl</loc><lastmod>2026-10-31</lastmod><priority>0.8</priority></url>
   <url><loc>https://depthui.vercel.app/components/getting-started</loc><lastmod>2026-10-31</lastmod><priority>0.7</priority></url>
   <url><loc>https://depthui.vercel.app/components/theme</loc><lastmod>2026-10-31</lastmod><priority>0.7</priority></url>
   <url><loc>https://depthui.vercel.app/components/tilt-card</loc><lastmod>2026-10-31</lastmod><priority>0.7</priority></url>
