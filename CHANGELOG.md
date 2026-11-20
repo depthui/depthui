@@ -2,6 +2,9 @@
 
 All notable changes are listed here. The project follows [Semantic Versioning](https://semver.org).
 
+## 0.28.0
+- Five more app components: `Avatar3D` (photo or initials, presence status), `HoverCard3D` (hover and focus preview), `Sparkline3D` (self-drawing trend line with screen reader summary), `PasswordInput3D` (show/hide and strength meter) and `DateRangePicker3D` (range preview, keyboard support, min/max).
+
 ## 0.27.0
 - Five more app components: `ContextMenu3D` (right-click, Shift+F10 and long press), `ToggleGroup3D` (single or multiple, aria-pressed), `CopyButton3D` (clipboard with fallback and live announcement), `InlineEdit3D` (click to edit, Enter saves, Escape cancels) and `Chip3D` (selectable and removable).
 

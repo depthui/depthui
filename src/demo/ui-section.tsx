@@ -29,6 +29,12 @@ import {
   CopyButton3D,
   InlineEdit3D,
   Chip3D,
+  Avatar3D,
+  HoverCard3D,
+  Sparkline3D,
+  PasswordInput3D,
+  DateRangePicker3D,
+  type DateRange,
   DropdownMenu3D,
   Calendar3D,
   CompareSlider3D,
@@ -75,6 +81,11 @@ import toggleGroupSrc from "@/components/depth/ui/toggle-group-3d.tsx?raw";
 import copyButtonSrc from "@/components/depth/ui/copy-button-3d.tsx?raw";
 import inlineEditSrc from "@/components/depth/ui/inline-edit-3d.tsx?raw";
 import chipSrc from "@/components/depth/ui/chip-3d.tsx?raw";
+import avatar3dSrc from "@/components/depth/ui/avatar-3d.tsx?raw";
+import hoverCardSrc from "@/components/depth/ui/hover-card-3d.tsx?raw";
+import sparklineSrc from "@/components/depth/ui/sparkline-3d.tsx?raw";
+import passwordInputSrc from "@/components/depth/ui/password-input-3d.tsx?raw";
+import dateRangeSrc from "@/components/depth/ui/date-range-picker-3d.tsx?raw";
 import alertSrc from "@/components/depth/ui/alert-3d.tsx?raw";
 import timelineSrc from "@/components/depth/ui/timeline-3d.tsx?raw";
 import menuSrc from "@/components/depth/ui/dropdown-menu-3d.tsx?raw";
@@ -395,6 +406,84 @@ function ChipDemo() {
         {tags.map((t) => <Chip3D key={t} onRemove={() => setTags((x) => x.filter((y) => y !== t))}>{t}</Chip3D>)}
         {tags.length === 0 && <button type="button" onClick={() => setTags(["design", "3d", "tailwind"])} className="text-sm text-depth-accent underline">Reset tags</button>}
       </div>
+    </div>
+  );
+}
+
+function AvatarDemo() {
+  return (
+    <div className="flex flex-col items-center gap-6">
+      <div className="flex items-end gap-4">
+        <Avatar3D name="Akram Khan" size="sm" />
+        <Avatar3D name="Priya Sharma" size="md" status="online" />
+        <Avatar3D name="Rahil Patel" size="lg" status="away" />
+        <Avatar3D name="Vijay Kumar" size="xl" status="busy" />
+      </div>
+      <div className="flex items-center gap-4">
+        <Avatar3D name="Prajwal" shape="square" size="lg" status="offline" />
+        <Avatar3D name="Broken Image" src="/does-not-exist.png" size="lg" />
+      </div>
+    </div>
+  );
+}
+
+function HoverCardDemo() {
+  return (
+    <div className="flex min-h-[260px] items-start justify-center pt-6 text-sm">
+      <p>
+        Built by{" "}
+        <HoverCard3D
+          content={
+            <span className="flex gap-3">
+              <Avatar3D name="Akram" size="lg" status="online" />
+              <span className="block">
+                <span className="block font-semibold">@akram6t</span>
+                <span className="mt-1 block text-depth-muted">Building Depth UI, a copy-paste 3D component library for React.</span>
+              </span>
+            </span>
+          }
+        >
+          <a href="https://github.com/akram6t" className="font-medium text-depth-accent underline underline-offset-4 outline-none focus-visible:ring-2 focus-visible:ring-depth-accent">@akram6t</a>
+        </HoverCard3D>
+        . Hover or focus the name.
+      </p>
+    </div>
+  );
+}
+
+function SparklineDemo() {
+  const up = [4, 6, 5, 8, 7, 11, 10, 14, 13, 18];
+  const down = [18, 15, 16, 12, 13, 9, 10, 6, 7, 4];
+  return (
+    <div className="grid w-full max-w-sm gap-3">
+      {[{ n: "Visitors", v: "12.4k", d: up, t: "success" as const }, { n: "Bounce rate", v: "38%", d: down, t: "danger" as const }].map((r) => (
+        <div key={r.n} className="flex items-center justify-between rounded-xl border border-depth-border bg-depth-surface p-4 shadow-[0_4px_0_var(--depth-border)]">
+          <div>
+            <p className="text-xs text-depth-muted">{r.n}</p>
+            <p className="text-xl font-semibold tabular-nums">{r.v}</p>
+          </div>
+          <Sparkline3D data={r.d} tone={r.t} aria-label={r.n} />
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function PasswordInputDemo() {
+  return (
+    <div className="flex w-full max-w-xs flex-col gap-4">
+      <PasswordInput3D aria-label="New password" autoComplete="new-password" showStrength />
+      <p className="text-xs text-depth-muted">Try: abc, Abcdef12, Tr0ub4dor&amp;3-horse</p>
+    </div>
+  );
+}
+
+function DateRangeDemo() {
+  const [r, setR] = useState<DateRange>({ start: null, end: null });
+  return (
+    <div className="flex flex-col items-center gap-3">
+      <DateRangePicker3D value={r} onValueChange={setR} />
+      <p className="text-xs text-depth-muted">{r.start && r.end ? `${Math.round((+r.end - +r.start) / 864e5) + 1} days selected` : "Pick two dates"}</p>
     </div>
   );
 }
@@ -1273,6 +1362,73 @@ const columns = [
         previewClassName="min-h-[240px]"
       >
         <ChipDemo />
+      </Showcase>
+
+      <Showcase
+        id="avatar-3d"
+        title="Avatar"
+        blurb="A raised avatar with a photo or colourful initials, in four sizes and two shapes, with an optional presence dot that screen readers also hear."
+        usage={`import { Avatar3D } from "@/components/depth";
+
+<Avatar3D name="Priya Sharma" src="/priya.jpg" status="online" size="lg" />`}
+        files={[f("avatar-3d", avatar3dSrc), utils]}
+        previewClassName="min-h-[280px]"
+      >
+        <AvatarDemo />
+      </Showcase>
+
+      <Showcase
+        id="hover-card-3d"
+        title="Hover card"
+        blurb="A small preview card that appears when you hover or focus a link, like a profile preview. Opens after a short delay and Escape closes it."
+        usage={`import { HoverCard3D } from "@/components/depth";
+
+<HoverCard3D content={<p>Profile preview</p>}>
+  <a href="/akram">@akram</a>
+</HoverCard3D>`}
+        files={[f("hover-card-3d", hoverCardSrc), utils]}
+        previewClassName="min-h-[300px]"
+      >
+        <HoverCardDemo />
+      </Showcase>
+
+      <Showcase
+        id="sparkline-3d"
+        title="Sparkline"
+        blurb="A tiny trend line for dashboards and tables. The line draws itself in, with a soft area and a dot on the latest value, plus a text summary for screen readers."
+        usage={`import { Sparkline3D } from "@/components/depth";
+
+<Sparkline3D data={[4, 6, 5, 8, 11, 14]} tone="success" aria-label="Visitors" />`}
+        files={[f("sparkline-3d", sparklineSrc), utils]}
+        previewClassName="min-h-[280px]"
+      >
+        <SparklineDemo />
+      </Showcase>
+
+      <Showcase
+        id="password-input-3d"
+        title="Password input"
+        blurb="A password field with a show and hide button and an optional strength meter that is announced to screen readers as you type."
+        usage={`import { PasswordInput3D } from "@/components/depth";
+
+<PasswordInput3D aria-label="New password" autoComplete="new-password" showStrength />`}
+        files={[f("password-input-3d", passwordInputSrc), utils]}
+        previewClassName="min-h-[260px]"
+      >
+        <PasswordInputDemo />
+      </Showcase>
+
+      <Showcase
+        id="date-range-picker-3d"
+        title="Date range picker"
+        blurb="Pick a start and an end date on one calendar. Days between are tinted and previewed as you move. Full keyboard support, min and max dates and locales."
+        usage={`import { DateRangePicker3D } from "@/components/depth";
+
+<DateRangePicker3D value={range} onValueChange={setRange} />`}
+        files={[f("date-range-picker-3d", dateRangeSrc), utils]}
+        previewClassName="min-h-[460px]"
+      >
+        <DateRangeDemo />
       </Showcase>
     </>,
     only,
