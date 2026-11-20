@@ -2,6 +2,9 @@
 
 All notable changes are listed here. The project follows [Semantic Versioning](https://semver.org).
 
+## 0.27.0
+- Five more app components: `ContextMenu3D` (right-click, Shift+F10 and long press), `ToggleGroup3D` (single or multiple, aria-pressed), `CopyButton3D` (clipboard with fallback and live announcement), `InlineEdit3D` (click to edit, Enter saves, Escape cancels) and `Chip3D` (selectable and removable).
+
 ## 0.26.0
 - Five more app components: `Breadcrumb3D` (collapses long trails), `Popover3D` (floating panel for any content, focus managed), `Combobox3D` (type-to-filter, ARIA combobox), `NumberInput3D` (spinbutton with hold-to-step) and `ColorPicker3D` (saturation square, hue slider, hex field, swatches).
 

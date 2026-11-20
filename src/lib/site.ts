@@ -2,4 +2,4 @@
 export const REPO = "depthui/depthui";
 
 /** Shown next to the logo on the landing and docs pages. Bump it with package.json. */
-export const VERSION = "0.26";
+export const VERSION = "0.27";

@@ -24,6 +24,11 @@ import {
   Combobox3D,
   NumberInput3D,
   ColorPicker3D,
+  ContextMenu3D,
+  ToggleGroup3D,
+  CopyButton3D,
+  InlineEdit3D,
+  Chip3D,
   DropdownMenu3D,
   Calendar3D,
   CompareSlider3D,
@@ -65,6 +70,11 @@ import popoverSrc from "@/components/depth/ui/popover-3d.tsx?raw";
 import comboboxSrc from "@/components/depth/ui/combobox-3d.tsx?raw";
 import numberInputSrc from "@/components/depth/ui/number-input-3d.tsx?raw";
 import colorPickerSrc from "@/components/depth/ui/color-picker-3d.tsx?raw";
+import contextMenuSrc from "@/components/depth/ui/context-menu-3d.tsx?raw";
+import toggleGroupSrc from "@/components/depth/ui/toggle-group-3d.tsx?raw";
+import copyButtonSrc from "@/components/depth/ui/copy-button-3d.tsx?raw";
+import inlineEditSrc from "@/components/depth/ui/inline-edit-3d.tsx?raw";
+import chipSrc from "@/components/depth/ui/chip-3d.tsx?raw";
 import alertSrc from "@/components/depth/ui/alert-3d.tsx?raw";
 import timelineSrc from "@/components/depth/ui/timeline-3d.tsx?raw";
 import menuSrc from "@/components/depth/ui/dropdown-menu-3d.tsx?raw";
@@ -295,6 +305,96 @@ function ColorPickerDemo() {
     <div className="flex flex-col items-center gap-3">
       <ColorPicker3D value={c} onValueChange={setC} />
       <p className="text-xs text-depth-muted">Value: <span className="font-mono">{c}</span></p>
+    </div>
+  );
+}
+
+function ContextMenuDemo() {
+  const [last, setLast] = useState("");
+  return (
+    <div className="flex w-full max-w-sm flex-col items-center gap-3">
+      <ContextMenu3D
+        aria-label="File actions"
+        onSelect={setLast}
+        items={[
+          { id: "open", label: "Open", hint: "Enter" },
+          { id: "rename", label: "Rename", hint: "F2" },
+          { id: "share", label: "Share", disabled: true },
+          { id: "delete", label: "Delete", danger: true, separatorBefore: true },
+        ]}
+        className="w-full"
+      >
+        <div className="flex h-40 items-center justify-center rounded-2xl border-2 border-dashed border-depth-border text-center text-sm text-depth-muted">
+          Right-click here<br />(or long-press, or Shift+F10)
+        </div>
+      </ContextMenu3D>
+      <p className="text-xs text-depth-muted">{last ? `Chose: ${last}` : "Nothing chosen yet"}</p>
+    </div>
+  );
+}
+
+function ToggleGroupDemo() {
+  const [fmt, setFmt] = useState<string[]>(["bold"]);
+  return (
+    <div className="flex flex-col items-center gap-5">
+      <ToggleGroup3D
+        aria-label="Text formatting"
+        value={fmt}
+        onValueChange={setFmt}
+        items={[
+          { value: "bold", label: <b>B</b>, "aria-label": "Bold" },
+          { value: "italic", label: <i>I</i>, "aria-label": "Italic" },
+          { value: "underline", label: <u>U</u>, "aria-label": "Underline" },
+        ]}
+      />
+      <ToggleGroup3D
+        aria-label="Alignment"
+        type="single"
+        defaultValue={["left"]}
+        items={[{ value: "left", label: "Left" }, { value: "center", label: "Center" }, { value: "right", label: "Right" }]}
+      />
+      <p className="text-xs text-depth-muted">Formatting: {fmt.join(", ") || "none"}</p>
+    </div>
+  );
+}
+
+function CopyButtonDemo() {
+  return (
+    <div className="flex flex-wrap items-center justify-center gap-4">
+      <div className="flex items-center gap-2 rounded-xl border border-depth-border bg-depth-elevated py-1.5 pl-3 pr-1.5">
+        <code className="font-mono text-sm">npm i depth-ui</code>
+        <CopyButton3D text="npm i depth-ui" aria-label="Copy install command" className="h-8 w-8" />
+      </div>
+      <CopyButton3D text="https://depthui.vercel.app">Copy link</CopyButton3D>
+    </div>
+  );
+}
+
+function InlineEditDemo() {
+  const [t, setT] = useState("Untitled project");
+  return (
+    <div className="flex flex-col items-center gap-3">
+      <InlineEdit3D aria-label="Project name" value={t} onValueChange={setT} />
+      <p className="text-xs text-depth-muted">Click the name. Enter saves, Escape cancels.</p>
+    </div>
+  );
+}
+
+function ChipDemo() {
+  const [sel, setSel] = useState<string[]>(["React"]);
+  const [tags, setTags] = useState(["design", "3d", "tailwind"]);
+  const all = ["React", "Vue", "Svelte", "Solid"];
+  return (
+    <div className="flex flex-col items-center gap-5">
+      <div role="group" aria-label="Frameworks" className="flex flex-wrap justify-center gap-2">
+        {all.map((l) => (
+          <Chip3D key={l} selected={sel.includes(l)} onSelectedChange={(on) => setSel((s) => (on ? [...s, l] : s.filter((x) => x !== l)))}>{l}</Chip3D>
+        ))}
+      </div>
+      <div className="flex flex-wrap justify-center gap-2">
+        {tags.map((t) => <Chip3D key={t} onRemove={() => setTags((x) => x.filter((y) => y !== t))}>{t}</Chip3D>)}
+        {tags.length === 0 && <button type="button" onClick={() => setTags(["design", "3d", "tailwind"])} className="text-sm text-depth-accent underline">Reset tags</button>}
+      </div>
     </div>
   );
 }
@@ -1098,6 +1198,81 @@ const columns = [
         previewClassName="min-h-[480px]"
       >
         <ColorPickerDemo />
+      </Showcase>
+
+      <Showcase
+        id="context-menu-3d"
+        title="Context menu"
+        blurb="A menu that opens where you right-click. Also opens with Shift+F10 and with a long press on touch screens, and stays inside the window."
+        usage={`import { ContextMenu3D } from "@/components/depth";
+
+<ContextMenu3D
+  items={[{ id: "open", label: "Open" }, { id: "delete", label: "Delete", danger: true }]}
+  onSelect={(id) => console.log(id)}
+>
+  <div>Right-click me</div>
+</ContextMenu3D>`}
+        files={[f("context-menu-3d", contextMenuSrc), utils]}
+        previewClassName="min-h-[300px]"
+      >
+        <ContextMenuDemo />
+      </Showcase>
+
+      <Showcase
+        id="toggle-group-3d"
+        title="Toggle group"
+        blurb="A row of raised toggle buttons, like bold, italic and underline in an editor. Single or multiple mode, each button with aria-pressed."
+        usage={`import { ToggleGroup3D } from "@/components/depth";
+
+<ToggleGroup3D
+  aria-label="Text formatting"
+  items={[{ value: "bold", label: "B", "aria-label": "Bold" }]}
+/>`}
+        files={[f("toggle-group-3d", toggleGroupSrc), utils]}
+        previewClassName="min-h-[260px]"
+      >
+        <ToggleGroupDemo />
+      </Showcase>
+
+      <Showcase
+        id="copy-button-3d"
+        title="Copy button"
+        blurb="A raised button that copies text to the clipboard. The icon flips to a tick and screen readers are told it worked. Has a fallback when the Clipboard API is blocked."
+        usage={`import { CopyButton3D } from "@/components/depth";
+
+<CopyButton3D text="npm i depth-ui" aria-label="Copy install command" />
+<CopyButton3D text="https://example.com">Copy link</CopyButton3D>`}
+        files={[f("copy-button-3d", copyButtonSrc), utils]}
+        previewClassName="min-h-[200px]"
+      >
+        <CopyButtonDemo />
+      </Showcase>
+
+      <Showcase
+        id="inline-edit-3d"
+        title="Inline edit"
+        blurb="Text that turns into an input when you click it, like a document title. Enter or leaving the field saves, Escape cancels."
+        usage={`import { InlineEdit3D } from "@/components/depth";
+
+<InlineEdit3D aria-label="Project name" defaultValue="Untitled" onValueChange={save} />`}
+        files={[f("inline-edit-3d", inlineEditSrc), utils]}
+        previewClassName="min-h-[200px]"
+      >
+        <InlineEditDemo />
+      </Showcase>
+
+      <Showcase
+        id="chip-3d"
+        title="Chip"
+        blurb="A small raised pill that can be selected like a filter, removed like a tag, or both. Toggle chips use aria-pressed and remove buttons are named."
+        usage={`import { Chip3D } from "@/components/depth";
+
+<Chip3D selected={on} onSelectedChange={setOn}>React</Chip3D>
+<Chip3D onRemove={() => remove("design")}>design</Chip3D>`}
+        files={[f("chip-3d", chipSrc), utils]}
+        previewClassName="min-h-[240px]"
+      >
+        <ChipDemo />
       </Showcase>
     </>,
     only,
