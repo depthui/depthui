@@ -2,6 +2,9 @@
 
 All notable changes are listed here. The project follows [Semantic Versioning](https://semver.org).
 
+## 0.26.0
+- Five more app components: `Breadcrumb3D` (collapses long trails), `Popover3D` (floating panel for any content, focus managed), `Combobox3D` (type-to-filter, ARIA combobox), `NumberInput3D` (spinbutton with hold-to-step) and `ColorPicker3D` (saturation square, hue slider, hex field, swatches).
+
 ## 0.25.0
 - Five more app components: `DropdownMenu3D` (menu button pattern, full keyboard support), `Calendar3D` (date picker with min/max, locales and keyboard navigation), `CompareSlider3D` (before and after reveal), `Timeline3D` (scroll-in vertical timeline) and `Alert3D` (info, success, warning, error; dismissible).
 

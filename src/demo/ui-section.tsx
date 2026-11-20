@@ -19,6 +19,11 @@ import {
   Rating3D,
   Timeline3D,
   Alert3D,
+  Breadcrumb3D,
+  Popover3D,
+  Combobox3D,
+  NumberInput3D,
+  ColorPicker3D,
   DropdownMenu3D,
   Calendar3D,
   CompareSlider3D,
@@ -55,6 +60,11 @@ import drawerSrc from "@/components/depth/ui/drawer-3d.tsx?raw";
 import paletteSrc from "@/components/depth/ui/command-palette-3d.tsx?raw";
 import tagSrc from "@/components/depth/ui/tag-input-3d.tsx?raw";
 import tickerSrc from "@/components/depth/ui/number-ticker-3d.tsx?raw";
+import breadcrumbSrc from "@/components/depth/ui/breadcrumb-3d.tsx?raw";
+import popoverSrc from "@/components/depth/ui/popover-3d.tsx?raw";
+import comboboxSrc from "@/components/depth/ui/combobox-3d.tsx?raw";
+import numberInputSrc from "@/components/depth/ui/number-input-3d.tsx?raw";
+import colorPickerSrc from "@/components/depth/ui/color-picker-3d.tsx?raw";
 import alertSrc from "@/components/depth/ui/alert-3d.tsx?raw";
 import timelineSrc from "@/components/depth/ui/timeline-3d.tsx?raw";
 import menuSrc from "@/components/depth/ui/dropdown-menu-3d.tsx?raw";
@@ -226,6 +236,65 @@ function CompareDemo() {
         before={<div className="bg-gradient-to-br from-slate-400 to-slate-500" />}
         after={<div className="bg-gradient-to-br from-violet-500 via-fuchsia-500 to-orange-400" />}
       />
+    </div>
+  );
+}
+
+function BreadcrumbDemo() {
+  const items = [
+    { id: "home", label: "Home", href: "#" },
+    { id: "docs", label: "Docs", href: "#" },
+    { id: "components", label: "Components", href: "#" },
+    { id: "app", label: "App components", href: "#" },
+    { id: "bc", label: "Breadcrumb" },
+  ];
+  return (
+    <div className="flex flex-col gap-6">
+      <Breadcrumb3D items={items.slice(0, 3)} />
+      <Breadcrumb3D items={items} maxItems={4} />
+    </div>
+  );
+}
+
+function PopoverDemo() {
+  return (
+    <div className="flex min-h-[260px] items-start justify-center pt-4">
+      <Popover3D trigger="Share" aria-label="Share this page">
+        <p className="font-semibold">Share this page</p>
+        <p className="mt-1 text-depth-muted">Anyone with the link can view it.</p>
+        <input aria-label="Link" readOnly value="https://depthui.vercel.app" className="mt-3 h-9 w-full rounded-lg border border-depth-border bg-depth-elevated px-2.5 text-xs outline-none focus-visible:ring-2 focus-visible:ring-depth-accent" />
+      </Popover3D>
+    </div>
+  );
+}
+
+const FRAMEWORKS = ["React", "Vue", "Svelte", "Angular", "Solid", "Qwik", "Preact", "Next.js", "Nuxt", "Remix", "Astro"].map((l) => ({ value: l.toLowerCase(), label: l }));
+function ComboboxDemo() {
+  const [v, setV] = useState<string | null>(null);
+  return (
+    <div className="flex min-h-[300px] w-full max-w-xs flex-col items-center gap-3">
+      <Combobox3D aria-label="Framework" options={FRAMEWORKS} value={v} onValueChange={setV} placeholder="Search a framework…" />
+      <p className="text-xs text-depth-muted">{v ? `Chosen: ${v}` : "Type to filter"}</p>
+    </div>
+  );
+}
+
+function NumberInputDemo() {
+  const [n, setN] = useState(2);
+  return (
+    <div className="flex flex-col items-center gap-4">
+      <NumberInput3D aria-label="Quantity" value={n} onValueChange={setN} min={0} max={20} />
+      <NumberInput3D aria-label="Weight" defaultValue={2.5} step={0.5} min={0} max={50} unit="kg" />
+    </div>
+  );
+}
+
+function ColorPickerDemo() {
+  const [c, setC] = useState("#7c3aed");
+  return (
+    <div className="flex flex-col items-center gap-3">
+      <ColorPicker3D value={c} onValueChange={setC} />
+      <p className="text-xs text-depth-muted">Value: <span className="font-mono">{c}</span></p>
     </div>
   );
 }
@@ -952,6 +1021,83 @@ const columns = [
         previewClassName="min-h-[420px]"
       >
         <AlertDemo />
+      </Showcase>
+
+      <Showcase
+        id="breadcrumb-3d"
+        title="Breadcrumb"
+        blurb="A trail of raised chips showing where you are. Long trails collapse the middle into a button that expands them. A nav landmark with aria-current on the last item."
+        usage={`import { Breadcrumb3D } from "@/components/depth";
+
+<Breadcrumb3D
+  items={[
+    { id: "home", label: "Home", href: "/" },
+    { id: "docs", label: "Docs", href: "/docs" },
+    { id: "now", label: "Breadcrumb" },
+  ]}
+/>`}
+        files={[f("breadcrumb-3d", breadcrumbSrc), utils]}
+        previewClassName="min-h-[200px]"
+      >
+        <BreadcrumbDemo />
+      </Showcase>
+
+      <Showcase
+        id="popover-3d"
+        title="Popover"
+        blurb="A button that opens a small floating panel for any content, such as a form or details. Escape and outside clicks close it, and focus moves in and back out."
+        usage={`import { Popover3D } from "@/components/depth";
+
+<Popover3D trigger="Share" aria-label="Share this page">
+  Anyone with the link can view it.
+</Popover3D>`}
+        files={[f("popover-3d", popoverSrc), utils]}
+        previewClassName="min-h-[320px]"
+      >
+        <PopoverDemo />
+      </Showcase>
+
+      <Showcase
+        id="combobox-3d"
+        title="Combobox"
+        blurb="A text box that filters a list as you type, then lets you pick an option. Follows the ARIA combobox pattern with full keyboard support."
+        usage={`import { Combobox3D } from "@/components/depth";
+
+<Combobox3D
+  aria-label="Framework"
+  options={[{ value: "react", label: "React" }, { value: "vue", label: "Vue" }]}
+  onValueChange={(v) => console.log(v)}
+/>`}
+        files={[f("combobox-3d", comboboxSrc), utils]}
+        previewClassName="min-h-[360px]"
+      >
+        <ComboboxDemo />
+      </Showcase>
+
+      <Showcase
+        id="number-input-3d"
+        title="Number input"
+        blurb="A number field with raised minus and plus buttons. Hold a button to keep stepping. A real spinbutton with arrow, PageUp, PageDown, Home and End keys."
+        usage={`import { NumberInput3D } from "@/components/depth";
+
+<NumberInput3D aria-label="Quantity" min={0} max={20} defaultValue={2} />`}
+        files={[f("number-input-3d", numberInputSrc), utils]}
+        previewClassName="min-h-[240px]"
+      >
+        <NumberInputDemo />
+      </Showcase>
+
+      <Showcase
+        id="color-picker-3d"
+        title="Color picker"
+        blurb="Pick a colour from a saturation and brightness square, a hue slider, a hex field or swatches. The value is a hex string. Keyboard and screen reader friendly."
+        usage={`import { ColorPicker3D } from "@/components/depth";
+
+<ColorPicker3D value={color} onValueChange={setColor} />`}
+        files={[f("color-picker-3d", colorPickerSrc), utils]}
+        previewClassName="min-h-[480px]"
+      >
+        <ColorPickerDemo />
       </Showcase>
     </>,
     only,
