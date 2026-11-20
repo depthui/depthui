@@ -1,0 +1,1 @@
+[{"component":"Timeline3D","extends":[],"props":[{"name":"events","type":"TimelineEvent[]","required":true,"default":null,"description":"The events, in order from first to last."},{"name":"className","type":"string","required":false,"default":null,"description":"Extra classes added to the outer element."}]}]

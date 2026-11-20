@@ -2,6 +2,9 @@
 
 All notable changes are listed here. The project follows [Semantic Versioning](https://semver.org).
 
+## 0.25.0
+- Five more app components: `DropdownMenu3D` (menu button pattern, full keyboard support), `Calendar3D` (date picker with min/max, locales and keyboard navigation), `CompareSlider3D` (before and after reveal), `Timeline3D` (scroll-in vertical timeline) and `Alert3D` (info, success, warning, error; dismissible).
+
 ## 0.24.0
 - Guides: three written tutorials at `/guides` (3D card tilt, drag and drop Kanban, CSS 3D transforms without WebGL), pre-rendered with TechArticle JSON-LD and linked from the related component pages.
 - Every docs page now ends with related links (a guide when there is one, and neighbouring components).

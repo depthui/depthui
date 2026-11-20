@@ -17,6 +17,11 @@ import {
   Stepper3D,
   OtpInput3D,
   Rating3D,
+  Timeline3D,
+  Alert3D,
+  DropdownMenu3D,
+  Calendar3D,
+  CompareSlider3D,
   SegmentedControl3D,
   Select3D,
   Slider3D,
@@ -50,6 +55,11 @@ import drawerSrc from "@/components/depth/ui/drawer-3d.tsx?raw";
 import paletteSrc from "@/components/depth/ui/command-palette-3d.tsx?raw";
 import tagSrc from "@/components/depth/ui/tag-input-3d.tsx?raw";
 import tickerSrc from "@/components/depth/ui/number-ticker-3d.tsx?raw";
+import alertSrc from "@/components/depth/ui/alert-3d.tsx?raw";
+import timelineSrc from "@/components/depth/ui/timeline-3d.tsx?raw";
+import menuSrc from "@/components/depth/ui/dropdown-menu-3d.tsx?raw";
+import calendarSrc from "@/components/depth/ui/calendar-3d.tsx?raw";
+import compareSrc from "@/components/depth/ui/compare-slider-3d.tsx?raw";
 import overlaySrc from "@/hooks/use-overlay.ts?raw";
 import { KanbanDemo } from "./kanban-demo";
 import modalSrc from "@/components/depth/ui/modal-3d.tsx?raw";
@@ -155,6 +165,78 @@ function RatingDemo() {
       <Rating3D aria-label="Your rating" value={v} onValueChange={setV} />
       <Rating3D aria-label="Average rating" value={4} readOnly size={22} />
       <p className="text-xs text-depth-muted">{v ? `You rated it ${v} out of 5` : "Not rated yet"}</p>
+    </div>
+  );
+}
+
+
+function TimelineDemo() {
+  return (
+    <div className="w-full max-w-md">
+      <Timeline3D
+        events={[
+          { id: "1", title: "Idea", time: "Jan 2026", description: "A 3D component library that stays light.", status: "done" },
+          { id: "2", title: "First release", time: "Mar 2026", description: "Buttons, cards and scenes.", status: "done" },
+          { id: "3", title: "App components", time: "Nov 2026", description: "Kanban, drawer, command palette and more.", status: "current" },
+          { id: "4", title: "Templates", time: "2027", description: "Full page templates built from the library.", status: "upcoming" },
+        ]}
+      />
+    </div>
+  );
+}
+
+function MenuDemo() {
+  const [last, setLast] = useState("");
+  return (
+    <div className="flex min-h-[260px] flex-col items-center gap-4 pt-4">
+      <DropdownMenu3D
+        aria-label="Project actions"
+        onSelect={setLast}
+        items={[
+          { id: "edit", label: "Edit", hint: "E" },
+          { id: "duplicate", label: "Duplicate", hint: "D" },
+          { id: "archive", label: "Archive", disabled: true },
+          { id: "delete", label: "Delete", danger: true, separatorBefore: true },
+        ]}
+      >
+        Actions
+      </DropdownMenu3D>
+      <p className="text-xs text-depth-muted">{last ? `Chose: ${last}` : "Open the menu and choose something"}</p>
+    </div>
+  );
+}
+
+function CalendarDemo() {
+  const [d, setD] = useState<Date | null>(null);
+  const min = new Date(); min.setDate(min.getDate() - 7);
+  return (
+    <div className="flex flex-col items-center gap-3">
+      <Calendar3D value={d} onValueChange={setD} min={min} />
+      <p className="text-xs text-depth-muted">{d ? d.toDateString() : "Pick a date (a week back is the earliest)"}</p>
+    </div>
+  );
+}
+
+function CompareDemo() {
+  return (
+    <div className="w-full max-w-lg">
+      <CompareSlider3D
+        beforeLabel="Flat"
+        afterLabel="Depth"
+        before={<div className="bg-gradient-to-br from-slate-400 to-slate-500" />}
+        after={<div className="bg-gradient-to-br from-violet-500 via-fuchsia-500 to-orange-400" />}
+      />
+    </div>
+  );
+}
+
+function AlertDemo() {
+  return (
+    <div className="flex w-full max-w-md flex-col gap-3">
+      <Alert3D tone="info" title="Heads up">Your trial ends in 3 days.</Alert3D>
+      <Alert3D tone="success" title="Saved" dismissible>Your changes are live.</Alert3D>
+      <Alert3D tone="warning" title="Storage almost full" dismissible>You have used 92% of your space.</Alert3D>
+      <Alert3D tone="error" title="Payment failed">Check your card details and try again.</Alert3D>
     </div>
   );
 }
@@ -793,6 +875,83 @@ const columns = [
         previewClassName="min-h-[280px]"
       >
         <TickerDemo />
+      </Showcase>
+
+      <Showcase
+        id="timeline-3d"
+        title="Timeline"
+        blurb="A vertical timeline. Events rise into view as you scroll and the line draws itself. Mark each step done, current or upcoming."
+        usage={`import { Timeline3D } from "@/components/depth";
+
+<Timeline3D
+  events={[{ id: "1", title: "Launch", time: "Mar 2026", status: "done" }]}
+/>`}
+        files={[f("timeline-3d", timelineSrc), utils]}
+        previewClassName="min-h-[380px]"
+      >
+        <TimelineDemo />
+      </Showcase>
+
+      <Showcase
+        id="dropdown-menu-3d"
+        title="Dropdown menu"
+        blurb="A button that opens a floating menu that tilts in from the trigger. Follows the menu button pattern with full keyboard support and focus return."
+        usage={`import { DropdownMenu3D } from "@/components/depth";
+
+<DropdownMenu3D
+  items={[{ id: "edit", label: "Edit" }, { id: "delete", label: "Delete", danger: true }]}
+  onSelect={(id) => console.log(id)}
+>
+  Actions
+</DropdownMenu3D>`}
+        files={[f("dropdown-menu-3d", menuSrc), utils]}
+        previewClassName="min-h-[300px]"
+      >
+        <MenuDemo />
+      </Showcase>
+
+      <Showcase
+        id="calendar-3d"
+        title="Calendar"
+        blurb="A month calendar for picking a date. The chosen day slides between tiles. Keyboard navigation by day, week and month, plus min and max dates and locales."
+        usage={`import { Calendar3D } from "@/components/depth";
+
+<Calendar3D value={date} onValueChange={setDate} />`}
+        files={[f("calendar-3d", calendarSrc), utils]}
+        previewClassName="min-h-[420px]"
+      >
+        <CalendarDemo />
+      </Showcase>
+
+      <Showcase
+        id="compare-slider-3d"
+        title="Compare slider"
+        blurb="Drag a handle to reveal one thing over another, such as before and after photos. Works with images or any content, with pointer, touch and keyboard."
+        usage={`import { CompareSlider3D } from "@/components/depth";
+
+<CompareSlider3D
+  before={<img src="/before.jpg" alt="Before" />}
+  after={<img src="/after.jpg" alt="After" />}
+/>`}
+        files={[f("compare-slider-3d", compareSrc), utils]}
+        previewClassName="min-h-[340px]"
+      >
+        <CompareDemo />
+      </Showcase>
+
+      <Showcase
+        id="alert-3d"
+        title="Alert"
+        blurb="An inline message for info, success, warning or error. A raised card with a coloured edge. Error and warning use role=alert. Can be dismissed."
+        usage={`import { Alert3D } from "@/components/depth";
+
+<Alert3D tone="success" title="Saved" dismissible>
+  Your changes are live.
+</Alert3D>`}
+        files={[f("alert-3d", alertSrc), utils]}
+        previewClassName="min-h-[420px]"
+      >
+        <AlertDemo />
       </Showcase>
     </>,
     only,

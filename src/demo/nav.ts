@@ -120,6 +120,11 @@ export const NAV: NavGroup[] = [
       { id: "command-palette-3d", label: "Command palette" },
       { id: "tag-input-3d", label: "Tag input" },
       { id: "number-ticker-3d", label: "Number ticker" },
+      { id: "timeline-3d", label: "Timeline" },
+      { id: "alert-3d", label: "Alert" },
+      { id: "dropdown-menu-3d", label: "Dropdown menu" },
+      { id: "calendar-3d", label: "Calendar" },
+      { id: "compare-slider-3d", label: "Compare slider" },
     ],
   },
   {
